@@ -10,7 +10,7 @@ namespace LetsShopping.Service.Interfaces.Orders
         //Delete
         Task<bool> DeleteOrderDetailsByIdAsync(int orderId);
         //Get
-        Task<IEnumerable<OrderDetails>> GetAllOrdersAsync(string tableName);
+        Task<IEnumerable<OrderDetails>> GetAllOrdersAsync();
         //GetById
         Task<OrderDetails> GetOrderDetailsByIdAsync(int orderId);
         //Update
