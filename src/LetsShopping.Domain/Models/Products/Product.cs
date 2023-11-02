@@ -10,8 +10,5 @@
         public int DiscountId { get; set; }
         public DateTime DeletedAt { get; set; }
 
-
-
-
     }
 }
