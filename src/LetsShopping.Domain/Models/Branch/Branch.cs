@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LetsShopping.Domain.Models.Branch
 {
-    public class Branch
+    public class Branch 
     {
         public int Id { get; set; }
         public string Address { get; set; }
