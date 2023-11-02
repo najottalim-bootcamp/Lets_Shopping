@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LetsShopping.Service.Dtos.OrdersDtos
 {
-    internal class OrderItemsDto
+    public class OrderItemsDto
     {
+
+        public int OrderId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
     }
 }

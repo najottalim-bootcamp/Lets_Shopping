@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LetsShopping.Service.Dtos.OrdersDtos
 {
-    internal class OrderDetailsDto
+    public class OrderDetailsDto
     {
         public int UserId { get; set; }
         public int BranchAddressId { get; set; }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace LetsShopping.Service.Dtos.ProductsDtos
 {
-    internal class ProductInventoryDto
+    public class ProductInventoryDto
     {
+        public decimal Quantity { get; set; }
+        public DateTime DeletedAt { get; set; }
     }
 }
