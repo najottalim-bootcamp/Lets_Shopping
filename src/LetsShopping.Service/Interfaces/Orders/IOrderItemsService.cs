@@ -1,19 +1,11 @@
-﻿using LetsShopping.Domain.Models.Orders;
-using LetsShopping.Service.Dtos.OrdersDtos;
-
 namespace LetsShopping.Service.Interfaces.Orders
 {
     public interface IOrderItemsService
     {
-        //Create
-        Task<bool> CreateOrderDetailsAsync(OrderItemsDto orderItemsDto);
-        //Delete
-        Task<bool> DeleteOrderDetailsByIdAsync(int orderItemId);
-        //Get
-        Task<IEnumerable<OrderDetails>> GetAllOrdersAsync();
-        //GetById
-        Task<OrderDetails> GetOrderDetailsByIdAsync(int orderItemId);
-        //Update
-        Task<bool> UpdateOrderDetailsAsync(int orderItemId, OrderItemsDto orderDetailsDto);
+        public ValueTask<bool> CreateOrderDetailsAsync(OrderItemsDto orderItemsDto);
+        public ValueTask<bool> DeleteOrderDetailsByIdAsync(int orderItemId);
+        public ValueTask<List<OrderItems>> GetAllOrdersAsync();
+        public ValueTask<OrderItems> GetOrderDetailsByIdAsync(int orderItemId);
+        public ValueTask<bool> UpdateOrderDetailsAsync(int orderItemId, OrderItemsDto orderDetailsDto);
     }
 }
