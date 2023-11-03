@@ -15,4 +15,4 @@ namespace LetsShopping.Service.Dtos.UsersDtos
         public string Telephone { get; set; }
     }
 }
-}
+
