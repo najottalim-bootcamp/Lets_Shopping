@@ -1,3 +1,6 @@
+using LetsShopping.Domain.Models.Orders;
+using LetsShopping.Service.Dtos.OrdersDtos;
+
 namespace LetsShopping.Service.Interfaces.Orders
 {
     public interface IOrderDetailsService
