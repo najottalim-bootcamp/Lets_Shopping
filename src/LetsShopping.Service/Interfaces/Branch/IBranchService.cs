@@ -6,10 +6,10 @@ namespace LetsShopping.Service.Interfaces
 {
     public interface IBranchService
     {
-        public ValueTask CreateBranchAsync(Branch branch);
+        public ValueTask CreateBranchAsync(BranchDto branch);
         public ValueTask<Branch> GetCompanyByIdAsync(int Id);
         public ValueTask<List<Branch>> GetAllBranchAsync();
-        public ValueTask UpdateCompanyAsync(int  Id, Branch newBranch);
+        public ValueTask UpdateCompanyAsync(int  Id, BranchDto newBranch);
         public ValueTask DeleteBranchAsync(int Id);
     }
 }
