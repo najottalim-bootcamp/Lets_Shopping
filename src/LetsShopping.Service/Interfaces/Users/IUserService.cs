@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Models.Users;
-using LetsShopping.Service.Dtos.UsersDtos;
-namespace LetsShopping.Service.Interfaces.Users
+﻿namespace LetsShopping.Service.Interfaces.Users
 {
     public interface IUserService
     {
