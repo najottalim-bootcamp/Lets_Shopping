@@ -1,12 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Service.Services.Order
+﻿namespace LetsShopping.Service.Services.Order
 {
-    internal class OrderDetailsServices
+    public class OrderDetailsServices : IOrderDetailsService
     {
+        public ValueTask<bool> CreateOrderDetailsAsync(OrderDetailsDto orderDetailsDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<bool> DeleteOrderDetailsByIdAsync(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<List<OrderDetails>> GetAllOrdersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<OrderDetails> GetOrderDetailsByIdAsync(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<bool> UpdateOrderDetailsAsync(int orderId, OrderDetailsDto orderDetailsDto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
