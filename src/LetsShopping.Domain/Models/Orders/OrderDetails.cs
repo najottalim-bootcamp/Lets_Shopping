@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Enums;
-
-namespace LetsShopping.Domain.Models.Orders;
+﻿namespace LetsShopping.Domain.Models.Orders;
 
 public class OrderDetails : BaseClass
 {
