@@ -1,5 +1,4 @@
 ﻿namespace LetsShopping.Domain.Models.Orders;
-
 public class OrderItems : BaseClass
 {
     public int OrderId { get; set; }

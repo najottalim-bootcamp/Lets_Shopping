@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Service.Dtos.UsersDtos
+﻿namespace LetsShopping.Service.Dtos.UsersDtos
 {
     public class UsersDto
     {
@@ -15,4 +9,4 @@ namespace LetsShopping.Service.Dtos.UsersDtos
         public string Telephone { get; set; }
     }
 }
-}
+
