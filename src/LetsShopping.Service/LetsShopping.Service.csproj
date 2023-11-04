@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LetsShopping.DataAccess\LetsShopping.DataAccess.csproj" />
-    <ProjectReference Include="..\LetsShopping.Domain\LetsShopping.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

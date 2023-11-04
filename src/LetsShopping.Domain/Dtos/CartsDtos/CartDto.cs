@@ -1,4 +1,4 @@
-﻿namespace LetsShopping.Service.Dtos.CartsDtos;
+﻿namespace LetsShopping.Domain.Dtos.CartsDtos;
 
 public class CartDto
 {
