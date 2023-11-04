@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Domain.Models.Orders
+﻿namespace LetsShopping.Domain.Models.Orders
 {
     public class Order : BaseClass
     {
         public int UserId { get; set; }
         public DateTime DeletedAt { get; set; }
-        
+
     }
 }
