@@ -4,98 +4,151 @@ GO
 USE LetsShopDb
 GO
 
-CREATE TABLE ProductCategory(
+CREATE TABLE Card(
     Id INT PRIMARY KEY IDENTITY(1,1),
-    Name VARCHAR(100),
-    Description TEXT,
+    CardNumber VARCHAR(100),
+    ExpireDate DATETIME,
+    Amount DECIMAL,
+    Status INT,
     CreatedAt DATETIME,
     ModifiedAt DATETIME,
     DeletedAt DATETIME
 )
 
 GO
+CREATE TABLE Users(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(100),
+    LastName VARCHAR(100),
+    PhoneNumber VARCHAR,
+    CardId INT FOREIGN KEY REFERENCES Card(Id),
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+GO
+CREATE TABLE Address(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Country VARCHAR(100),
+    City VARCHAR(100),
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+
+GO
+CREATE TABLE Company(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100),
+    Description Text,
+    PhoneNumber VARCHAR,
+    AddressId INT FOREIGN KEY REFERENCES Address(Id),
+    CardId INT FOREIGN KEY REFERENCES Card(Id),
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+
+GO
+
+CREATE TABLE Category(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100),
+    ParentId  INT FOREIGN KEY REFERENCES Category(Id),
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+GO
+
 CREATE TABLE Discount(
     Id INT PRIMARY KEY IDENTITY(1,1),
     Name VARCHAR(100),
     Description TEXT,
-    DiscountPrecent INT ,
-    Active BIT,
-    CreatedAt DATETIME,
-    ModifiedAt DATETIME,
-    DeletedAt DATETIME
-)
-
-GO
-
-CREATE TABLE ProductInventory(
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    Quantity INT,
-    CreatedAt DATETIME,
-    ModifiedAt DATETIME,
-    DeletedAt DATETIME
-)
-
-GO
-
-CREATE TABLE Product(
-    Id INT  IDENTITY(1,1),
-    Name VARCHAR(100),
-    Description TEXT,
-    CategoryId INT FOREIGN KEY REFERENCES ProductCategory(Id),
-    InventoryId INT FOREIGN KEY REFERENCES ProductInventory(Id) ,
-    Price DECIMAL,
-    DiscountId INT FOREIGN KEY REFERENCES Discount(Id),
-    CreatedAt DATETIME,
-    ModifiedAt DATETIME,
-    DeletedAt DATETIME,
-    PRIMARY KEY (Id)   
-)
-
-GO
-
-CREATE TABLE Users (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    UserName VARCHAR(100),
-    Password TEXT,
-    FirstName VARCHAR(50) ,
-    LastName VARCHAR(50),
-    Telephone VARCHAR(20),
-    CreatedAt DATETIME,
-    ModifiedAt DATETIME,
-    DeletedAt DATETIME
-)
-GO
-
-CREATE TABLE BranchAddress(
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    address TEXT,
-    City VARCHAR(100),
-    Country VARCHAR(100),
-    Telephone VARCHAR(20),
-)
-
-GO
-
-CREATE TABLE OrderDetails(
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    UserId INT FOREIGN KEY REFERENCES Users(Id),
-    BranchAddressId INT FOREIGN KEY REFERENCES BranchAddress(Id),
-    Total DECIMAL,
-    PaymentType INT,
+    Percents DECIMAL,
+    StartDate DATETIME,
+    EndDate DATETIME,
     Status INT,
     CreatedAt DATETIME,
-    ModifiedAt DATETIME
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
 )
-
 GO
-
-CREATE TABLE OrderItems(
+CREATE TABLE Prices (
     Id INT PRIMARY KEY IDENTITY(1,1),
-    OrderId INT FOREIGN KEY REFERENCES OrderDetails(Id),
-    ProductId INT FOREIGN KEY REFERENCES Product(Id),
-    Quantity INT,
+    Prices DECIMAL,
+    Status INT,
     CreatedAt DATETIME,
-    ModifiedAt DATETIME
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+GO
+CREATE TABLE Product(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR(100),
+    Description TEXT,
+    CompanyId INT FOREIGN KEY REFERENCES Company(Id),
+    DiscountId INT FOREIGN KEY REFERENCES Discount(Id),
+    CategoryId INT FOREIGN KEY REFERENCES Discount(Id),
+    PricesId INT FOREIGN KEY REFERENCES Prices(Id),
+    Count INT ,
+    ImgPath TEXT,
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
 )
 
 GO
+CREATE TABLE Comment(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(Id),
+    ProductId INT FOREIGN KEY REFERENCES Product(Id),
+    CommentText TEXT ,
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+
+GO
+CREATE TABLE Cart(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(Id),
+    ProductId INT FOREIGN KEY REFERENCES Product(Id),
+    Active BIT,
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+
+GO
+CREATE TABLE Orders(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT FOREIGN KEY REFERENCES Users(Id),
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+
+GO
+CREATE TABLE OrderList(
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    OrderId INT FOREIGN KEY REFERENCES Orders(Id),
+    ProductId INT FOREIGN KEY REFERENCES Product(Id),
+    Status INT,
+    CreatedAt DATETIME,
+    ModifiedAt DATETIME,
+    DeletedAt DATETIME
+)
+
+
+
+
+
