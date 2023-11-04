@@ -1,4 +1,5 @@
 # Lets_Shopping
 E-Commerse Api  Dapper project
 Database struct
-![image](https://github.com/najottalim-bootcamp/Lets_Shopping/assets/118399896/2fc8e9b5-a086-4c72-a76d-0f7dbbc02711)
+![image](https://github.com/najottalim-bootcamp/Lets_Shopping/assets/118399896/857d405d-95b4-45c6-94ce-1448c6168143)
+
