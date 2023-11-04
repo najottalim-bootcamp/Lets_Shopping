@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Discount\" />
-    <Folder Include="Models\Branch\" />
     <Folder Include="Models\Users\" />
     <Folder Include="Models\Orders\" />
   </ItemGroup>
