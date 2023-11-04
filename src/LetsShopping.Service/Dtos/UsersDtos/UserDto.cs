@@ -1,6 +1,6 @@
 ﻿namespace LetsShopping.Service.Dtos.UsersDtos
 {
-    public class UsersDto
+    public class UserDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
