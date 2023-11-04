@@ -1,4 +1,4 @@
-﻿namespace LetsShopping.Service.Dtos.CommentsDtos;
+﻿namespace LetsShopping.Domain.Dtos.CommentsDtos;
 
 public class CommentDto
 {

@@ -1,15 +1,10 @@
 ﻿
-
 using LetsShopping.Domain.Models.Users;
-
+using LetsShopping.Service.Dtos.UsersDtos;
 
 namespace LetsShopping.DataAccess.Repositories.UserRepository;
 
-public class IUserRepository
+public interface IUserRepository : IBaseRepository<User,UsersDto>
 {
-    ValueTask<bool> Create(UserDto user);
-    ValueTask<bool> Delete(int Id);
-    ValueTask<IEnumerable<User>> GetAll();
-    ValueTask<User> GetById(int Id, UserDto user);
-    ValueTask<bool> Update(UserDto user);
+
 }
