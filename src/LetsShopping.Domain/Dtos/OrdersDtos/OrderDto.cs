@@ -1,10 +1,9 @@
 ﻿namespace LetsShopping.Service.Dtos.OrdersDtos
 {
-    public class OrderDetailsDto
+    public class OrderDto
     {
         public int UserId { get; set; }
-        public int BranchAddressId { get; set; }
         public decimal Total { get; set; }
-        public OrderStatus Status { get; set; }
+        public decimal Price { get; set; }
     }
 }
