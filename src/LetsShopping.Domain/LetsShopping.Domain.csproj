@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Orders\" />
+    <Folder Include="Models\Users\" />
   </ItemGroup>
 
 </Project>
