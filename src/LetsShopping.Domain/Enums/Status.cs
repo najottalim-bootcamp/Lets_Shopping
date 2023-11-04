@@ -2,8 +2,8 @@
 {
     public enum Status
     {
-        CreatedAt,
-        UpdatedAt,
+        Created,
+        Updated,
         Deleted,
     }
 }
