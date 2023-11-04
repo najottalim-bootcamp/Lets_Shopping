@@ -12,12 +12,12 @@
             throw new NotImplementedException();
         }
 
-        public ValueTask<List<OrderDetails>> GetAllOrdersAsync()
+        public ValueTask<List<Order>> GetAllOrdersAsync()
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<OrderDetails> GetOrderDetailsByIdAsync(int orderId)
+        public ValueTask<Order> GetOrderDetailsByIdAsync(int orderId)
         {
             throw new NotImplementedException();
         }
