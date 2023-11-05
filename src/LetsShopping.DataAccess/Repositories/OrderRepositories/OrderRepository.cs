@@ -2,29 +2,102 @@
 {
     public class OrderRepository : BaseRepository, IOrderRepository
     {
-        public ValueTask<int> CreateAsync(OrderDto model)
+        public async ValueTask<int> CreateAsync(OrderDto model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
+                int created = await _connection.ExecuteAsync(query);
+                return created;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+               await _connection.CloseAsync();
+
+            }
         }
 
-        public ValueTask<int> DeleteAsync(int Id)
+        public async ValueTask<int> DeleteAsync(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"Exec DeletedById \'Order\',{Id}";
+                int deleted = await _connection.ExecuteAsync(query);
+                return deleted;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public ValueTask<IList<Order>> GetAllAsync()
+        public async ValueTask<IList<Order>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = "Exec GetAll 'Orders'";
+                var getall = (await _connection.QueryAsync<Order>(query)).ToList();
+                return getall;
+            }
+            catch
+            {
+                return new List<Order>();
+
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public ValueTask<Order> GetByIdAsync(int Id)
+        public async ValueTask<Order> GetByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"Exec GetById 'Orders',{Id}";
+                var getbyId = await _connection.QueryFirstOrDefaultAsync<Order>(query);
+                return getbyId;
+            }
+            catch
+            {
+                return new Order();                
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public ValueTask<int> UpdateAsync(int Id, OrderDto model)
+        public async ValueTask<int> UpdateAsync(int Id, OrderDto model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Price}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                int updated = await _connection.ExecuteAsync(query);
+                return updated;
+
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
     }
 }
