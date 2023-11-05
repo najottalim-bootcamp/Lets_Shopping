@@ -1,6 +1,12 @@
-﻿namespace LetsShopping.Service.Interfaces.Users
+
+
+namespace LetsShopping.Service.Interfaces.Users
+
+using LetsShopping.DataAccess.Repositories.UserRepository;
+
+namespace LetsShopping.Service.Interfaces.Users
 {
-    public interface IUserService
+    public interface IUserService : IUserRepository
     {
         public ValueTask<int> CreateUserAsync(UsersDto model);
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model);
@@ -27,7 +33,6 @@
         public ValueTask<IList<Category>> GetAllCategory();
         public ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompany();
         public ValueTask<IList<Domain.Models.Orders.Order>> GetAllOrderByUserId();
-
 
     }
 }

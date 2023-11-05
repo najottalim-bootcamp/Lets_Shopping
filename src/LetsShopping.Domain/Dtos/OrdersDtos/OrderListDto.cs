@@ -1,4 +1,4 @@
-﻿namespace LetsShopping.Service.Dtos.OrdersDtos
+﻿namespace LetsShopping.Domain.Dtos.OrdersDtos
 {
     public class OrderListDto
     {

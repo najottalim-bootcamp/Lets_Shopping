@@ -1,4 +1,9 @@
-﻿namespace LetsShopping.DataAccess.Repositories.ProductRepositories
+using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Models.Products;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using System.Data;
+
+namespace LetsShopping.DataAccess.Repositories.ProductRepositories
 {
     public class ProductRepository : BaseRepository, IProductRepository
     {

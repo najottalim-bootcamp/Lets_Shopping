@@ -1,23 +1,29 @@
-﻿namespace LetsShopping.Service.Services.User
+﻿using LetsShopping.Domain.Dtos.UsersDtos;
+
+namespace LetsShopping.Service.Services.User
 {
     public class UserServices : IUserService
     {
         public ValueTask<int> CreateCardAsync(CardDto model)
+        public ValueTask<int> CreateAsync(UsersDto model)
         {
             throw new NotImplementedException();
         }
 
         public ValueTask<int> CreateCartAsync(CartDto model)
+        public ValueTask<int> DeleteAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
         public ValueTask<int> CreateUserAsync(UsersDto model)
+        public ValueTask<IList<Domain.Models.Users.User>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
         public ValueTask<int> DeleteCardAsync(int Id)
+
         {
             throw new NotImplementedException();
         }
@@ -93,6 +99,7 @@
         }
 
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
+        public ValueTask<int> UpdateAsync(int Id, UsersDto model)
         {
             throw new NotImplementedException();
         }
