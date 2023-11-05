@@ -1,7 +1,4 @@
-﻿using LetsShopping.Service.Dtos.OrdersDtos;
-using LetsShopping.Service.Interfaces.Order;
-using Microsoft.AspNetCore.Mvc;
-namespace LetsShopping.Api.Controllers.Orders
+﻿namespace LetsShopping.Api.Controllers.Orders
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -13,28 +10,28 @@ namespace LetsShopping.Api.Controllers.Orders
             _order = order;
         }
         [HttpGet]
-        public IActionResult GetAllAsync()
+        public IActionResult GetAllAsync() 
         {
             var result = _order.GetAllAsync();
             return Ok(result);
         }
         [HttpGet]
-        public IActionResult GetByIdAsync(int id)
+        public IActionResult GetByIdAsync(int id) 
         {
             var result = _order.GetByIdAsync(id);
             return Ok(result);
         }
         [HttpPost]
-        public IActionResult CreateAsync(OrderDto orderDto)
+        public  IActionResult CreateAsync(OrderDto orderDto)
         {
             var result = _order.CreateAsync(orderDto);
             return Ok(result);
         }
         [HttpPatch]
-        public IActionResult UpdateAsync(int Id, OrderDto orderDto)
+        public IActionResult UpdateAsync(int Id,OrderDto orderDto)
         {
             var reuslt = _order.UpdateAsync(Id, orderDto);
-            return Ok(reuslt);
+            return Ok(reuslt);                       
         }
         [HttpDelete]
         public IActionResult DeleteAsync(int Id)
