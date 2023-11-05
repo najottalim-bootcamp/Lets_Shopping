@@ -89,7 +89,7 @@ public class UserRepository : BaseRepository, IUserRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Update Users Set FirstName = '{model.FirstName}',LastName = '{model.LastName}',PhoneNumber = '{model.PhoneNumber}',Password = '{model.Password}',{(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id};";
+            string query = $"Update Users Set FirstName = '{model.FirstName}',LastName = '{model.LastName}',PhoneNumber = '{model.PhoneNumber}',Password = '{model.Password}',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id};";
             int updated = await _connection.ExecuteAsync(query);
             return updated;
 
