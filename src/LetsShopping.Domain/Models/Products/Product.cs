@@ -10,7 +10,6 @@
         public int PriceId { get; set; }
         public int Count {get; set; }
         public string ImgPath { get; set; }
-        public DateTime? DeletedAt { get; set; }
 
     }
 }
