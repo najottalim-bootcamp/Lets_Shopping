@@ -7,7 +7,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{model.Price},{(int)Status.Created},Getdate())";
+                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
                 int created = await _connection.ExecuteAsync(query);
                 return created;
             }
