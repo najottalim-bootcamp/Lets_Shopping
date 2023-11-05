@@ -6,3 +6,4 @@ global using LetsShopping.Service.Dtos.Price;
 global using Dapper;
 global using LetsShopping.Domain.Dtos.AddressDtos;
 global using LetsShopping.Domain.Models.Addresses;
+global using LetsShopping.Domain.Enums;

@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Enums;
-
-namespace LetsShopping.DataAccess.Repositories.OrderRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
     public class OrderRepository : BaseRepository, IOrderRepository
     {
@@ -16,7 +14,6 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             catch
             {
                 return 0;
-
             }
             finally
             {
