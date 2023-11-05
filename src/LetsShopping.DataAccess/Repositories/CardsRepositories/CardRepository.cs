@@ -1,14 +1,17 @@
-﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
+﻿using LetsShopping.Domain.Dtos.CardDtos;
+using LetsShopping.Domain.Models.Cards;
+
+namespace LetsShopping.DataAccess.Repositories.CardsRepositories
 {
-    public class OrderRepository : BaseRepository, IOrderRepository
+    public class CardRepository : BaseRepository, ICardRepisotry
     {
-        public async ValueTask<int> CreateAsync(OrderDto model)
+        public async ValueTask<int> CreateAsync(CardDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{model.Price},{(int)Status.Created},Getdate())";
-                int created = await _connection.ExecuteAsync(query);
+                string query = $"Insert into Card(CardNumber,ExpireDate,Amount,Status,CreatedAt) Values({model.CardNumber},{model.ExpireDate},{model.Amount},{(int)Status.Created},Getdate());";
+                int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
             catch
@@ -17,9 +20,9 @@
             }
             finally
             {
-               await _connection.CloseAsync();
-
+                await _connection.CloseAsync();
             }
+
         }
 
         public async ValueTask<int> DeleteAsync(int Id)
@@ -27,9 +30,10 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec DeletedById \'Order\',{Id}";
+                string query = $"EXEC DeleteById \'Card\' , {Id}";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
+
             }
             catch
             {
@@ -41,19 +45,18 @@
             }
         }
 
-        public async ValueTask<IList<Order>> GetAllAsync()
+        public async ValueTask<IList<Card>> GetAllAsync()
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = "Exec GetAll 'Orders'";
-                var getall = (await _connection.QueryAsync<Order>(query)).ToList();
-                return getall;
+                string query = "Exec GetAll 'Card'";
+                var get = (await _connection.QueryAsync<Card>(query)).ToList();
+                return get;
             }
             catch
             {
-                return new List<Order>();
-
+                return new List<Card>();
             }
             finally
             {
@@ -61,31 +64,33 @@
             }
         }
 
-        public async ValueTask<Order> GetByIdAsync(int Id)
+        public async ValueTask<Card> GetByIdAsync(int Id)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec GetById 'Orders',{Id}";
-                var getbyId = await _connection.QueryFirstOrDefaultAsync<Order>(query);
-                return getbyId;
+                string query = $"EXEC GetAllById 'Card' , {Id};";
+                var price = await _connection.QueryFirstOrDefaultAsync<Card>(query);
+                return price;
             }
             catch
             {
-                return new Order();                
+                return new Card();
+
             }
             finally
             {
                 await _connection.CloseAsync();
             }
+
         }
 
-        public async ValueTask<int> UpdateAsync(int Id, OrderDto model)
+        public async ValueTask<int> UpdateAsync(int Id, CardDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Price}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Card Set Card = {model.CardNumber},{model.ExpireDate},{model.Amount}Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 

@@ -1,4 +1,7 @@
-﻿namespace LetsShopping.DataAccess.Repositories.PriceRepositories
+using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Models.Price;
+using LetsShopping.Service.Dtos.Price;
+namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 {
     public class PriceRepository : BaseRepository, IPriceRepository
     {
@@ -7,7 +10,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Price(price,Status,CreatedAt) Values({model.Price},{(int)Status.Created},Getdate());";
+                string query = $"Insert into Price(price,Status,CreatedAt) Values('{model.Price}',{(int)Status.Created},Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -88,7 +91,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Price Set Price = {model.Price},Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Price Set Price = '{model.Price}',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
