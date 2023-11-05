@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.DataAccess.Repositories.Discount
+﻿namespace LetsShopping.DataAccess.Repositories.Discount
 {
-    internal interface IDiscountRepository
+    public interface IDiscountRepository : IBaseRepository<Domain.Models.Discount.Discount, DiscountDto>
     {
     }
 }
