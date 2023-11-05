@@ -1,7 +1,7 @@
 ﻿namespace LetsShopping.Domain.Models.Orders;
-public class OrderItems : BaseClass
+public class OrderList : BaseClass
 {
     public int OrderId { get; set; }
     public int ProductId { get; set; }
-    public int Quantity { get; set; }
+    public DateTime DeletedAt { get; set; }
 }

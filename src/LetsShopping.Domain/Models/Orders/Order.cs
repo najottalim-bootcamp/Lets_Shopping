@@ -1,9 +1,9 @@
 ﻿namespace LetsShopping.Domain.Models.Orders;
 
-public class OrderDetails : BaseClass
+public class Order : BaseClass
 {
     public int UserId { get; set; }
-    public int BranchAddressId { get; set; }
     public decimal Total { get; set; }
-    public OrderStatus Status { get; set; }
+    public decimal Price { get; set; }
+    public DateTime DeletedAt { get; set; }
 }
