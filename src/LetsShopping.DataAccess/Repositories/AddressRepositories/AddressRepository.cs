@@ -1,17 +1,6 @@
-﻿using Dapper;
-using LetsShopping.Domain.Dtos.AddressDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Addresses;
-using LetsShopping.Service.Dtos.Price;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.DataAccess.Repositories.AddressRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.AddressRepositories
 {
-    public class AddressRepository :BaseRepository, IAddressRepository
+    public class AddressRepository : BaseRepository, IAddressRepository
     {
         public async ValueTask<int> CreateAsync(AddressDto model)
         {

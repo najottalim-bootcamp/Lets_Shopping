@@ -1,9 +1,4 @@
-﻿using Dapper;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Price;
-using LetsShopping.Service.Dtos.Price;
-
-namespace LetsShopping.DataAccess.Repositories.PriceRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 {
     public class PriceRepository : BaseRepository, IPriceRepository
     {
@@ -27,7 +22,7 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 
         }
 
-       
+
         public async ValueTask<int> DeleteAsync(int Id)
         {
             try
@@ -108,6 +103,6 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-       
+
     }
 }

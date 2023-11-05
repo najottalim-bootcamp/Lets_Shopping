@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Models\Orders\" />
     <Folder Include="Models\Users\" />
+    <Folder Include="Models\Category\" />
   </ItemGroup>
 
 </Project>

@@ -13,6 +13,5 @@ namespace LetsShopping.Domain.Models.Companies
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string СardId { get; set; }
-        public DateTime DeletedAt { get; set; }
     }
 }
