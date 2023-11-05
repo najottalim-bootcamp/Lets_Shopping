@@ -1,18 +1,24 @@
 ﻿using Dapper;
+using LetsShopping.Domain.Dtos.AddressDtos;
 using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Price;
+using LetsShopping.Domain.Models.Addresses;
 using LetsShopping.Service.Dtos.Price;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LetsShopping.DataAccess.Repositories.PriceRepositories
+namespace LetsShopping.DataAccess.Repositories.AddressRepositories
 {
-    public class PriceRepository : BaseRepository, IPriceRepository
+    public class AddressRepository :BaseRepository, IAddressRepository
     {
-        public async ValueTask<int> CreateAsync(PriceDto model)
+        public async ValueTask<int> CreateAsync(AddressDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Price(price,Status,CreatedAt) Values({model.Price},{(int)Status.Created},Getdate());";
+                string query = $"Insert into Address(Country,City,Status,CreatedAt) Values({model.Country} ,{model.City} ,{(int)Status.Created}, Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -27,13 +33,13 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 
         }
 
-       
+
         public async ValueTask<int> DeleteAsync(int Id)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC DeleteById \'Prices\' , {Id}";
+                string query = $"EXEC DeleteById \'Address\' , {Id};";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
 
@@ -48,18 +54,18 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<IList<Price>> GetAllAsync()
+        public async ValueTask<IList<Address>> GetAllAsync()
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = "Exec GetAll 'Prices'";
-                var get = (await _connection.QueryAsync<Price>(query)).ToList();
+                string query = "Exec GetAll 'Address'";
+                var get = (await _connection.QueryAsync<Address>(query)).ToList();
                 return get;
             }
             catch
             {
-                return new List<Price>();
+                return new List<Address>();
             }
             finally
             {
@@ -67,18 +73,18 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<Price> GetByIdAsync(int Id)
+        public async ValueTask<Address> GetByIdAsync(int Id)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById 'Prices' , {Id};";
-                var price = await _connection.QueryFirstOrDefaultAsync<Price>(query);
-                return price;
+                string query = $"EXEC GetAllById \'Addess\', {Id}";
+                var address = await _connection.QueryFirstOrDefaultAsync<Address>(query);
+                return address;
             }
             catch
             {
-                return new Price();
+                return new Address();
 
             }
             finally
@@ -88,12 +94,12 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 
         }
 
-        public async ValueTask<int> UpdateAsync(int Id, PriceDto model)
+        public async ValueTask<int> UpdateAsync(int Id, AddressDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Price Set Price = {model.Price},Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Address Set Country = \'{model.Country}\',City = \'{model.City}\' ,Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
@@ -108,6 +114,6 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-       
+
     }
 }

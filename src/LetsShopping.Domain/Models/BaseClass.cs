@@ -6,8 +6,8 @@ namespace LetsShopping.Domain.Models
     {
         [Key]
         public int Id { get; set; }
-        public Status Status { get; set; }
+        public Status Status { get; set; } = Status.Created;
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

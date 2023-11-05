@@ -2,11 +2,10 @@
 {
     public interface IUserService
     {
-        public ValueTask<int> CreateUserAsync(UsersDto usersDto);
-        public ValueTask<int> UpdateUserAsync(int UserId,UsersDto UserName);
-        public ValueTask<int> DeleteUserByIdAsync(int UserId);
+        public ValueTask<bool> CreateUserAsync(string UserName);
+        public ValueTask<bool> UpdateUserAsync(UserDto UserName);
+        public ValueTask<bool> DeleteUserByIdAsync(int UserId);
         public ValueTask<List<User>> GetAllAsync(string Tablename);
         public ValueTask<User> GetByIdUser(int UserId, string Tablename);
-
     }
 }
