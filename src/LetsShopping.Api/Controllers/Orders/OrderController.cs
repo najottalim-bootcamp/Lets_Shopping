@@ -1,5 +1,5 @@
-using LetsShopping.Service.Interfaces.Order;
-using Microsoft.AspNetCore.Mvc;
+using LetsShopping.Domain.Dtos.OrdersDtos;
+
 namespace LetsShopping.Api.Controllers.Orders
 {
     [Route("api/[controller]/[action]")]
