@@ -2,27 +2,97 @@
 {
     public class UserServices : IUserService
     {
-        public ValueTask<bool> CreateUserAsync(string UserName)
+        public ValueTask<int> CreateCardAsync(CardDto model)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<bool> DeleteUserByIdAsync(int UserId)
+        public ValueTask<int> CreateCartAsync(CartDto model)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<List<Domain.Models.Users.User>> GetAllAsync(string Tablename)
+        public ValueTask<int> CreateUserAsync(UsersDto model)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<Domain.Models.Users.User> GetByIdUser(int UserId, string Tablename)
+        public ValueTask<int> DeleteCardAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<bool> UpdateUserAsync(UsersDto UserName)
+        public ValueTask<int> DeleteCartAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<int> DeleteUserAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Card>> GetAllCardAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Cart>> GetAllCartAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Category>> GetAllCategory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompany()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllOrderByUserId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Product>> GetAllProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Domain.Models.Users.User>> GetAllUserAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<Card> GetCardByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<Cart> GetCartByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<Domain.Models.Users.User> GetUserByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
         {
             throw new NotImplementedException();
         }
