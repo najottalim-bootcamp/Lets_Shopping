@@ -1,4 +1,6 @@
-﻿namespace LetsShopping.Service.Services.Discount
+﻿using LetsShopping.Service.Interfaces;
+
+namespace LetsShopping.Service.Services.Discount
 {
     public class DiscountServices : IDiscountService
     {

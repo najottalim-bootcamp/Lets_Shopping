@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Users\" />
     <Folder Include="Models\Orders\" />
+    <Folder Include="Models\Users\" />
   </ItemGroup>
 
 </Project>
