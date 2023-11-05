@@ -1,28 +1,30 @@
-﻿namespace LetsShopping.Service.Services.User
+﻿using LetsShopping.Domain.Dtos.UsersDtos;
+
+namespace LetsShopping.Service.Services.User
 {
     public class UserServices : IUserService
     {
-        public ValueTask<bool> CreateUserAsync(string UserName)
+        public ValueTask<int> CreateAsync(UsersDto model)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<bool> DeleteUserByIdAsync(int UserId)
+        public ValueTask<int> DeleteAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<List<Domain.Models.Users.User>> GetAllAsync(string Tablename)
+        public ValueTask<IList<Domain.Models.Users.User>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<Domain.Models.Users.User> GetByIdUser(int UserId, string Tablename)
+        public ValueTask<Domain.Models.Users.User> GetByIdAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<bool> UpdateUserAsync(UsersDto UserName)
+        public ValueTask<int> UpdateAsync(int Id, UsersDto model)
         {
             throw new NotImplementedException();
         }

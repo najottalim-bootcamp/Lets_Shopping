@@ -1,5 +1,7 @@
 ﻿
 
+using LetsShopping.Domain.Dtos.OrdersDtos;
+
 namespace LetsShopping.Service.Services.Order
 {
     public class OrderListService : IOrderListInterface
