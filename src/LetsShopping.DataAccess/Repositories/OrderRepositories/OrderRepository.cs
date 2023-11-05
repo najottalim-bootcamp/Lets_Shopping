@@ -7,7 +7,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{model.Price},{(int)Status.Created},Getdate())";
+                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
                 int created = await _connection.ExecuteAsync(query);
                 return created;
             }
@@ -85,7 +85,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Price}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Total}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 

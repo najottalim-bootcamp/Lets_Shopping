@@ -1,8 +1,10 @@
-﻿namespace LetsShopping.Service.Services.Products
+﻿
+
+namespace LetsShopping.Service.Services.Order
 {
-    public class ProductService : IProductService
+    public class OrderListService : IOrderListInterface
     {
-        public ValueTask<int> CreateAsync(ProductDto model)
+        public ValueTask<int> CreateAsync(OrderListDto model)
         {
             throw new NotImplementedException();
         }
@@ -12,17 +14,17 @@
             throw new NotImplementedException();
         }
 
-        public ValueTask<IList<Product>> GetAllAsync()
+        public ValueTask<IList<OrderList>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<Product> GetByIdAsync(int Id)
+        public ValueTask<OrderList> GetByIdAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<int> UpdateAsync(int Id, ProductDto model)
+        public ValueTask<int> UpdateAsync(int Id, OrderListDto model)
         {
             throw new NotImplementedException();
         }
