@@ -4,7 +4,7 @@
     {
         public CompanyNotFoundException()
         {
-            this.TitleMessage = "Company not Found";
+            this.TitleMessage = "Company not Found!";
         }
     }
 }
