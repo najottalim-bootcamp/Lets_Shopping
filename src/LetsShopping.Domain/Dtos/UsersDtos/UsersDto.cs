@@ -1,4 +1,4 @@
-﻿namespace LetsShopping.Service.Dtos.UsersDtos
+﻿namespace LetsShopping.Domain.Dtos.UsersDtos
 {
     public class UsersDto
     {
@@ -9,4 +9,3 @@
         public int? CardId { get; set; }
     }
 }
-
