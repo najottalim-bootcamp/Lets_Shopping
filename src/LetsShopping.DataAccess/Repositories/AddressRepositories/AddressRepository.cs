@@ -9,7 +9,7 @@ namespace LetsShopping.DataAccess.Repositories.AddressRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Address(Country,City,Status,CreatedAt) Values({model.Country} ,{model.City} ,{(int)Status.Created}, Getdate());";
+                string query = $"Insert into Address(Country,City,Status,CreatedAt) Values(\'{model.Country}\' ,\'{model.City}\' ,{(int)Status.Created}, Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -50,7 +50,7 @@ namespace LetsShopping.DataAccess.Repositories.AddressRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = "Exec GetAll 'Address'";
+                string query = "Exec GetAll \'Address\'";
                 var get = (await _connection.QueryAsync<Address>(query)).ToList();
                 return get;
             }
