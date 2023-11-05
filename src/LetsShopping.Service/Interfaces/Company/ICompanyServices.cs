@@ -1,5 +1,3 @@
-﻿
-
 using LetsShopping.Domain.Dtos.CardDtos;
 
 using LetsShopping.Domain.Dtos.Category;
@@ -31,8 +29,11 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<int> CreateAddressAsync(AddressDto model);
         public ValueTask<int> UpdateAddressAsync(int Id, AddressDto model);
         public ValueTask<int> DeleteAddressAsync(int Id);
+        public ValueTask<Domain.Models.Orders.Order> GetAddressByIdAsync(int Id);
+        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllAddressAsync();
         public ValueTask<LetsShopping.Domain.Models.Addresses.Address> GetAddressByIdAsync(int Id);
         public ValueTask<IList<LetsShopping.Domain.Models.Addresses.Address>> GetAllAddressAsync();
+
 
 
         public ValueTask<int> CreateCardAsync(CardDto model);

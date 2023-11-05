@@ -1,3 +1,12 @@
 ﻿global using LetsShopping.Domain.Dtos.AddressDtos;
 global using LetsShopping.Domain.Dtos.CompnayDtos;
 global using LetsShopping.Domain.Models.Discount;
+global using LetsShopping.Domain.Models.Users;
+global using LetsShopping.Domain.Dtos.CardDtos;
+global using LetsShopping.Domain.Dtos.Category;
+global using LetsShopping.Domain.Models.Cards;
+global using LetsShopping.Domain.Models.Category;
+global using LetsShopping.DataAccess.Repositories.OrderRepositories;
+global using LetsShopping.Domain.Dtos.CartsDtos;
+global using LetsShopping.Domain.Dtos.UsersDtos;
+global using LetsShopping.Domain.Models.Carts;

@@ -4,7 +4,7 @@
     {
         public CategoryNotFoundException() 
         {
-            this.TitleMessage = "Category not found !";
+            this.TitleMessage = "Category not found!";
         }
     }
 }
