@@ -1,4 +1,6 @@
-﻿namespace LetsShopping.DataAccess.Repositories.AddressRepositories
+﻿using LetsShopping.Domain.Enums;
+
+namespace LetsShopping.DataAccess.Repositories.AddressRepositories
 {
     public class AddressRepository : BaseRepository, IAddressRepository
     {

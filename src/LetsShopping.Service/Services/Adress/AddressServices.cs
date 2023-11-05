@@ -1,4 +1,8 @@
-﻿namespace LetsShopping.Service.Services.Adress
+﻿using LetsShopping.Domain.Dtos.AddressDtos;
+using LetsShopping.Domain.Models.Addresses;
+using LetsShopping.Service.Interfaces.Address;
+
+namespace LetsShopping.Service.Services.Adress
 {
     public class AddressServices : IAddressServices
     {
