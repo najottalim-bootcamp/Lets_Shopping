@@ -1,6 +1,6 @@
 using LetsShopping.Domain.Enums;
 using LetsShopping.Domain.Models.Price;
-using LetsShopping.Service.Dtos.Price;
+using LetsShopping.Domain.Dtos.Price;
 namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 {
     public class PriceRepository : BaseRepository, IPriceRepository

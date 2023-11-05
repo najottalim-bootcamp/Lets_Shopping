@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using LetsShopping.Domain.Enums;
 using LetsShopping.Domain.Models.Products;
-using LetsShopping.Service.Dtos.ProductsDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
 using System.Data;
 
 namespace LetsShopping.DataAccess.Repositories.ProductRepositories
