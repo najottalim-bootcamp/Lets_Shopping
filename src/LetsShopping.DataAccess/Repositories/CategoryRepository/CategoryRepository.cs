@@ -1,14 +1,6 @@
-﻿using LetsShopping.Domain.Dtos.Category;
-using LetsShopping.Domain.Models.Category;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.DataAccess.Repositories.CategoryRepository
+﻿namespace LetsShopping.DataAccess.Repositories.CategoryRepository
 {
-    public class CategoryRepository :BaseRepository,ICatogoryRepository
+    public class CategoryRepository : BaseRepository, ICatogoryRepository
     {
         public async ValueTask<int> CreateAsync(CategoryDto model)
         {

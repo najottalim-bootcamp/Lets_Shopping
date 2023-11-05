@@ -1,6 +1,4 @@
-﻿
-
-namespace LetsShopping.Service.Services.Order
+﻿namespace LetsShopping.Service.Services.Order
 {
     public class OrderListService : IOrderListInterface
     {
