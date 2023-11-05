@@ -7,6 +7,11 @@
             throw new NotImplementedException();
         }
 
+        public ValueTask<bool> CreateUserAsync(string UserName)
+        {
+            throw new NotImplementedException();
+        }
+
         public ValueTask<int> DeleteUserByIdAsync(int UserId)
         {
             throw new NotImplementedException();
@@ -23,6 +28,16 @@
         }
 
         public ValueTask<int> UpdateUserAsync(int UserId, UsersDto UserName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<bool> UpdateUserAsync(UserDto UserName)
+        {
+            throw new NotImplementedException();
+        }
+
+        ValueTask<bool> IUserService.DeleteUserByIdAsync(int UserId)
         {
             throw new NotImplementedException();
         }
