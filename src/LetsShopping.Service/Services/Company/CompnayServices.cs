@@ -1,6 +1,6 @@
 ﻿using LetsShopping.Domain.Dtos.AddressDtos;
 using LetsShopping.Domain.Models.Addresses;
-using LetsShopping.Service.Interfaces.Address;
+using LetsShopping.Service.Interfaces.IAddress;
 using System;
 using System.Collections.Generic;
 using System.Linq;

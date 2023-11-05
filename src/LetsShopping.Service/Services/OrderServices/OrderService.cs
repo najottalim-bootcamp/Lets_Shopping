@@ -1,7 +1,9 @@
 ﻿using LetsShopping.DataAccess.Repositories;
 using LetsShopping.DataAccess.Repositories.OrderRepositories;
 using LetsShopping.Domain.Exceptions.Orders;
-namespace LetsShopping.Service.Services.Order
+using LetsShopping.Service.Interfaces.OrderInterfaces;
+
+namespace LetsShopping.Service.Services.OrderService
 {
     public class OrderService : IOrderInterface
     {

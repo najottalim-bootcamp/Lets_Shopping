@@ -1,6 +1,7 @@
 using LetsShopping.DataAccess.Repositories.OrderRepositories;
-using LetsShopping.Service.Interfaces.Order;
-using LetsShopping.Service.Services.Order;
+using LetsShopping.Service.Interfaces.OrderInterfaces;
+using LetsShopping.Service.Services.OrderService;
+using LetsShopping.Service.Services.OrderServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

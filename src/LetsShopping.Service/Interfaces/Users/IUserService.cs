@@ -4,7 +4,6 @@ using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Domain.Models.Cards;
 using LetsShopping.Domain.Models.Carts;
 using LetsShopping.Domain.Models.Category;
-using LetsShopping.Domain.Models.Orders;
 
 namespace LetsShopping.Service.Interfaces.Users
 {

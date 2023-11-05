@@ -1,19 +1,13 @@
 ﻿
 
 using LetsShopping.Domain.Dtos.CardDtos;
-using LetsShopping.Domain.Dtos.CartsDtos;
 using LetsShopping.Domain.Dtos.Category;
-using LetsShopping.Domain.Models.Addresses;
 using LetsShopping.Domain.Models.Cards;
-using LetsShopping.Domain.Models.Carts;
 using LetsShopping.Domain.Models.Category;
-using LetsShopping.Domain.Models.Companies;
-using LetsShopping.Domain.Models.Products;
-using System.Security.Cryptography;
 
 namespace LetsShopping.Service.Interfaces.Company
 {
-    public interface ICompanyServices : IBaseInterface<Domain.Models.Companies.Company, CompanyDto>
+    public interface ICompanyServices
     {
         public ValueTask<int> CreateCompanyAsync(CompanyDto model);
         public ValueTask<int> UpdateCompanyAsync(int Id, CompanyDto model);
