@@ -1,7 +1,3 @@
-using LetsShopping.DataAccess.Repositories.OrderRepositories;
-using LetsShopping.Service.Interfaces.Order;
-using LetsShopping.Service.Services.Order;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
