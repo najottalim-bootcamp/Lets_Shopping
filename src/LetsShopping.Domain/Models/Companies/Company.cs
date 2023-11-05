@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LetsShopping.Domain.Models.Company
+namespace LetsShopping.Domain.Models.Companies
 {
     public class Company:BaseClass
     {
@@ -13,6 +13,5 @@ namespace LetsShopping.Domain.Models.Company
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string СardId { get; set; }
-        public DateTime DeletedAt { get; set; }
     }
 }
