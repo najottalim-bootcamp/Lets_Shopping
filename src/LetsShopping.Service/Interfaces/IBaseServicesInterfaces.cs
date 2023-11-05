@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Service.Interfaces
+﻿namespace LetsShopping.Service.Interfaces
 {
-    public interface IBaseServicesInterfaces<TModel ,TDto>
+    public interface IBaseServicesInterfaces<TModel, TDto>
     {
         public ValueTask<int> CreateAsync(TDto model);
         public ValueTask<int> UpdateAsync(int Id, TDto model);

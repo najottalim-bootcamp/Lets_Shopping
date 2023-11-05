@@ -1,12 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.CardDtos;
-using LetsShopping.Domain.Dtos.CartsDtos;
-using LetsShopping.Domain.Dtos.UsersDtos;
-using LetsShopping.Domain.Models.Cards;
-using LetsShopping.Domain.Models.Carts;
-using LetsShopping.Domain.Models.Category;
-using LetsShopping.Domain.Models.Orders;
-
-namespace LetsShopping.Service.Interfaces.Users
+﻿namespace LetsShopping.Service.Interfaces.Users
 {
     public interface IUserService
     {
@@ -34,7 +26,7 @@ namespace LetsShopping.Service.Interfaces.Users
         public ValueTask<IList<Product>> GetAllProduct();
         public ValueTask<IList<Category>> GetAllCategory();
         public ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompany();
-        public ValueTask<IList<Order>> GetAllOrderByUserId();
+        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllOrderByUserId();
 
 
     }
