@@ -1,7 +1,6 @@
-﻿using Dapper;
 using LetsShopping.Domain.Enums;
 using LetsShopping.Domain.Models.Products;
-using LetsShopping.Service.Dtos.ProductsDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
 using System.Data;
 
 namespace LetsShopping.DataAccess.Repositories.ProductRepositories
@@ -104,7 +103,7 @@ namespace LetsShopping.DataAccess.Repositories.ProductRepositories
             {
                 await _connection.CloseAsync();
             }
-            
+
         }
     }
 }

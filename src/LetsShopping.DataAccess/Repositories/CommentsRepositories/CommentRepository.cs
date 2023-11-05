@@ -1,10 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.CommentsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Carts;
-using LetsShopping.Domain.Models.Comments;
-using System.Xml.Linq;
-
-namespace LetsShopping.DataAccess.Repositories.CommentsRepositories;
+﻿namespace LetsShopping.DataAccess.Repositories.CommentsRepositories;
 
 public class CommentRepository : BaseRepository, ICommentRepository
 {
