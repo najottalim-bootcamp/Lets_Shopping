@@ -1,13 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.AddressDtos;
-using LetsShopping.Domain.Models.Addresses;
-using LetsShopping.Service.Interfaces.Address;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Service.Services.Adress
+﻿namespace LetsShopping.Service.Services.Adress
 {
     public class AddressServices : IAddressServices
     {
