@@ -20,12 +20,12 @@ namespace LetsShopping.Service.Services.CategoryServices
         }
         public async ValueTask<int> CreateAsync(CategoryDto model)
         {
-            int res = await _catogoryRepository.CreateAsync(model);
-            if (res == 0)
+            int result = await _catogoryRepository.CreateAsync(model);
+            if (result == 0)
             {
                 throw new CartsNotFoundException();
             }
-            return res;
+            return result;
         }
 
         public async ValueTask<int> DeleteAsync(int Id)
