@@ -1,6 +1,6 @@
 ﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
-    public interface IOrderRepository 
+    public interface IOrderRepository : IBaseRepository<Order,OrderDto>
     {
     }
 }

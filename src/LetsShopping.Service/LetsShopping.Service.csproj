@@ -7,11 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LetsShopping.DataAccess\LetsShopping.DataAccess.csproj" />
+    <Compile Remove="Services\Order\**" />
+    <EmbeddedResource Remove="Services\Order\**" />
+    <None Remove="Services\Order\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Order\" />
+    <ProjectReference Include="..\LetsShopping.DataAccess\LetsShopping.DataAccess.csproj" />
+    <ProjectReference Include="..\LetsShopping.Domain\LetsShopping.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\Orders\" />
   </ItemGroup>
 
 </Project>
