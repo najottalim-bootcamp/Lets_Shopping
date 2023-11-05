@@ -1,6 +1,4 @@
-using LetsShopping.DataAccess.Repositories.OrderRepositories;
-using LetsShopping.Service.Interfaces.OrderInterfaces;
-using LetsShopping.Service.Services.OrderService;
+using LetsShopping.Service.Interfaces.OrderInterface;
 using LetsShopping.Service.Services.OrderServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IOrderRepository,OrderRepository>();
-builder.Services.AddScoped<IOrderInterface,OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderInterface, OrderService>();
 
 var app = builder.Build();
 

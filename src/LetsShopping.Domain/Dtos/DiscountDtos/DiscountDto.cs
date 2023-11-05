@@ -1,4 +1,4 @@
-﻿namespace LetsShopping.Service.Dtos.DiscountDtos
+﻿namespace LetsShopping.Domain.Dtos.DiscountDtos
 {
     public class DiscountDto
     {

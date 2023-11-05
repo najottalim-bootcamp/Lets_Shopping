@@ -1,9 +1,4 @@
-﻿using Dapper;
-using LetsShopping.Domain.Dtos.CartsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Carts;
-
-namespace LetsShopping.DataAccess.Repositories.CartsRepositories;
+﻿namespace LetsShopping.DataAccess.Repositories.CartsRepositories;
 
 public class CartRepository : BaseRepository, ICartRepository
 {

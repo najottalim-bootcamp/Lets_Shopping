@@ -1,4 +1,4 @@
-﻿namespace LetsShopping.Service.Dtos.ProductsDtos
+﻿namespace LetsShopping.Domain.Dtos.ProductsDtos
 {
     public class ProductDto
     {

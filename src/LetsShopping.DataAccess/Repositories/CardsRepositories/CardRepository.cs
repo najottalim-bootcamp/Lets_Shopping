@@ -1,7 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.CardDtos;
-using LetsShopping.Domain.Models.Cards;
-
-namespace LetsShopping.DataAccess.Repositories.CardsRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.CardsRepositories
 {
     public class CardRepository : BaseRepository, ICardRepisotry
     {

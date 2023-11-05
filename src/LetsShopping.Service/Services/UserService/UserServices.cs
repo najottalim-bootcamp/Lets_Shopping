@@ -1,21 +1,31 @@
 ﻿using LetsShopping.Domain.Dtos.CardDtos;
 using LetsShopping.Domain.Dtos.CartsDtos;
+using LetsShopping.Domain.Dtos.OrdersDtos;
 using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Domain.Models.Cards;
 using LetsShopping.Domain.Models.Carts;
 using LetsShopping.Domain.Models.Category;
 
-
-namespace LetsShopping.Service.Services.User
+namespace LetsShopping.Service.Services.UserService
 {
     public class UserServices : UserServicesBase, IUserService
     {
+        public ValueTask<int> CreateAsync(UsersDto model)
+        {
+            throw new NotImplementedException();
+        }
+
         public ValueTask<int> CreateCardAsync(CardDto model)
         {
             throw new NotImplementedException();
         }
 
         public ValueTask<int> CreateCartAsync(CartDto model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<int> DeleteAsync(int Id)
         {
             throw new NotImplementedException();
         }
@@ -36,6 +46,11 @@ namespace LetsShopping.Service.Services.User
         }
 
         public ValueTask<bool> DeleteUserByIdAsync(int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<IList<Domain.Models.Users.User>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
@@ -75,6 +90,11 @@ namespace LetsShopping.Service.Services.User
             throw new NotImplementedException();
         }
 
+        public ValueTask<Domain.Models.Users.User> GetByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ValueTask<Card> GetCardByIdAsync(int Id)
         {
             throw new NotImplementedException();
@@ -86,6 +106,11 @@ namespace LetsShopping.Service.Services.User
         }
 
         public ValueTask<Domain.Models.Users.User> GetUserByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ValueTask<int> UpdateAsync(int Id, UsersDto model)
         {
             throw new NotImplementedException();
         }
@@ -109,5 +134,7 @@ namespace LetsShopping.Service.Services.User
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

@@ -1,7 +1,9 @@
-﻿
+
 
 using LetsShopping.Domain.Dtos.CardDtos;
 using LetsShopping.Domain.Dtos.Category;
+using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
 using LetsShopping.Domain.Models.Cards;
 using LetsShopping.Domain.Models.Category;
 
@@ -26,8 +28,10 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<int> CreateAddressAsync(AddressDto model);
         public ValueTask<int> UpdateAddressAsync(int Id, AddressDto model);
         public ValueTask<int> DeleteAddressAsync(int Id);
-        public ValueTask<Address> GetAddressByIdAsync(int Id);
-        public ValueTask<IList<Address>> GetAllAddressAsync();
+        public ValueTask<Domain.Models.Orders.Order> GetAddressByIdAsync(int Id);
+        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllAddressAsync();
+ 
+
 
 
         public ValueTask<int> CreateCardAsync(CardDto model);

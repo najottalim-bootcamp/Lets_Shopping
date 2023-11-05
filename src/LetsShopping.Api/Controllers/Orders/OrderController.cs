@@ -1,7 +1,9 @@
-﻿using LetsShopping.Service.Dtos.OrdersDtos;
-using LetsShopping.Service.Interfaces.OrderInterfaces;
-using Microsoft.AspNetCore.Mvc;
-namespace LetsShopping.Api.Controllers.Orders
+
+
+using LetsShopping.Domain.Dtos.OrdersDtos;
+using LetsShopping.Service.Interfaces.OrderInterface;
+
+namespace LetsShopping.Api.Controllers.OrderInterface
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

@@ -1,8 +1,11 @@
-﻿
 
-using LetsShopping.Service.Interfaces.OrderInterfaces;
+using LetsShopping.Domain.Dtos.OrdersDtos;
+using LetsShopping.Service.Interfaces.OrderInterface;
+
 
 namespace LetsShopping.Service.Services.OrderServices
+
+
 {
     public class OrderListService : IOrderListInterface
     {

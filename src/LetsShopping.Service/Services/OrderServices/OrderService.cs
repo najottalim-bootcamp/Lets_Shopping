@@ -1,9 +1,11 @@
-﻿using LetsShopping.DataAccess.Repositories;
-using LetsShopping.DataAccess.Repositories.OrderRepositories;
-using LetsShopping.Domain.Exceptions.Orders;
-using LetsShopping.Service.Interfaces.OrderInterfaces;
 
-namespace LetsShopping.Service.Services.OrderService
+using LetsShopping.DataAccess.Repositories.OrderRepositories;
+using LetsShopping.Domain.Dtos.OrdersDtos;
+using LetsShopping.Domain.Exceptions.Orders;
+
+using LetsShopping.Service.Interfaces.OrderInterface;
+
+namespace LetsShopping.Service.Services.OrderServices
 {
     public class OrderService : IOrderInterface
     {

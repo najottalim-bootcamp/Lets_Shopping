@@ -1,6 +1,6 @@
 ﻿using LetsShopping.Domain.Dtos.UsersDtos;
 
-namespace LetsShopping.Service.Services.User
+namespace LetsShopping.Service.Services.UserService
 {
     public class UserServicesBase
     {
