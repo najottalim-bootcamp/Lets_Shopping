@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 
 namespace LetsShopping.Service.Interfaces.Company
 {
-    public interface ICompanyServices 
+    public interface ICompanyServices : IBaseInterface<Domain.Models.Companies.Company, CompanyDto>
     {
         public ValueTask<int> CreateCompanyAsync(CompanyDto model);
         public ValueTask<int> UpdateCompanyAsync(int Id, CompanyDto model);
