@@ -10,11 +10,6 @@ namespace LetsShopping.Domain.Models.Category
     {
         public string? Name { get; set; }
         public int ParentId { get; set; }
-        public enum Status
-        {
-
-        }
-        public DateTime ModifiedAt { get; set; }
-        public DateTime DeletedAt { get; set; }
+        public Status status { get; set;}
     }
 }

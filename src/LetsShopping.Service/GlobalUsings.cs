@@ -7,7 +7,7 @@ global using LetsShopping.Service.Dtos.DiscountDtos;
 global using LetsShopping.Service.Dtos.OrdersDtos;
 global using LetsShopping.Service.Dtos.ProductsDtos;
 global using LetsShopping.Service.Dtos.UsersDtos;
-global using LetsShopping.Service.Dtos.DiscountDtos;
+global using Discount = LetsShopping.Domain.Models.Users.Discount;
 global using LetsShopping.Service.Interfaces;
 global using LetsShopping.Service.Interfaces.Products;
 global using LetsShopping.Service.Interfaces.Users;

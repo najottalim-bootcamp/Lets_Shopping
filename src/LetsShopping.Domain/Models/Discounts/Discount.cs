@@ -7,10 +7,5 @@ public class Discount : BaseClass
     public decimal Percents { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
-    public enum Status
-    {
-
-    }
-    public DateTime ModifiedAt { get; set; }
-    public DateTime DeletedAt { get; set; }
+    public Status status { get; set;}
 }

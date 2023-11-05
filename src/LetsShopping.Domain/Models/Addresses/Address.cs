@@ -10,11 +10,6 @@ namespace LetsShopping.Domain.Models.Address
     {
         public string? Country { get; set; }
         public string? City { get; set; }
-        public enum Status
-        {
-
-        }
-        public DateTime ModifiedAt { get; set; }
-        public DateTime DeletedAt { get; set; }
+        public Status status { get; set; }
     }
 }

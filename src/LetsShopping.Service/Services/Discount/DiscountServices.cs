@@ -12,12 +12,12 @@
             throw new NotImplementedException();
         }
 
-        public ValueTask<List<Domain.Models.Discount.Discount>> GetDiscountAll()
+        public ValueTask<List<Domain.Models.Users.Discount>> GetDiscountAll()
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<Domain.Models.Discount.Discount> GetDiscountById(int Id)
+        public ValueTask<Domain.Models.Users.Discount> GetDiscountById(int Id)
         {
             throw new NotImplementedException();
         }
