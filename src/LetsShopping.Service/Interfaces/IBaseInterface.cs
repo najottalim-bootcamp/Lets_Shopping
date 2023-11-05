@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Service.Interfaces
+﻿namespace LetsShopping.Service.Interfaces
 {
-    public interface IBaseInter<TModel,TDto> 
+    public interface IBaseInterface<TModel, TDto>
     {
         public ValueTask<bool> Create(TDto dto);
         public ValueTask<bool> Update(int id, TDto dto);
