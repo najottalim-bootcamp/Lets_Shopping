@@ -1,9 +1,4 @@
-﻿using LetsShopping.Service.Dtos.DiscountDtos;
-using LetsShopping.Domain.Models;
-using System.Security.AccessControl;
-using LetsShopping.Domain.Models.Discount;
-
-namespace LetsShopping.Service.Interfaces
+﻿namespace LetsShopping.Service.Interfaces
 {
     public interface IDiscountService
     {
