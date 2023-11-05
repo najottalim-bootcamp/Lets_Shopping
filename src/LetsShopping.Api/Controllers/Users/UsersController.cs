@@ -1,6 +1,5 @@
 ﻿using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Service.Interfaces.Users;
-using Microsoft.AspNetCore.Mvc;
 
 namespace LetsShopping.Api.Controllers.Users
 {
