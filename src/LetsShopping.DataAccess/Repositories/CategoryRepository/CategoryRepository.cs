@@ -1,4 +1,5 @@
 ﻿using LetsShopping.Domain.Dtos.Category;
+using LetsShopping.Domain.Models.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace LetsShopping.DataAccess.Repositories.CategoryRepository
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Category(Name, ParentId ,Status,CreatedAt) Values(/'{model.Name}/',{(int)Status.Created},Getdate());";
+                string query = $"Insert into Category(Name, ParentId ,Status,CreatedAt) Values(\'{model.Name}\',{model.ParentId},{(int)Status.Created},Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -35,7 +36,7 @@ namespace LetsShopping.DataAccess.Repositories.CategoryRepository
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC DeleteById \'Prices\' , {Id}";
+                string query = $"EXEC DeleteById \'Category\' , {Id}";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
 
@@ -50,18 +51,18 @@ namespace LetsShopping.DataAccess.Repositories.CategoryRepository
             }
         }
 
-        public async ValueTask<IList<Price>> GetAllAsync()
+        public async ValueTask<IList<Category>> GetAllAsync()
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = "Exec GetAll 'Prices'";
-                var get = (await _connection.QueryAsync<Price>(query)).ToList();
+                string query = "Exec GetAll \'Category\'";
+                var get = (await _connection.QueryAsync<Category>(query)).ToList();
                 return get;
             }
             catch
             {
-                return new List<Price>();
+                return new List<Category>();
             }
             finally
             {
@@ -69,18 +70,18 @@ namespace LetsShopping.DataAccess.Repositories.CategoryRepository
             }
         }
 
-        public async ValueTask<Price> GetByIdAsync(int Id)
+        public async ValueTask<Category> GetByIdAsync(int Id)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById 'Prices' , {Id};";
-                var price = await _connection.QueryFirstOrDefaultAsync<Price>(query);
+                string query = $"EXEC GetAllById 'Category' , {Id};";
+                var price = await _connection.QueryFirstOrDefaultAsync<Category>(query);
                 return price;
             }
             catch
             {
-                return new Price();
+                return new Category();
 
             }
             finally
@@ -90,12 +91,12 @@ namespace LetsShopping.DataAccess.Repositories.CategoryRepository
 
         }
 
-        public async ValueTask<int> UpdateAsync(int Id, PriceDto model)
+        public async ValueTask<int> UpdateAsync(int Id, CategoryDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Price Set Price = '{model.Price}',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Category Set Name = '{model.Name}',ParentId = {model.ParentId},Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
