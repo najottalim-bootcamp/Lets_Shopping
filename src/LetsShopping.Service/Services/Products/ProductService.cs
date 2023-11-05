@@ -1,28 +1,30 @@
-﻿namespace LetsShopping.Service.Services.Products
+﻿using LetsShopping.Domain.Dtos.ProductsDtos;
+
+namespace LetsShopping.Service.Services.Products
 {
     public class ProductService : IProductService
     {
-        public ValueTask<int> CreateProduct(ProductDto product)
+        public ValueTask<int> CreateAsync(ProductDto model)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<int> DeleteProduct(int id)
+        public ValueTask<int> DeleteAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<List<Product>> GetAllProduct(string Tablename)
+        public ValueTask<IList<Product>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<Product> GetByIdProduct(int id, string Tablename)
+        public ValueTask<Product> GetByIdAsync(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<int> UpdateProduct(int id, ProductDto product)
+        public ValueTask<int> UpdateAsync(int Id, ProductDto model)
         {
             throw new NotImplementedException();
         }

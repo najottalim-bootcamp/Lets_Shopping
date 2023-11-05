@@ -1,6 +1,10 @@
-﻿namespace LetsShopping.Service.Interfaces.Users
+
+using global::LetsShopping.DataAccess.Repositories.UserRepository;
+
+namespace LetsShopping.Service.Interfaces.Users
 {
-    public interface IUserService
+    public interface IUserService : IUserRepository
     {
+
     }
 }
