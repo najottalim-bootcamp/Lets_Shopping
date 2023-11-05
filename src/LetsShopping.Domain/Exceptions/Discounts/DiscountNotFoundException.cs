@@ -4,7 +4,7 @@
     {
         public DiscountNotFoundException() 
         {
-            this.TitleMessage = "Discount not Found !";
+            this.TitleMessage = "Discount not Found!";
         }
     }
 }
