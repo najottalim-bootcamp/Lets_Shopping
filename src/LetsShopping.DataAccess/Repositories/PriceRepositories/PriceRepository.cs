@@ -1,4 +1,7 @@
-﻿using LetsShopping.Domain.Enums;
+﻿using Dapper;
+using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Models.Price;
+using LetsShopping.Service.Dtos.Price;
 
 namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 {
