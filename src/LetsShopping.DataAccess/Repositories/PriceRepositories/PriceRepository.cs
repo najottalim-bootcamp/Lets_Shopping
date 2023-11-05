@@ -46,18 +46,18 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<IList<Price>> GetAllAsync()
+        public async ValueTask<IList<Pricesss>> GetAllAsync()
         {
             try
             {
                 await _connection.OpenAsync();
                 string query = "Exec GetAll 'Prices'";
-                var get = (await _connection.QueryAsync<Price>(query)).ToList();
+                var get = (await _connection.QueryAsync<Pricesss>(query)).ToList();
                 return get;
             }
             catch
             {
-                return new List<Price>();
+                return new List<Pricesss>();
             }
             finally
             {
@@ -65,18 +65,18 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<Price> GetByIdAsync(int Id)
+        public async ValueTask<Pricesss> GetByIdAsync(int Id)
         {
             try
             {
                 await _connection.OpenAsync();
                 string query = $"EXEC GetAllById 'Prices' , {Id};";
-                var price = await _connection.QueryFirstOrDefaultAsync<Price>(query);
+                var price = await _connection.QueryFirstOrDefaultAsync<Pricesss>(query);
                 return price;
             }
             catch
             {
-                return new Price();
+                return new Pricesss();
 
             }
             finally
