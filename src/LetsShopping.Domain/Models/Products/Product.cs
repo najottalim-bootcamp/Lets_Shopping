@@ -9,7 +9,6 @@
         public int CategoryId { get; set; }
         public int PriceId { get; set; }
         public int Count { get; set; }
-        public ProductStatus Status { get; set; }  
         public DateTime? DeletedAt { get; set; }
 
     }
