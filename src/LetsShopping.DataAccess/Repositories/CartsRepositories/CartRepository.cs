@@ -12,7 +12,7 @@ public class CartRepository : BaseRepository, ICartRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Insert into Cart(Active,Status,CreatedAt) Values('{model.Active}','{(int)Status.Created}',Getdate());";
+            string query = $"Insert into Cart(Active,Status,CreatedAt) Values('{model.Active}',{(int)Status.Created},Getdate());";
             int created = await _connection.ExecuteAsync(query, model);
             return created;
         }
@@ -89,7 +89,7 @@ public class CartRepository : BaseRepository, ICartRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Update Cart Set FirstName = '{model.Active}',{(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id};";
+            string query = $"Update Cart Set Active = '{model.Active}',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id};";
             int updated = await _connection.ExecuteAsync(query);
             return updated;
 
