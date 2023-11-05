@@ -1,16 +1,16 @@
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Price;
-using LetsShopping.Service.Dtos.Price;
-namespace LetsShopping.DataAccess.Repositories.PriceRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.Discount
 {
-    public class PriceRepository : BaseRepository, IPriceRepository
+    public class DiscountRepository : BaseRepository, IDiscountRepository
     {
-        public async ValueTask<int> CreateAsync(PriceDto model)
+
+        public async ValueTask<int> CreateAsync(DiscountDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Price(price,Status,CreatedAt) Values({model.Price},{(int)Status.Created},Getdate());";
+                string query = $"Insert into Discount(Name,Description,Percents,StartDate,EndDate,Status,CreatedAt) Values" +
+                    $"(\'{model.Name}\' ,\'{model.Description}\', {model.Percents} , {model.StartDate} " +
+                    $",{model.EndDate} ,{(int)Status.Created}, Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -31,7 +31,7 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC DeleteById \'Prices\' , {Id}";
+                string query = $"EXEC DeleteById \'Discount\' , {Id};";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
 
@@ -46,18 +46,18 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<IList<Pricesss>> GetAllAsync()
+        public async ValueTask<IList<Domain.Models.Discount.Discount>> GetAllAsync()
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = "Exec GetAll 'Prices'";
-                var get = (await _connection.QueryAsync<Pricesss>(query)).ToList();
+                string query = "Exec GetAll \'Discount\'";
+                var get = (await _connection.QueryAsync<Domain.Models.Discount.Discount>(query)).ToList();
                 return get;
             }
             catch
             {
-                return new List<Pricesss>();
+                return new List<Domain.Models.Discount.Discount>();
             }
             finally
             {
@@ -65,18 +65,18 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<Pricesss> GetByIdAsync(int Id)
+        public async ValueTask<Domain.Models.Discount.Discount> GetByIdAsync(int Id)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById 'Prices' , {Id};";
-                var price = await _connection.QueryFirstOrDefaultAsync<Pricesss>(query);
-                return price;
+                string query = $"EXEC GetAllById \'Discount\', {Id}";
+                var discount = await _connection.QueryFirstOrDefaultAsync<Domain.Models.Discount.Discount>(query);
+                return discount;
             }
             catch
             {
-                return new Pricesss();
+                return new Domain.Models.Discount.Discount();
 
             }
             finally
@@ -86,12 +86,14 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 
         }
 
-        public async ValueTask<int> UpdateAsync(int Id, PriceDto model)
+        public async ValueTask<int> UpdateAsync(int Id, DiscountDto model)
         {
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Price Set Price = {model.Price},Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Discount Set Name = \'{model.Name}\',Description = \'{model.Description}\' , " +
+                    $"Percents = {model.Percents} , StartDate = {model.StartDate} , EndDate = {model.EndDate}," +
+                    $"Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
@@ -105,7 +107,5 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
                 await _connection.CloseAsync();
             }
         }
-
-
     }
 }
