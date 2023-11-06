@@ -26,6 +26,8 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<IList<Domain.Models.Orders.Order>> AllAddressAsync { get; }
 
         public ValueTask<IList<Domain.Models.Addresses.Address>> GetAllAddressAsync();
+        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllAddressAsync();
+
 
 
 

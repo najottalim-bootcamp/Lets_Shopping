@@ -1,8 +1,9 @@
-﻿global using LetsShopping.DataAccess.Repositories.CartsRepositories;
+global using LetsShopping.DataAccess.Repositories.CartsRepositories;
 global using LetsShopping.DataAccess.Repositories.OrderRepositories;
 global using LetsShopping.DataAccess.Repositories.UserRepository;
 global using LetsShopping.Domain.Dtos.UsersDtos;
 global using LetsShopping.Service.Interfaces.Carts;
+global using LetsShopping.DataAccess.Repositories.OrderRepositories;
 global using LetsShopping.Service.Interfaces.Order;
 global using LetsShopping.Service.Interfaces.Users;
 global using LetsShopping.Service.Services.Carts;

@@ -16,7 +16,7 @@
             var result = _user.GetAllAsync();
             return Ok(result);
         }
-        [HttpGet]
+        [HttpGet("{Id}")]
         public IActionResult GetByIdAsync(int id)
         {
             var result = _user.GetByIdAsync(id);
