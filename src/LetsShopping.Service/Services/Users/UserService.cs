@@ -1,8 +1,4 @@
-﻿using LetsShopping.DataAccess.Repositories.CardsRepositories;
-using LetsShopping.DataAccess.Repositories.CartsRepositories;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.DataAccess.Repositories.UserRepository;
+﻿using LetsShopping.DataAccess.Repositories.CategoryRepository;
 
 namespace LetsShopping.Service.Services.Users
 {
@@ -12,7 +8,7 @@ namespace LetsShopping.Service.Services.Users
         private readonly UserRepository _userRepository;
         private readonly CardRepository _cardRepository;
         private readonly CartRepository _cartRepository;
-        
+
 
 
         #region Card Services
@@ -107,7 +103,10 @@ namespace LetsShopping.Service.Services.Users
 
         public ValueTask<IList<Category>> GetAllCategory()
         {
-            throw new NotImplementedException();
+            CategoryRepository cat = new CategoryRepository();
+
+            var categories = await cat.GetAllAsync().;
+
         }
 
         public ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompany()

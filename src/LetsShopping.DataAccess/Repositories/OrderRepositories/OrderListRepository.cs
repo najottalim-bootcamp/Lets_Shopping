@@ -1,4 +1,4 @@
-﻿using LetsShopping.Service.Dtos.OrdersDtos;
+﻿using LetsShopping.Domain.Dtos.OrdersDtos;
 
 namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
@@ -21,7 +21,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             {
                 await _connection.CloseAsync();
             }
-            
+
         }
 
         public async ValueTask<int> DeleteAsync(int Id)
@@ -29,7 +29,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec DeletedById 'OrderList',{Id}"; 
+                string query = $"Exec DeletedById 'OrderList',{Id}";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
 
