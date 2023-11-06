@@ -1,3 +1,5 @@
+namespace LetsShopping.Service.Services.Order 
+{
 
 using LetsShopping.Domain.Dtos.OrdersDtos;
 

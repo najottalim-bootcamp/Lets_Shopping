@@ -1,4 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.OrdersDtos;
+﻿using LetsShopping.Service.Dtos.OrdersDtos;
 
 namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
@@ -19,7 +19,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             }
             finally
             {
-               await _connection.CloseAsync();
+                await _connection.CloseAsync();
 
             }
         }
@@ -74,7 +74,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             }
             catch
             {
-                return new Order();                
+                return new Order();
             }
             finally
             {
