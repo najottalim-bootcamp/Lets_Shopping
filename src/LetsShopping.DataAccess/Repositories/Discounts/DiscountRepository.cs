@@ -1,4 +1,7 @@
-﻿namespace LetsShopping.DataAccess.Repositories.Discount
+﻿using LetsShopping.DataAccess.Repositories.Discount;
+using LetsShopping.Domain.Dtos.DiscountDtos;
+
+namespace LetsShopping.DataAccess.Repositories.Discounts
 {
     public class DiscountRepository : BaseRepository, IDiscountRepository
     {
