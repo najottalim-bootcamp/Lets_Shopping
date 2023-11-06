@@ -1,7 +1,4 @@
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Products;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using System.Data;
+using LetsShopping.Service.Dtos.ProductsDtos;
 
 namespace LetsShopping.DataAccess.Repositories.ProductRepositories
 {

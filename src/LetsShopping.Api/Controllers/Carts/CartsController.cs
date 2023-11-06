@@ -1,6 +1,5 @@
 ﻿using LetsShopping.Domain.Dtos.CartsDtos;
 using LetsShopping.Service.Interfaces.Carts;
-using Microsoft.AspNetCore.Mvc;
 
 namespace LetsShopping.Api.Controllers.Carts
 {

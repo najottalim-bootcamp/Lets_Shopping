@@ -1,13 +1,3 @@
-using LetsShopping.DataAccess.Repositories.CartsRepositories;
-using LetsShopping.DataAccess.Repositories.OrderRepositories;
-using LetsShopping.DataAccess.Repositories.UserRepository;
-using LetsShopping.Service.Interfaces.Carts;
-using LetsShopping.Service.Interfaces.Order;
-using LetsShopping.Service.Interfaces.Users;
-using LetsShopping.Service.Services.Carts;
-using LetsShopping.Service.Services.Order;
-using LetsShopping.Service.Services.Users;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,12 +8,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderInterface, OrderService>();
-builder.Services.AddScoped<IOrderRepository,OrderRepository>();
-builder.Services.AddScoped<IOrderInterface,OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderInterface, OrderService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<ICartService,CartService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 var app = builder.Build();
 

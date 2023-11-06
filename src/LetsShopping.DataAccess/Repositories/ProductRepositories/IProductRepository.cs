@@ -1,4 +1,4 @@
-using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Service.Dtos.ProductsDtos;
 
 namespace LetsShopping.DataAccess.Repositories.ProductRepositories
 {
