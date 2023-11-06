@@ -18,7 +18,7 @@ namespace LetsShopping.Api.Controllers.Carts
             var result = _cart.GetAllAsync();
             return Ok(result);
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetByIdAsync(int id)
         {
             var result = _cart.GetByIdAsync(id);
