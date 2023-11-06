@@ -2,7 +2,6 @@
 global using LetsShopping.DataAccess.Repositories.OrderRepositories;
 global using LetsShopping.DataAccess.Repositories.UserRepository;
 global using LetsShopping.Domain.Dtos.UsersDtos;
-global using LetsShopping.Service.Dtos.OrdersDtos;
 global using LetsShopping.Service.Interfaces.Carts;
 global using LetsShopping.Service.Interfaces.Order;
 global using LetsShopping.Service.Interfaces.Users;

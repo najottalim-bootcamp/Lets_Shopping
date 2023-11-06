@@ -1,4 +1,6 @@
-﻿namespace LetsShopping.Service.Services.Products
+﻿using LetsShopping.Domain.Dtos.ProductsDtos;
+
+namespace LetsShopping.Service.Services.Products
 {
     public class ProductService : IProductService
     {
