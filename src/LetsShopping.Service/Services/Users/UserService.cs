@@ -1,7 +1,5 @@
 ﻿using LetsShopping.DataAccess.Repositories.UserRepository;
-using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Domain.Exceptions.Users;
-using LetsShopping.Domain.Models.Users;
 
 namespace LetsShopping.Service.Services.Users
 {
