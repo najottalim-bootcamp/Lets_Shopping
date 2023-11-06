@@ -1,4 +1,6 @@
-﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
+﻿using LetsShopping.Service.Dtos.OrdersDtos;
+
+namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
     public class OrderRepository : BaseRepository, IOrderRepository
     {
@@ -17,7 +19,7 @@
             }
             finally
             {
-               await _connection.CloseAsync();
+                await _connection.CloseAsync();
 
             }
         }
@@ -72,7 +74,7 @@
             }
             catch
             {
-                return new Order();                
+                return new Order();
             }
             finally
             {
@@ -85,7 +87,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Price}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Total}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 

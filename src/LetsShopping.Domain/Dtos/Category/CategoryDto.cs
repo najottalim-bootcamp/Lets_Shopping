@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LetsShopping.Domain.Dtos.Category
+﻿namespace LetsShopping.Domain.Dtos.Category
 {
     public class CategoryDto
     {

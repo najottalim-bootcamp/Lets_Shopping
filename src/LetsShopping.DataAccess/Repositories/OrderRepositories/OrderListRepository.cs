@@ -1,4 +1,6 @@
-﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
+﻿using LetsShopping.Service.Dtos.OrdersDtos;
+
+namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
     public class OrderListRepository : BaseRepository, IOrderListRepository
     {
