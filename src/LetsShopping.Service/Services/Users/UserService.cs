@@ -1,8 +1,8 @@
 ﻿using LetsShopping.DataAccess.Repositories.CardsRepositories;
+using LetsShopping.DataAccess.Repositories.CartsRepositories;
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
 using LetsShopping.DataAccess.Repositories.UserRepository;
-using LetsShopping.Domain.Dtos.UsersDtos;
-using LetsShopping.Domain.Exceptions.Users;
-using LetsShopping.Domain.Models.Users;
 
 namespace LetsShopping.Service.Services.Users
 {
@@ -11,6 +11,9 @@ namespace LetsShopping.Service.Services.Users
 
         private readonly UserRepository _userRepository;
         private readonly CardRepository _cardRepository;
+        private readonly CartRepository _cartRepository;
+        
+
 
         #region Card Services
 
@@ -97,7 +100,7 @@ namespace LetsShopping.Service.Services.Users
         {
             throw new NotImplementedException();
         }
-
+        #endregion User Services
 
 
 
