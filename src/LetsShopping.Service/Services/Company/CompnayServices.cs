@@ -12,6 +12,11 @@
             throw new NotImplementedException();
         }
 
+        public ValueTask<Address> GetAddressByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ValueTask<List<Address>> GetAll(string Tablename)
         {
             throw new NotImplementedException();
