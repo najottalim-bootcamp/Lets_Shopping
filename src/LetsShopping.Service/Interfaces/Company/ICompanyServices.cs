@@ -1,3 +1,6 @@
+using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+
 namespace LetsShopping.Service.Interfaces.Company
 {
     public interface ICompanyServices : IBaseInterface<Domain.Models.Companies.Company, CompanyDto>
@@ -23,7 +26,7 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<IList<Domain.Models.Orders.Order>> AllAddressAsync { get; }
 
         public ValueTask<IList<Domain.Models.Addresses.Address>> GetAllAddressAsync();
-        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllAddressAsync();
+
 
 
 

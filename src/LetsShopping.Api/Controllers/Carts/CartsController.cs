@@ -1,5 +1,4 @@
 ﻿using LetsShopping.Domain.Dtos.CartsDtos;
-using LetsShopping.Service.Interfaces.Carts;
 
 namespace LetsShopping.Api.Controllers.Carts
 {

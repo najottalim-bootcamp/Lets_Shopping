@@ -1,4 +1,4 @@
-﻿using LetsShopping.Service.Dtos.OrdersDtos;
+﻿using LetsShopping.Domain.Dtos.OrdersDtos;
 
 namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
