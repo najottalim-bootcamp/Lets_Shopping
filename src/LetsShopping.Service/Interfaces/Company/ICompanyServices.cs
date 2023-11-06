@@ -1,13 +1,3 @@
-using LetsShopping.Domain.Dtos.CardDtos;
-
-using LetsShopping.Domain.Dtos.Category;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Models.Cards;
-
-using LetsShopping.Domain.Models.Category;
-
-
 namespace LetsShopping.Service.Interfaces.Company
 {
     public interface ICompanyServices : IBaseInterface<Domain.Models.Companies.Company, CompanyDto>
@@ -30,9 +20,9 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<int> UpdateAddressAsync(int Id, AddressDto model);
         public ValueTask<int> DeleteAddressAsync(int Id);
         public ValueTask<Domain.Models.Orders.Order> GetAddressByIdAsync(int Id);
-        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllAddressAsync();
-        public ValueTask<LetsShopping.Domain.Models.Addresses.Address> GetAddressByIdAsync(int Id);
-        public ValueTask<IList<LetsShopping.Domain.Models.Addresses.Address>> GetAllAddressAsync();
+        public ValueTask<IList<Domain.Models.Orders.Order>> AllAddressAsync { get; }
+
+        public ValueTask<IList<Domain.Models.Addresses.Address>> GetAllAddressAsync();
 
 
 

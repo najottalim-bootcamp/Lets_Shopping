@@ -7,5 +7,6 @@
         public ValueTask<bool> Delete(int id);
         public ValueTask<List<TModel>> GetAll(string Tablename);
         public ValueTask<TModel> GetById(int id, string Tablename);
+        ValueTask<Domain.Models.Addresses.Address> GetAddressByIdAsync(int Id);
     }
 }
