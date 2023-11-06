@@ -1,3 +1,6 @@
+using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+
 namespace LetsShopping.Service.Interfaces.Company
 {
     public interface ICompanyServices : IBaseInterface<Domain.Models.Companies.Company, CompanyDto>
