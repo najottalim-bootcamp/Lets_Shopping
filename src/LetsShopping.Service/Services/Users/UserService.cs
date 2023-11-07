@@ -1,8 +1,12 @@
 ﻿using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
+using LetsShopping.DataAccess.Repositories.OrderRepositories;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.Domain.Enums;
 
 namespace LetsShopping.Service.Services.Users
 {
-    public class UserService : IUserService
+    public class UserService 
     {
 
         private readonly UserRepository _userRepository;
@@ -22,7 +26,7 @@ namespace LetsShopping.Service.Services.Users
         {
             throw new NotImplementedException();
         }
-        public ValueTask<IList<Card>> GetAllCardAsync()
+        public ValueTask<List<Card>> GetAllCardAsync()
         {
             throw new NotImplementedException();
         }
@@ -49,7 +53,7 @@ namespace LetsShopping.Service.Services.Users
         {
             throw new NotImplementedException();
         }
-        public ValueTask<IList<Cart>> GetAllCartAsync()
+        public ValueTask<List<Cart>> GetAllCartAsync()
         {
             throw new NotImplementedException();
         }
@@ -79,7 +83,7 @@ namespace LetsShopping.Service.Services.Users
         {
             throw new NotImplementedException();
         }
-        public ValueTask<IList<User>> GetAllUserAsync()
+        public ValueTask<List<User>> GetAllUserAsync()
         {
             throw new NotImplementedException();
         }
@@ -101,27 +105,44 @@ namespace LetsShopping.Service.Services.Users
 
 
 
-        public ValueTask<IList<Category>> GetAllCategory()
+        public async ValueTask<List<Category>> GetAllCategory()
         {
             CategoryRepository cat = new CategoryRepository();
 
-            var categories = await cat.GetAllAsync().;
+            List<Category> categories = await cat.GetAllAsync();
+            
+            return  categories.Where(c => c.Status == Status.Deleted).ToList();
 
         }
 
-        public ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompany()
+        public async ValueTask<List<Domain.Models.Companies.Company>> GetAllCompany()
         {
-            throw new NotImplementedException();
+            CompanyRepository cat = new CompanyRepository();
+
+            List<Domain.Models.Companies.Company> companies = await cat.GetAllAsync();
+
+            return companies.Where(c => c.Status != Status.Deleted).ToList();
+
         }
 
-        public ValueTask<IList<Domain.Models.Orders.Order>> GetAllOrderByUserId()
+        public async ValueTask<List<Domain.Models.Orders.Order>> GetAllOrderByUserId(int userId)
         {
-            throw new NotImplementedException();
+            OrderRepository cat = new OrderRepository();
+
+            List<Domain.Models.Orders.Order> orders = await cat.GetAllAsync();
+            orders = orders.Where(x => x.UserId == userId).Where(x=>x.Status != Status.Deleted).ToList();
+
+            return orders;
         }
 
-        public ValueTask<IList<Product>> GetAllProduct()
+        public async ValueTask<List<Product>> GetAllProduct()
         {
-            throw new NotImplementedException();
+            ProductRepository cat = new ProductRepository();
+
+            List<Product> products = await cat.GetAllAsync();
+            products = products.Where(x=>x.Status!= Status.Deleted && x.Count>0).ToList();
+
+            return products;
         }
 
     }
