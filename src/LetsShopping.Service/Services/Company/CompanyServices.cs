@@ -14,6 +14,7 @@ namespace LetsShopping.Service.Services.Company
         {
             _company = company;
             _product = product;
+           
         }
         private readonly ICardRepisotry _card;
         private readonly ICatogoryRepository _catogoryRepository;
