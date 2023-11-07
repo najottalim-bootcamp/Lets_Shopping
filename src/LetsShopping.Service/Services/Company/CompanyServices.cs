@@ -1,3 +1,12 @@
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
+using LetsShopping.DataAccess.Repositories.Discount;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Enums;
+using LetsShopping.Service.Interfaces.Company;
+
 namespace LetsShopping.Service.Services.Company
 {
     public class CompanyServices : ICompanyServices
@@ -6,6 +15,7 @@ namespace LetsShopping.Service.Services.Company
         private readonly IProductRepository _product;
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
+        
         #region Address Services 
         public ValueTask<IList<Address>> GetAllAddressAsync()
         {
