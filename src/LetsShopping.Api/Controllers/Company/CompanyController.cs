@@ -1,3 +1,17 @@
+using LetsShopping.Domain.Dtos.AddressDtos;
+using LetsShopping.Domain.Dtos.Category;
+using LetsShopping.Domain.Dtos.CompnayDtos;
+using LetsShopping.Domain.Dtos.CompnayDtos;
+using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Exceptions.Addresses;
+using LetsShopping.Domain.Exceptions.Cards;
+using LetsShopping.Domain.Exceptions.Companies;
+using LetsShopping.Domain.Exceptions.Products;
+using LetsShopping.Domain.Models.Companies;
+using LetsShopping.Domain.Models.Products;
+using LetsShopping.Service.Interfaces.Company;
+
 namespace LetsShopping.Api.Controllers.Company
 {
     [Route("api/[controller]/[action]")]
@@ -111,6 +125,7 @@ namespace LetsShopping.Api.Controllers.Company
                 return Ok("updated");
             }
             return BadRequest(new CompanyNotFoundException());
+         }
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAddressAsync()
         {
