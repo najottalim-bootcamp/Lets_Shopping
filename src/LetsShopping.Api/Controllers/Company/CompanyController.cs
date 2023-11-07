@@ -1,5 +1,15 @@
+using LetsShopping.Domain.Dtos.AddressDtos;
 using LetsShopping.Domain.Dtos.Category;
+using LetsShopping.Domain.Dtos.CompnayDtos;
 using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Exceptions.Addresses;
+using LetsShopping.Domain.Exceptions.Cards;
+using LetsShopping.Domain.Exceptions.Companies;
+using LetsShopping.Domain.Exceptions.Discounts;
+using LetsShopping.Domain.Exceptions.Products;
+using LetsShopping.Domain.Models.Products;
+using LetsShopping.Service.Interfaces.Company;
 
 namespace LetsShopping.Api.Controllers.Company
 
@@ -231,34 +241,46 @@ namespace LetsShopping.Api.Controllers.Company
             return Ok(result);
         }
         [HttpGet]
-        public IActionResult GetAllDiscount()
+        public async ValueTask<IActionResult> GetAllDiscount()
         {
-            var result = _companyServices.GetAllDiscountAsync();
-            return Ok(result);
+            var result = await _companyServices.GetAllDiscountAsync();
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
         [HttpGet]
-        public IActionResult GetByIdDiscount(int id)
+        public async ValueTask<IActionResult> GetByIdDiscount(int id)
         {
-            var result = _companyServices.GetDiscpuntByIdAsync(id);
-            return Ok(result);
+            var result = await _companyServices.GetDiscpuntByIdAsync(id);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
         [HttpPost]
-        public IActionResult CreateDiscount(DiscountDto discount)
+        public async ValueTask<IActionResult> CreateDiscount(DiscountDto discount)
         {
-            var result = _companyServices.CreateDiscpuntAsync(discount);
-            return Ok(result);
+            int result = await _companyServices.CreateDiscpuntAsync(discount);
+            if (result != 0)
+            {
+                return Ok("created");
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
         [HttpPatch]
         public IActionResult UpdateDiscount(int Id, DiscountDto discount)
         {
             var result = _companyServices.UpdateDiscpuntAsync(Id, discount);
-            return Ok(result);
+            return Ok("updated");
         }
         [HttpDelete]
         public IActionResult DeleteDiscount(int Id)
         {
             var result = _companyServices.DeleteDiscpuntAsync(Id);
-            return Ok(result);
+            return Ok("deleted");
         }
     }
 
