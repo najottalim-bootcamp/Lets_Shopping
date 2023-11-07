@@ -5,6 +5,7 @@ using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.OrderRepositories;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.DataAccess.Repositories.UserRepository;
 using LetsShopping.Domain.Enums;
 using LetsShopping.Domain.Models.Users;
 using System.Reflection;
