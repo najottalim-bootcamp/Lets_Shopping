@@ -95,31 +95,31 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult CreateCart(CartDto model)
         {
             var res = _userService.CreateCartAsync(model);
-            return Ok(res);
+            return Ok(res.Result);
         }
         [HttpGet]
         public IActionResult GetAllCart(int UserId)
         {
             var res = _userService.GetAllCartByUserIdAsync(UserId);
-            return Ok(res);
+            return Ok(res.Result);
         }
         [HttpGet]
         public IActionResult GetAllCartById(int Id)
         {
             var res = _userService.GetCartByIdAsync(Id);
-            return Ok(res);
+            return Ok(res.Result);
         }
         [HttpDelete]
         public IActionResult DeleteCart(int Id)
         {
             var res = _userService.DeleteCartAsync(Id);
-            return Ok(res);
+            return Ok(res.Result);
         }
         [HttpPut]
         public IActionResult UpdateCart(int Id, CartDto cart)
         {
             var res = _userService.UpdateCartAsync(Id, cart);
-            return Ok(res);
+            return Ok(res.Result);
         }
 
 
@@ -130,27 +130,27 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult GetAllCategory()
         {
             var res = _userService.GetAllCategory();
-            return Ok(res);
+            return Ok(res.Result);
         }
         [HttpGet]
 
         public IActionResult GetAllCompnay()
         {
             var res = _userService.GetAllCompany();
-            return Ok(res);
+            return Ok(res.Result);
         }
         [HttpGet]
         public IActionResult GetOrders(int userId)
         {
             var res = _userService.GetAllOrderByUserId(userId);
-            return Ok(res);
+            return Ok(res.Result);
         }
 
         [HttpGet]
         public IActionResult GetAllProducts()
         {
             var res = _userService.GetAllProduct();
-            return Ok(res);
+            return Ok(res.Result);
         }
 
 
