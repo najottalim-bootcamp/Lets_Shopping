@@ -1,14 +1,9 @@
-﻿using LetsShopping.DataAccess.Repositories.CartsRepositories;
-using LetsShopping.Domain.Dtos.CartsDtos;
-using LetsShopping.Domain.Exceptions.Carts;
+﻿using LetsShopping.Domain.Exceptions.Carts;
 using LetsShopping.Domain.Exceptions.Users;
-using LetsShopping.Domain.Models.Carts;
-using LetsShopping.Domain.Models.Users;
-using LetsShopping.Service.Interfaces.Carts;
 
 namespace LetsShopping.Service.Services.Carts;
 
-public class CartService : ICartService
+public class CartService 
 {
     private readonly ICartRepository _cartRepository;
     public CartService(ICartRepository cartRepository)
