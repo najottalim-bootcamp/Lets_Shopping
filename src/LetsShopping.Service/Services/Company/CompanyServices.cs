@@ -1,5 +1,3 @@
-using LetsShopping.DataAccess.Repositories.AddressRepositories;
-
 namespace LetsShopping.Service.Services.Company
 {
     public class CompanyServices : ICompanyServices
@@ -10,7 +8,7 @@ namespace LetsShopping.Service.Services.Company
         private readonly ICardRepisotry _card;
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
-        public CompanyServices(ICompanyRepository company,IProductRepository product,ICardRepisotry card,ICatogoryRepository category,IDiscountRepository discount,IAddressRepository address)
+        public CompanyServices(ICompanyRepository company, IProductRepository product, ICardRepisotry card, ICatogoryRepository category, IDiscountRepository discount, IAddressRepository address)
         {
             _company = company;
             _product = product;
@@ -19,7 +17,7 @@ namespace LetsShopping.Service.Services.Company
             _discountRepository = discount;
             _address = address;
         }
-   
+
 
         #region Address Services 
         public async ValueTask<IList<Address>> GetAllAddressAsync()
