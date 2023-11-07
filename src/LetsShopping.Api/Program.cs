@@ -1,16 +1,3 @@
-
-using LetsShopping.DataAccess.Repositories.AddressRepositories;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.Discount;
-using LetsShopping.DataAccess.Repositories.Discounts;
-using LetsShopping.DataAccess.Repositories.PriceRepositories;
-using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.Service.Interfaces.Company;
-using LetsShopping.Service.Interfaces.Users;
-using LetsShopping.Service.Services.Company;
-using LetsShopping.Service.Services.Order;
-using LetsShopping.Service.Services.Users;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -20,7 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IOrderInterface,OrderService>();
+builder.Services.AddScoped<IOrderInterface, OrderService>();
 builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
 
 

@@ -22,3 +22,12 @@ global using Microsoft.AspNetCore.Mvc;
 global using LetsShopping.Domain.Dtos.CardDtos;
 global using LetsShopping.Domain.Dtos.UsersDtos;
 global using LetsShopping.Service.Interfaces.Users;
+global using LetsShopping.Domain.Dtos.Category;
+global using LetsShopping.Domain.Dtos.DiscountDtos;
+global using LetsShopping.Domain.Dtos.CartsDtos;
+global using LetsShopping.DataAccess.Repositories.Discount;
+global using LetsShopping.Service.Services.Users;
+global using LetsShopping.DataAccess.Repositories.Discounts;
+global using LetsShopping.Service.Services.Company;
+global using LetsShopping.Service.Services.Order;
+

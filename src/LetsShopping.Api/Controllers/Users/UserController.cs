@@ -1,11 +1,3 @@
-
-using LetsShopping.Domain.Dtos.CardDtos;
-using LetsShopping.Domain.Dtos.CartsDtos;
-using LetsShopping.Domain.Dtos.UsersDtos;
-using LetsShopping.Service.Interfaces.Users;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
 namespace LetsShopping.Api.Controllers.Users
 
 {
