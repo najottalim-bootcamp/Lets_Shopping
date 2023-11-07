@@ -1,4 +1,8 @@
 
+using LetsShopping.DataAccess.Repositories.AddressRepositories;
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.PriceRepositories;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
 using LetsShopping.Service.Interfaces.Company;
 using LetsShopping.Service.Interfaces.Users;
 using LetsShopping.Service.Services.Company;
