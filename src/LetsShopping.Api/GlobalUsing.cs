@@ -30,3 +30,5 @@ global using LetsShopping.Domain.Exceptions.Companies;
 global using LetsShopping.Domain.Exceptions.Discounts;
 global using LetsShopping.Domain.Exceptions.Products;
 global using LetsShopping.Domain.Models.Products;
+global using LetsShopping.Service.Services.Company;
+global using LetsShopping.Domain.Dtos.OrdersDtos;
