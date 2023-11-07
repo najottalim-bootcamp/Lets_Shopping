@@ -66,7 +66,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById 'Card' , {Id};";
+                string query = $"EXEC GetAById 'Card' , {Id};";
                 var price = await _connection.QueryFirstOrDefaultAsync<Card>(query);
                 return price;
             }
