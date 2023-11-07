@@ -15,6 +15,7 @@ namespace LetsShopping.Api.Controllers.Company
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyServices _companyServices;
+
         public CompanyController(ICompanyServices company)
         {
             _companyServices = company;

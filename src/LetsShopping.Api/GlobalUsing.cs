@@ -15,3 +15,7 @@ global using LetsShopping.Service.Interfaces.Order;
 global using Microsoft.AspNetCore.Mvc;
 global using LetsShopping.DataAccess.Repositories.CompanyRepository;
 global using LetsShopping.DataAccess.Repositories.CardsRepositories;
+global using LetsShopping.DataAccess.Repositories.AddressRepositories;
+global using LetsShopping.DataAccess.Repositories.CardsRepositories;
+global using LetsShopping.DataAccess.Repositories.CategoryRepository;
+global using LetsShopping.DataAccess.Repositories.CompanyRepository;
