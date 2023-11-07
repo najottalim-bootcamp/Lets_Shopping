@@ -1,15 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.AddressDtos;
-using LetsShopping.Domain.Dtos.CompnayDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Exceptions.Addresses;
-using LetsShopping.Domain.Exceptions.Cards;
-using LetsShopping.Domain.Exceptions.Companies;
-using LetsShopping.Domain.Exceptions.Products;
-using LetsShopping.Domain.Models.Companies;
-using LetsShopping.Domain.Models.Products;
-using LetsShopping.Service.Interfaces.Company;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿
 
 namespace LetsShopping.Api.Controllers.Company
 {
@@ -46,7 +35,7 @@ namespace LetsShopping.Api.Controllers.Company
         public async ValueTask<IActionResult> CreateCompanyAsync(CompanyDto company)
         {
             int result = await _companyServices.CreateCompanyAsync(company);
-            if(result != 0)
+            if (result != 0)
             {
                 return Ok("Added");
             }
@@ -61,8 +50,8 @@ namespace LetsShopping.Api.Controllers.Company
                 return Ok("deleted");
             }
             return BadRequest(new CompanyNotFoundException());
-        } 
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [HttpGet]
         public async ValueTask<IActionResult> GetAllProductsAsync()
         {
@@ -87,7 +76,7 @@ namespace LetsShopping.Api.Controllers.Company
         public async ValueTask<IActionResult> CreateProductAsync(ProductDto product)
         {
             int result = await _companyServices.CreateProductAsync(product);
-            if(result != 0)
+            if (result != 0)
             {
                 return Ok("Added");
             }
