@@ -1,4 +1,9 @@
-﻿using LetsShopping.Domain.Exceptions.Companies;
+﻿using LetsShopping.Domain.Dtos.CompnayDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Exceptions.Companies;
+using LetsShopping.Domain.Exceptions.Products;
+using LetsShopping.Domain.Models.Companies;
+using LetsShopping.Domain.Models.Products;
 using LetsShopping.Service.Interfaces.Company;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,5 +29,77 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new CompanyNotFoundException());
         }
+        [HttpGet("{Id}")]
+        public async ValueTask<IActionResult> GetCompanyByIdAsync(int id)
+        {
+            var result = await _companyServices.GetCompanyByIdAsync(id);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new CompanyNotFoundException());
+        }
+        [HttpPost]
+        public async ValueTask<IActionResult> CreateCompanyAsync(CompanyDto company)
+        {
+            int result = await _companyServices.CreateCompanyAsync(company);
+            if(result != 0)
+            {
+                return Ok("Added");
+            }
+            return BadRequest("error");
+        }
+        [HttpDelete]
+        public async ValueTask<IActionResult> DeleteCompanyByIdAsync(int id)
+        {
+            int result = await _companyServices.DeleteCompanyAsync(id);
+            if (result != 0)
+            {
+                return Ok("deleted");
+            }
+            return BadRequest(new CompanyNotFoundException());
+        } 
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        [HttpGet]
+        public async ValueTask<IActionResult> GetAllProductsAsync()
+        {
+            IEnumerable<Product> result = await _companyServices.GetAllProductAsync();
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new ProductNotFoundException());
+        }
+        [HttpGet("{Id}")]
+        public async ValueTask<IActionResult> GetProductByIdAsync(int id)
+        {
+            var result = await _companyServices.GetProductByIdAsync(id);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new ProductNotFoundException());
+        }
+        [HttpPost]
+        public async ValueTask<IActionResult> CreateProductAsync(ProductDto product)
+        {
+            int result = await _companyServices.CreateProductAsync(product);
+            if(result != 0)
+            {
+                return Ok("Added");
+            }
+            return BadRequest("error");
+        }
+        [HttpDelete]
+        public async ValueTask<IActionResult> DeleteProductByIdAsync(int id)
+        {
+            int result = await _companyServices.DeleteProductAsync(id);
+            if (result != 0)
+            {
+                return Ok("deleted");
+            }
+            return BadRequest(new ProductNotFoundException());
+        }
+        
     }
 }
