@@ -15,8 +15,13 @@ namespace LetsShopping.Api.Controllers.Users
         [HttpPost]
         public IActionResult CreateCard(CardDto model)
         {
-            var res = _userService.CreateCardAsync(model);
-            return Ok(res.Result);
+            var res =  _userService.CreateCardAsync(model);
+            if(res.Result >0) 
+            {
+                return Ok("Created");
+
+            }
+            return BadRequest("was not created");
         }
         [HttpGet]
         public IActionResult GetAllCard()
@@ -34,13 +39,23 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult DeleteCard(int Id)
         {
             var res = _userService.DeleteCardAsync(Id);
-            return Ok(res.Result);
+            if (res.Result <0)
+            {
+                return Ok("Deleted");
+
+            }
+            return BadRequest("was not Deleted");
         }
         [HttpPut]
         public IActionResult UpdateCard(int Id, CardDto card)
         {
             var res = _userService.UpdateCardAsync(Id, card);
-            return Ok(res.Result);
+            if (res.Result > 0)
+            {
+                return Ok("Updated");
+
+            }
+            return BadRequest("was not Updated");
         }
 
 
@@ -55,7 +70,12 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult CreateUser(UsersDto model)
         {
             var res = _userService.CreateUserAsync(model);
-            return Ok(res.Result);
+            if (res.Result > 0)
+            {
+                return Ok("Created");
+
+            }
+            return BadRequest("was not created");
         }
         [HttpGet]
         public IActionResult GetAllUser()
@@ -73,13 +93,23 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult DeleteUser(int Id)
         {
             var res = _userService.DeleteUserAsync(Id);
-            return Ok(res.Result);
+            if (res.Result < 0)
+            {
+                return Ok("Deleted");
+
+            }
+            return BadRequest("was not deleted");
         }
         [HttpPut]
         public IActionResult UpdateUser(int Id, UsersDto user)
         {
             var res = _userService.UpdateUserAsync(Id, user);
-            return Ok(res.Result);
+            if (res.Result > 0)
+            {
+                return Ok("Updated");
+
+            }
+            return BadRequest("was not updated");
         }
 
 
@@ -95,7 +125,12 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult CreateCart(CartDto model)
         {
             var res = _userService.CreateCartAsync(model);
-            return Ok(res.Result);
+            if (res.Result > 0)
+            {
+                return Ok("Created");
+
+            }
+            return BadRequest("was not created");
         }
         [HttpGet]
         public IActionResult GetAllCart(int UserId)
@@ -113,13 +148,23 @@ namespace LetsShopping.Api.Controllers.Users
         public IActionResult DeleteCart(int Id)
         {
             var res = _userService.DeleteCartAsync(Id);
-            return Ok(res.Result);
+            if (res.Result < 0)
+            {
+                return Ok("Deleted");
+
+            }
+            return BadRequest("was not deleted");
         }
         [HttpPut]
         public IActionResult UpdateCart(int Id, CartDto cart)
         {
             var res = _userService.UpdateCartAsync(Id, cart);
-            return Ok(res.Result);
+            if (res.Result > 0)
+            {
+                return Ok("Updated");
+
+            }
+            return BadRequest("was not updated");
         }
 
 
