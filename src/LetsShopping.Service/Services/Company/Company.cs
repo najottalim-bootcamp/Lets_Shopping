@@ -1,19 +1,24 @@
+
+
+using LetsShopping.DataAccess.Repositories.AddressRepositories;
+
 namespace LetsShopping.Service.Services.Company
 {
-    public class CompanyServices : ICompanyServices
+    public class Company : ICompanyServices
     {
         private readonly IAddressRepository _address;
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
-        public CompanyServices(ICompanyRepository company,IProductRepository product)
+        private readonly ICardRepisotry _card;
+        public Company(ICompanyRepository company,IProductRepository product)
         {
             _company = company;
             _product = product;
         }
-        private readonly ICardRepisotry _card;
+        
+       
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
-        
         #region Address Services 
         public async ValueTask<IList<Address>> GetAllAddressAsync()
         {
@@ -98,11 +103,13 @@ namespace LetsShopping.Service.Services.Company
             int update = await _card.UpdateAsync(Id, model);
             return update;
         }
+        
         public async ValueTask<IList<Card>> GetAllCardAsync()
         {
             IList<Card> card = await _card.GetAllAsync();
             return card;
         }
+
         public async ValueTask<Card> GetCardByIdAsync(int Id)
         {
             Card card = await _card.GetByIdAsync(Id);
@@ -131,8 +138,8 @@ namespace LetsShopping.Service.Services.Company
             List<Category> res = await _catogoryRepository.GetAllAsync();
             return res.Where(c => c.Status != Status.Deleted).ToList();
         }
-
-
+         
+        
         public async ValueTask<Category> GetCategoryByIdAsync(int Id)
         {
             Category category = await _catogoryRepository.GetByIdAsync(Id);
@@ -152,7 +159,7 @@ namespace LetsShopping.Service.Services.Company
         #region Discount Services
         public async ValueTask<int> CreateDiscpuntAsync(DiscountDto model)
         {
-            int res = await _discountRepository.CreateAsync(model);
+            int res  = await _discountRepository.CreateAsync(model);
             return res;
         }
         public async ValueTask<int> DeleteDiscpuntAsync(int Id)
@@ -167,13 +174,13 @@ namespace LetsShopping.Service.Services.Company
         }
         public async ValueTask<Discount> GetDiscpuntByIdAsync(int Id)
         {
-            Discount discount = await _discountRepository.GetByIdAsync(Id);
+           Discount discount = await _discountRepository.GetByIdAsync(Id);
 
             return discount;
         }
         public async ValueTask<int> UpdateDiscpuntAsync(int Id, DiscountDto model)
         {
-            int update = await _discountRepository.UpdateAsync(Id, model);
+            int update = await _discountRepository.UpdateAsync(Id,model);
             return update;
         }
 
