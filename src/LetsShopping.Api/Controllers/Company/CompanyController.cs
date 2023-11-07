@@ -1,4 +1,6 @@
 
+using LetsShopping.Domain.Dtos.AddressDtos;
+using LetsShopping.Domain.Dtos.Category;
 using LetsShopping.Domain.Dtos.CompnayDtos;
 using LetsShopping.Domain.Dtos.CompnayDtos;
 using LetsShopping.Domain.Dtos.DiscountDtos;
@@ -124,6 +126,7 @@ namespace LetsShopping.Api.Controllers.Company
                 return Ok("updated");
             }
             return BadRequest(new CompanyNotFoundException());
+        }
         ////////////////////////////////////////////////////////////////////////
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAddressAsync()
