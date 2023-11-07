@@ -1,6 +1,5 @@
 
-using LetsShopping.DataAccess.Repositories.CompanyRepository;
-using LetsShopping.DataAccess.Repositories.CardsRepositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -2,6 +2,9 @@ using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
 using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Models.Users;
+using System.Reflection;
+
 
 namespace LetsShopping.Service.Services.Users
 {

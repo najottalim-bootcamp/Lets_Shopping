@@ -1,18 +1,4 @@
-using LetsShopping.DataAccess.Repositories.CompanyRepository;
-using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Carts;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.Discount;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Exceptions.Carts;
-using LetsShopping.Service.Interfaces;
-using LetsShopping.Service.Interfaces.Company;
-using LetsShopping.Service.Services.Users;
+ 
 
 namespace LetsShopping.Service.Services.Company
 {
