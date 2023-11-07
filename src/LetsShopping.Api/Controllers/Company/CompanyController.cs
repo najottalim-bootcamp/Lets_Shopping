@@ -46,7 +46,7 @@ namespace LetsShopping.Api.Controllers.Company
         public async ValueTask<IActionResult> CreateCompanyAsync(CompanyDto company)
         {
             int result = await _companyServices.CreateCompanyAsync(company);
-            if(result != 0)
+            if (result != 0)
             {
                 return Ok("Added");
             }
