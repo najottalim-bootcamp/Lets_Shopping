@@ -91,31 +91,36 @@ namespace LetsShopping.Service.Services.Users
 
 
         #region User Services
-        public ValueTask<int> CreateUserAsync(UsersDto model)
-    {
-        throw new NotImplementedException();
-    }
-
-        public ValueTask<int> DeleteUserAsync(int Id)
+        public async ValueTask<int> CreateUserAsync(UsersDto model)
         {
-            throw new NotImplementedException();
-        }
-        public ValueTask<List<User>> GetAllUserAsync()
-        {
-            throw new NotImplementedException();
+            var res = await _userRepository.CreateAsync(model);
+            return res;
         }
 
+        public async ValueTask<int> DeleteUserAsync(int Id)
+        {
+            var res = await _userRepository.DeleteAsync(Id);
+            return res;
+        }
+        public async ValueTask<List<User>> GetAllUserAsync()
+        {
+            var res = await _userRepository.GetAllAsync();
+            return res.Where(x => x.Status != Status.Deleted).ToList();
+        }
 
 
-    public ValueTask<User> GetUserByIdAsync(int Id)
-    {
-        throw new NotImplementedException();
-    }
+
+        public async ValueTask<User> GetUserByIdAsync(int Id)
+        {
+            var res = await _userRepository.GetByIdAsync(Id);
+            return res;
+        }
 
 
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
         {
-            throw new NotImplementedException();
+            var res = _userRepository.UpdateAsync(Id,model);
+            return res;
         }
         #endregion User Services
 
