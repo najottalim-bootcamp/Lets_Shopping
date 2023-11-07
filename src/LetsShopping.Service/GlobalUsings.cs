@@ -1,3 +1,4 @@
+global using LetsShopping.DataAccess.Repositories.AddressRepositories;
 global using LetsShopping.DataAccess.Repositories.CardsRepositories;
 global using LetsShopping.DataAccess.Repositories.CartsRepositories;
 global using LetsShopping.DataAccess.Repositories.CategoryRepository;
