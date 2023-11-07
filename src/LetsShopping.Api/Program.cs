@@ -1,4 +1,17 @@
+
+using LetsShopping.DataAccess.Repositories.AddressRepositories;
+using LetsShopping.DataAccess.Repositories.CardsRepositories;
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
+
+using LetsShopping.Service.Interfaces.Users;
+using LetsShopping.DataAccess.Repositories.AddressRepositories;
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.Service.Interfaces.Company;
+using LetsShopping.Service.Services.Company;
+
 using LetsShopping.Service.Services.Order;
+using LetsShopping.Service.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,18 +22,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderInterface,OrderService>();
+builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
+
+
 
 builder.Services.AddScoped<ICardRepisotry, CardRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
+
 builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
+builder.Services.AddScoped<IPriceRepository, PriceRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyServices, CompanyServices>();
 
 
 
 builder.Services.AddScoped<IOrderInterface, OrderService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 

@@ -10,6 +10,13 @@ namespace LetsShopping.Service.Services.Company
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
         private readonly ICardRepisotry _card;
+        public Company(ICompanyRepository company,IProductRepository product)
+        {
+            _company = company;
+            _product = product;
+        }
+        
+       
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
         #region Address Services 
