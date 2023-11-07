@@ -1,4 +1,5 @@
 ﻿using LetsShopping.Domain.Dtos.CardDtos;
+using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Service.Interfaces.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,5 +50,47 @@ namespace LetsShopping.Api.Controllers.Users
 
 
         #endregion Card Controller
+
+
+
+
+
+        #region User Controller
+        [HttpPost]
+        public IActionResult CreateUser(UsersDto model)
+        {
+            var res = _userService.CreateUserAsync(model);
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetAllUser()
+        {
+            var res = _userService.GetAllUserAsync();
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetAllUserById(int Id)
+        {
+            var res = _userService.GetUserByIdAsync(Id);
+            return Ok(res);
+        }
+        [HttpDelete]
+        public IActionResult DeleteUser(int Id)
+        {
+            var res = _userService.DeleteUserAsync(Id);
+            return Ok(res);
+        }
+        [HttpPut]
+        public IActionResult UpdateUser(int Id, UsersDto user)
+        {
+            var res = _userService.UpdateUserAsync(Id, user);
+            return Ok(res);
+        }
+
+
+        #endregion User Controller
+
+
+
     }
 }
