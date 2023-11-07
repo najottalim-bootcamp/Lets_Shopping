@@ -1,17 +1,3 @@
-
-using LetsShopping.Domain.Dtos.CompnayDtos;
-using LetsShopping.Domain.Dtos.CompnayDtos;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Exceptions.Addresses;
-using LetsShopping.Domain.Exceptions.Cards;
-using LetsShopping.Domain.Exceptions.Companies;
-using LetsShopping.Domain.Exceptions.Products;
-using LetsShopping.Domain.Models.Companies;
-using LetsShopping.Domain.Models.Products;
-using LetsShopping.Service.Interfaces.Company;
-
-
 namespace LetsShopping.Api.Controllers.Company
 {
     [Route("api/[controller]/[action]")]
@@ -48,7 +34,7 @@ namespace LetsShopping.Api.Controllers.Company
         public async ValueTask<IActionResult> CreateCompanyAsync(CompanyDto company)
         {
             int result = await _companyServices.CreateCompanyAsync(company);
-            if(result != 0)
+            if (result != 0)
             {
                 return Ok("Added");
             }
@@ -64,6 +50,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new CompanyNotFoundException());
         }
+
         [HttpPut]
         public async ValueTask<IActionResult> UpdateCompanyAsync(int Id,CompanyDto company)
         {
@@ -74,7 +61,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new CompanyNotFoundException());
         }
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet]
         public async ValueTask<IActionResult> GetAllProductsAsync()
         {
@@ -99,7 +86,7 @@ namespace LetsShopping.Api.Controllers.Company
         public async ValueTask<IActionResult> CreateProductAsync(ProductDto product)
         {
             int result = await _companyServices.CreateProductAsync(product);
-            if(result != 0)
+            if (result != 0)
             {
                 return Ok("Added");
             }
@@ -124,7 +111,6 @@ namespace LetsShopping.Api.Controllers.Company
                 return Ok("updated");
             }
             return BadRequest(new CompanyNotFoundException());
-        ////////////////////////////////////////////////////////////////////////
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAddressAsync()
         {
@@ -165,7 +151,6 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new AddressNotFoundExeption());
         }
-        ////////////////////////////////////////////////////////////////////////
         [HttpGet]
         public async ValueTask<IActionResult> GetAllCardsAsync()
         {
@@ -206,7 +191,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new CardsNotFoundExceptions());
         }
-        //////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet]
         public IActionResult GetAllCategory()
         {
@@ -239,7 +224,6 @@ namespace LetsShopping.Api.Controllers.Company
             return Ok(result);
         }
         [HttpGet]
-        ////////////////////////////////////////////////////////////////
         public IActionResult GetAllDiscount()
         {
             var result = _companyServices.GetAllDiscountAsync();
@@ -269,6 +253,5 @@ namespace LetsShopping.Api.Controllers.Company
             var result = _companyServices.DeleteDiscpuntAsync(Id);
             return Ok(result);
         }
-        ////////////////////////////////////////////////////////////////////
     }
 }
