@@ -1,4 +1,7 @@
 
+using LetsShopping.Service.Interfaces.Company;
+using LetsShopping.Service.Interfaces.Users;
+using LetsShopping.Service.Services.Company;
 using LetsShopping.Service.Services.Order;
 using LetsShopping.Service.Services.Users;
 
