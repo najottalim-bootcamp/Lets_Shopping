@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 builder.Services.AddScoped<ICardRepisotry, CardRepository>();
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderInterface, OrderService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<IOrderInterface, OrderService>();
+
 
 var app = builder.Build();
 
