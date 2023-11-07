@@ -1,3 +1,5 @@
+using LetsShopping.DataAccess.Repositories.AddressRepositories;
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.Service.Services.Order;
 
 var builder = WebApplication.CreateBuilder(args);
