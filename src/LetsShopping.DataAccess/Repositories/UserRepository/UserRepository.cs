@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Models.Users;
-
-namespace LetsShopping.DataAccess.Repositories.UserRepository;
+﻿namespace LetsShopping.DataAccess.Repositories.UserRepository;
 
 public class UserRepository : BaseRepository, IUserRepository
 {
