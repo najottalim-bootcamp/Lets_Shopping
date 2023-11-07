@@ -1,20 +1,16 @@
 
-using LetsShopping.DataAccess.Repositories.CardsRepositories;
-using LetsShopping.DataAccess.Repositories.CartsRepositories;
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.DataAccess.Repositories.UserRepository;
 using LetsShopping.Domain.Enums;
 using LetsShopping.Domain.Models.Users;
 using System.Reflection;
 
+
+
 namespace LetsShopping.Service.Services.Users
 {
-    public class UserService :IUserService
-
-    public class UserService
-
+    public class UserService : IUserService
     {
 
         private readonly IUserRepository _userRepository;
@@ -27,14 +23,11 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<int> CreateCardAsync(CardDto model)
         {
-           var res = await _cardRepository.CreateAsync(model);
+            var res = await _cardRepository.CreateAsync(model);
             return res;
-
-        public ValueTask<int> CreateCardAsync(CardDto model)
-        {
-            throw new NotImplementedException();
-
         }
+
+
 
         public async ValueTask<int> DeleteCardAsync(int Id)
         {
@@ -50,7 +43,7 @@ namespace LetsShopping.Service.Services.Users
         public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
         {
 
-            var res =   _cardRepository.UpdateAsync(Id, model);
+            var res = _cardRepository.UpdateAsync(Id, model);
             return res;
         }
         public ValueTask<Card> GetCardByIdAsync(int Id)
@@ -59,11 +52,7 @@ namespace LetsShopping.Service.Services.Users
             return res;
             throw new NotImplementedException();
         }
-        public ValueTask<Card> GetCardByIdAsync(int Id)
-        {
-            throw new NotImplementedException();
 
-        }
 
         #endregion  Card Services
 
@@ -77,12 +66,12 @@ namespace LetsShopping.Service.Services.Users
         }
         public ValueTask<int> CreateCartAsync(CartDto model)
         {
-            var res =_cartRepository.CreateAsync(model);
+            var res = _cartRepository.CreateAsync(model);
             return res;
         }
         public async ValueTask<List<Cart>> GetAllCartByUserIdAsync(int userId)
         {
-            var ress =  await _cartRepository.GetAllAsync();
+            var ress = await _cartRepository.GetAllAsync();
             ress = ress.Where(x => x.UserId == userId).Where(x => x.Status != Status.Deleted).ToList();
             return ress;
         }
@@ -90,7 +79,7 @@ namespace LetsShopping.Service.Services.Users
         public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
         {
 
-            var res = _cartRepository.UpdateAsync(Id,model); 
+            var res = _cartRepository.UpdateAsync(Id, model);
             return res;
 
             throw new NotImplementedException();
@@ -118,12 +107,8 @@ namespace LetsShopping.Service.Services.Users
         {
             var res = await _userRepository.CreateAsync(model);
             return res;
-
-        public ValueTask<int> CreateUserAsync(UsersDto model)
-        {
-            throw new NotImplementedException();
-
         }
+
 
         public async ValueTask<int> DeleteUserAsync(int Id)
         {
@@ -143,17 +128,10 @@ namespace LetsShopping.Service.Services.Users
         {
             var res = await _userRepository.GetByIdAsync(Id);
             return res;
-
-        public ValueTask<User> GetUserByIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-
         }
-
-
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
         {
-            var res = _userRepository.UpdateAsync(Id,model);
+            var res = _userRepository.UpdateAsync(Id, model);
             return res;
         }
         #endregion User Services
@@ -163,17 +141,13 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Category>> GetAllCategory()
         {
-            CategoryRepository cat = new CategoryRepository();
+            ICatogoryRepository cat = new CategoryRepository();
 
             List<Category> categories = await cat.GetAllAsync();
 
-            
-            return  categories.Where(c => c.Status != Status.Deleted).ToList();
 
 
-            return categories.Where(c => c.Status == Status.Deleted).ToList();
-
-
+            return categories.Where(c => c.Status != Status.Deleted).ToList();
         }
 
         public async ValueTask<List<Domain.Models.Companies.Company>> GetAllCompany()
