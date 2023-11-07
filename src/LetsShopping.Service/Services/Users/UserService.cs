@@ -15,6 +15,14 @@ namespace LetsShopping.Service.Services.Users
         private readonly ICartRepository _cartRepository;
 
 
+        public UserService(IUserRepository userRepository,
+            ICardRepisotry cardRepisotry,
+            ICartRepository cartRepository)
+        {
+            _userRepository = userRepository;
+            _cardRepository = cardRepisotry;
+            _cartRepository = cartRepository;
+        }
 
         #region Card Services
 
