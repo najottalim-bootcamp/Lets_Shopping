@@ -1,5 +1,3 @@
-using LetsShopping.Domain.Dtos.Category;
-using LetsShopping.Domain.Dtos.DiscountDtos;
 
 namespace LetsShopping.Api.Controllers.Company
 
@@ -203,62 +201,75 @@ namespace LetsShopping.Api.Controllers.Company
         public IActionResult GetAllCategory()
         {
             var result = _companyServices.GetAllCategoryAsync();
-            return Ok(result);
+            return Ok(result.Result);
 
         }
         [HttpGet]
         public IActionResult GetByIdCategory(int id)
         {
             var result = _companyServices.GetCategoryByIdAsync(id);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpPost]
         public IActionResult CreateCategory(CategoryDto category)
         {
             var result = _companyServices.CreateCategoryAsync(category);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpPatch]
         public IActionResult UpdateCategory(int Id, CategoryDto category)
         {
             var result = _companyServices.UpdateCategoryAsync(Id, category);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpDelete]
         public IActionResult DeleteCategory(int Id)
         {
             var result = _companyServices.DeleteCategoryAsync(Id);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpGet]
-        public IActionResult GetAllDiscount()
+        public async ValueTask<IActionResult> GetAllDiscount()
         {
-            var result = _companyServices.GetAllDiscountAsync();
-            return Ok(result);
+            var result = await _companyServices.GetAllDiscountAsync();
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
         [HttpGet]
-        public IActionResult GetByIdDiscount(int id)
+        public async ValueTask<IActionResult> GetByIdDiscount(int id)
         {
-            var result = _companyServices.GetDiscpuntByIdAsync(id);
-            return Ok(result);
+            var result = await _companyServices.GetDiscpuntByIdAsync(id);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
         [HttpPost]
-        public IActionResult CreateDiscount(DiscountDto discount)
+        public async ValueTask<IActionResult> CreateDiscount(DiscountDto discount)
         {
-            var result = _companyServices.CreateDiscpuntAsync(discount);
-            return Ok(result);
+            int result = await _companyServices.CreateDiscpuntAsync(discount);
+            if (result != 0)
+            {
+                return Ok("created");
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
         [HttpPatch]
         public IActionResult UpdateDiscount(int Id, DiscountDto discount)
         {
             var result = _companyServices.UpdateDiscpuntAsync(Id, discount);
-            return Ok(result);
+            return Ok("updated");
         }
         [HttpDelete]
         public IActionResult DeleteDiscount(int Id)
         {
             var result = _companyServices.DeleteDiscpuntAsync(Id);
-            return Ok(result);
+
+            return Ok("deleted");
         }
     }
 
