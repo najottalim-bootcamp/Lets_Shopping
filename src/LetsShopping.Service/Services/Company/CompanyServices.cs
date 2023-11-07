@@ -1,11 +1,4 @@
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.CompanyRepository;
-using LetsShopping.DataAccess.Repositories.Discount;
-using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Service.Interfaces.Company;
+
 
 namespace LetsShopping.Service.Services.Company
 {
