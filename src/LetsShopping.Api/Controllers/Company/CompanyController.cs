@@ -61,7 +61,17 @@ namespace LetsShopping.Api.Controllers.Company
                 return Ok("deleted");
             }
             return BadRequest(new CompanyNotFoundException());
-        } 
+        }
+        [HttpPut]
+        public async ValueTask<IActionResult> UpdateCompanyAsync(int Id,CompanyDto company)
+        {
+            int result = await _companyServices.UpdateCompanyAsync(Id,company);
+            if (result != 0)
+            {
+                return Ok("updated");
+            }
+            return BadRequest(new CompanyNotFoundException());
+        }
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         [HttpGet]
         public async ValueTask<IActionResult> GetAllProductsAsync()
@@ -103,6 +113,15 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new ProductNotFoundException());
         }
+        [HttpPut]
+        public async ValueTask<IActionResult> UpdateProductAsync(int Id, ProductDto product)
+        {
+            int result = await _companyServices.UpdateProductAsync(Id, product);
+            if (result != 0)
+            {
+                return Ok("updated");
+            }
+            return BadRequest(new CompanyNotFoundException());
         ////////////////////////////////////////////////////////////////////////
         [HttpGet]
         public async ValueTask<IActionResult> GetAllAddressAsync()
