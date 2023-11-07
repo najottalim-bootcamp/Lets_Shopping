@@ -1,5 +1,3 @@
-using LetsShopping.Domain.Dtos.Category;
-using LetsShopping.Domain.Dtos.DiscountDtos;
 
 namespace LetsShopping.Api.Controllers.Company
 
