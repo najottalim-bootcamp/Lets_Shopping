@@ -19,3 +19,4 @@ global using LetsShopping.Domain.Models.Products;
 global using LetsShopping.Service.Interfaces.Company;
 global using LetsShopping.Service.Interfaces.Order;
 global using Microsoft.AspNetCore.Mvc;
+
