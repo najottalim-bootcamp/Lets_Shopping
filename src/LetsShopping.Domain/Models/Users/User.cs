@@ -7,6 +7,6 @@
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public DateTime DeletedAt { get; set; }
-        public int CardId { get; set; }
+        public int? CardId { get; set; }
     }
 }

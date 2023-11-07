@@ -1,10 +1,9 @@
-﻿global using LetsShopping.Domain.Models.Orders;
+global using LetsShopping.Domain.Exceptions.Orders;
+global using LetsShopping.Domain.Models.Addresses;
+global using LetsShopping.Domain.Models.Orders;
 global using LetsShopping.Domain.Models.Products;
-global using LetsShopping.Service.Dtos.DiscountDtos;
-global using LetsShopping.Service.Dtos.ProductsDtos;
-global using LetsShopping.Service.Interfaces.Products;
+global using LetsShopping.Service.Interfaces.Order;
 global using LetsShopping.Service.Interfaces.Users;
-global using Dapper;
-global using LetsShopping.Domain.Enums;
-global using LetsShopping.Domain.Models.Price;
-global using LetsShopping.Service.Dtos.Price;
+global using LetsShopping.DataAccess.Repositories.CardsRepositories;
+global using LetsShopping.DataAccess.Repositories.CartsRepositories;
+global using LetsShopping.DataAccess.Repositories.UserRepository;
