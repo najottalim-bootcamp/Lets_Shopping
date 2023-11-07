@@ -32,12 +32,18 @@ builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
 builder.Services.AddScoped<IPriceRepository, PriceRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 
-builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<ICardRepisotry, CardRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyServices, CompanyServices>();
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
+
+
 
 
 builder.Services.AddScoped<IOrderInterface, OrderService>();
