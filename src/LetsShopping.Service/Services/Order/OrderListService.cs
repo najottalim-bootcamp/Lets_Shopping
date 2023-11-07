@@ -1,5 +1,5 @@
+using LetsShopping.DataAccess.Repositories;
 using LetsShopping.Domain.Dtos.OrdersDtos;
-
 
 namespace LetsShopping.Service.Services.Order;
 
@@ -26,6 +26,11 @@ public class OrderListService : IOrderListInterface
     }
 
     public ValueTask<int> UpdateAsync(int Id, OrderListDto model)
+    {
+        throw new NotImplementedException();
+    }
+
+    ValueTask<List<OrderList>> IBaseRepository<OrderList, OrderListDto>.GetAllAsync()
     {
         throw new NotImplementedException();
     }

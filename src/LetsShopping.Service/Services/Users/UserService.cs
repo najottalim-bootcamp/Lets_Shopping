@@ -140,7 +140,7 @@ namespace LetsShopping.Service.Services.Users
         {
             ProductRepository cat = new ProductRepository();
 
-            List<Product> products = await cat.GetAllAsync();
+            List<Product> products = (List<Product>)await cat.GetAllAsync();
             products = products.Where(x=>x.Status!= Status.Deleted && x.Count>0).ToList();
 
             return products;

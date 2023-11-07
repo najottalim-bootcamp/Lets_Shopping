@@ -49,7 +49,7 @@ namespace LetsShopping.DataAccess.Repositories.Discounts
             }
         }
 
-        public async ValueTask<IList<Domain.Models.Discount.Discount>> GetAllAsync()
+        public async ValueTask<List<Domain.Models.Discount.Discount>> GetAllAsync()
         {
             try
             {
