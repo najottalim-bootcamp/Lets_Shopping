@@ -1,5 +1,7 @@
 using LetsShopping.DataAccess.Repositories.AddressRepositories;
+using LetsShopping.DataAccess.Repositories.CardsRepositories;
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.Service.Services.Order;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderInterface,OrderService>();
+builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
+
+
 
 builder.Services.AddScoped<ICardRepisotry, CardRepository>();
 builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
