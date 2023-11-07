@@ -7,9 +7,9 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Card(CardNumber,ExpireDate,Amount,Status,CreatedAt) Values({model.CardNumber},{model.ExpireDate},{model.Amount},{(int)Status.Created},Getdate());";
+                string query = $"Insert into Card(CardNumber,ExpireDate,Amount,Status,CreatedAt) Values(\'{model.CardNumber}\', GETDATE() , {model.Amount} ,{(int)Status.Created},Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
-                return created;
+                return 1;
             }
             catch
             {

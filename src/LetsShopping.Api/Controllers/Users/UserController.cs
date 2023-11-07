@@ -19,8 +19,8 @@ namespace LetsShopping.Api.Controllers.Users
         [HttpPost]
         public  IActionResult CreateCard(CardDto model) 
         {
-            _userService.CreateCardAsync(model);
-            return Ok("Created");            
+            var res = _userService.CreateCardAsync(model);
+            return Ok(res);
         }
         [HttpGet]
         public IActionResult GetAllCard() 
