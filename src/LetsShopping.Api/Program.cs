@@ -1,5 +1,7 @@
 using LetsShopping.DataAccess.Repositories.AddressRepositories;
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.Service.Interfaces.Company;
+using LetsShopping.Service.Services.Company;
 using LetsShopping.Service.Services.Order;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,7 @@ builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyServices, CompanyServices>();
 
 
 
