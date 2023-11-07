@@ -1,8 +1,8 @@
 ﻿namespace LetsShopping.Domain.Exceptions.Addresses
 {
-    public class Address : NotFoundException
+    public class AddressNotFoundExeption : NotFoundException
     {
-        public Address() 
+        public AddressNotFoundExeption() 
         {
             this.TitleMessage = "Address not Found!";
         }
