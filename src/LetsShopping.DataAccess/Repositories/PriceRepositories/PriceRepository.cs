@@ -1,4 +1,3 @@
-
 namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 {
     public class PriceRepository : BaseRepository, IPriceRepository
