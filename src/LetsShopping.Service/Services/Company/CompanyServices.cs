@@ -1,3 +1,5 @@
+using LetsShopping.DataAccess.Repositories.AddressRepositories;
+
 namespace LetsShopping.Service.Services.Company
 {
     public class CompanyServices : ICompanyServices
