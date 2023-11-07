@@ -1,12 +1,28 @@
-﻿using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.Domain.Dtos.DiscountDtos;
 using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Models.Carts;
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.Discount;
+using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Exceptions.Carts;
 using LetsShopping.Service.Interfaces;
 using LetsShopping.Service.Interfaces.Company;
+using LetsShopping.Service.Services.Users;
 
 namespace LetsShopping.Service.Services.Company
 {
     public class CompnayServices : ICompanyServices
     {
+        private readonly ICompanyRepository _company;
+        private readonly IProductRepository _product;
+
+        private readonly ICatogoryRepository _catogoryRepository;
+        private readonly IDiscountRepository _discountRepository;
         #region Address Services 
         public ValueTask<IList<Address>> GetAllAddressAsync()
         {
@@ -36,27 +52,33 @@ namespace LetsShopping.Service.Services.Company
 
 
         #region Company Services 
+        public async ValueTask<int> CreateCompanyAsync(CompanyDto model)
+        {
+            int cm = await _company.CreateAsync(model);
+            return cm;
+        }
+        public async ValueTask<int> DeleteCompanyAsync(int Id)
+        {
+            int cm = await _company.DeleteAsync(Id);
+            return cm;
+        }
+        public async ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompanyAsync()
+        {
+            List<Domain.Models.Companies.Company> companies = await _company.GetAllAsync();
 
-        public ValueTask<int> CreateCompanyAsync(CompanyDto model)
-        {
-            throw new NotImplementedException();
-        }
-        public ValueTask<int> DeleteCompanyAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
-        public ValueTask<IList<Domain.Models.Companies.Company>> GetAllCompanyAsync()
-        {
-            throw new NotImplementedException();
+            return companies.Where(c => c.Status != Status.Deleted).ToList();
         }
 
-        public ValueTask<Domain.Models.Companies.Company> GetCompanyByIdAsync(int Id)
+        public async ValueTask<Domain.Models.Companies.Company> GetCompanyByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            Domain.Models.Companies.Company comp = await _company.GetByIdAsync(Id);
+            return comp;
+
         }
-        public ValueTask<int> UpdateCompanyAsync(int Id, CompanyDto model)
+        public async ValueTask<int> UpdateCompanyAsync(int Id, CompanyDto model)
         {
-            throw new NotImplementedException();
+            int result = await _company.UpdateAsync(Id, model);
+            return result;
         }
 
 
@@ -93,26 +115,35 @@ namespace LetsShopping.Service.Services.Company
 
         #region Category Services 
 
-        public ValueTask<int> CreateCategoryAsync(CategoryDto model)
+        public async ValueTask<int> CreateCategoryAsync(CategoryDto model)
         {
-            throw new NotImplementedException();
+            int res = await _catogoryRepository.CreateAsync(model);
+            return res;
+
         }
-        public ValueTask<int> DeleteCategoryAsync(int Id)
+        public async ValueTask<int> DeleteCategoryAsync(int Id)
         {
-            throw new NotImplementedException();
+            int res = await _catogoryRepository.DeleteAsync(Id);
+            return res;
         }
 
-        public ValueTask<IList<Category>> GetAllCategoryAsync()
+        public async ValueTask<IList<Category>> GetAllCategoryAsync()
         {
-            throw new NotImplementedException();
+            List<Category> res = await _catogoryRepository.GetAllAsync();
+            return res.Where(c => c.Status != Status.Deleted).ToList();
         }
-        public ValueTask<Category> GetCategoryByIdAsync(int Id)
+         
+        
+        public async ValueTask<Category> GetCategoryByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            Category category = await _catogoryRepository.GetByIdAsync(Id);
+
+            return category;
         }
-        public ValueTask<int> UpdateCategoryAsync(int Id, CategoryDto model)
+        public async ValueTask<int> UpdateCategoryAsync(int Id, CategoryDto model)
         {
-            throw new NotImplementedException();
+            int update = await _catogoryRepository.UpdateAsync(Id, model);
+            return update;
         }
 
         #endregion Category Services
@@ -120,25 +151,31 @@ namespace LetsShopping.Service.Services.Company
 
 
         #region Discount Services
-        public ValueTask<int> CreateDiscpuntAsync(DiscountDto model)
+        public async ValueTask<int> CreateDiscpuntAsync(DiscountDto model)
         {
-            throw new NotImplementedException();
+            int res  = await _discountRepository.CreateAsync(model);
+            return res;
         }
-        public ValueTask<int> DeleteDiscpuntAsync(int Id)
+        public async ValueTask<int> DeleteDiscpuntAsync(int Id)
         {
-            throw new NotImplementedException();
+            int res = await _discountRepository.DeleteAsync(Id);
+            return res;
         }
-        public ValueTask<IList<Discount>> GetAllDiscountAsync()
+        public async ValueTask<IList<Discount>> GetAllDiscountAsync()
         {
-            throw new NotImplementedException();
+            List<Discount> discounts = await _discountRepository.GetAllAsync();
+            return discounts.Where(c => c.Status != Status.Deleted).ToList();
         }
-        public ValueTask<Discount> GetDiscpuntByIdAsync(int Id)
+        public async ValueTask<Discount> GetDiscpuntByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+           Discount discount = await _discountRepository.GetByIdAsync(Id);
+
+            return discount;
         }
-        public ValueTask<int> UpdateDiscpuntAsync(int Id, DiscountDto model)
+        public async ValueTask<int> UpdateDiscpuntAsync(int Id, DiscountDto model)
         {
-            throw new NotImplementedException();
+            int update = await _discountRepository.UpdateAsync(Id,model);
+            return update;
         }
 
         #endregion Discount Services
@@ -146,25 +183,31 @@ namespace LetsShopping.Service.Services.Company
 
         #region Product Services
 
-        public ValueTask<int> CreateProductAsync(ProductDto model)
+        public async ValueTask<int> CreateProductAsync(ProductDto model)
         {
-            throw new NotImplementedException();
+            int result = await _product.CreateAsync(model);
+            return result;
         }
-        public ValueTask<int> DeleteProductAsync(int Id)
+        public async ValueTask<int> DeleteProductAsync(int Id)
         {
-            throw new NotImplementedException();
+            int result = await _product.DeleteAsync(Id);
+            return result;
         }
-        public ValueTask<IList<Product>> GetAllProductAsync()
+        public async ValueTask<IList<Product>> GetAllProductAsync()
         {
-            throw new NotImplementedException();
+            List<Product> products = (List<Product>)await _product.GetAllAsync();
+            products = products.Where(x => x.Status != Status.Deleted && x.Count > 0).ToList();
+
+            return products;
         }
-        public ValueTask<Product> GetProductByIdAsync(int Id)
+        public async ValueTask<Product> GetProductByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            Product pr = await _product.GetByIdAsync(Id);
+            return pr;
         }
-        public ValueTask<int> UpdateProductAsync(int Id, ProductDto model)
+        public async ValueTask<int> UpdateProductAsync(int Id, ProductDto model)
         {
-            throw new NotImplementedException();
+            int result = await _product.UpdateAsync(Id, model);
         }
         #endregion Product Services
 
