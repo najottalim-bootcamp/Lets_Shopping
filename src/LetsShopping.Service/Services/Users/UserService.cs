@@ -18,10 +18,10 @@ namespace LetsShopping.Service.Services.Users
 
         #region Card Services
 
-        public ValueTask<int> CreateCardAsync(CardDto model)
-        {
-            throw new NotImplementedException();
-        }
+    public ValueTask<int> CreateCardAsync(CardDto model)
+    {
+        throw new NotImplementedException();
+    }
 
         public ValueTask<int> DeleteCardAsync(int Id)
         {
@@ -32,16 +32,16 @@ namespace LetsShopping.Service.Services.Users
             throw new NotImplementedException();
         }
 
-        public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
-        {
-            throw new NotImplementedException();
-        }
-        public ValueTask<Card> GetCardByIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
+    public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
+    {
+        throw new NotImplementedException();
+    }
+    public ValueTask<Card> GetCardByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
 
-        #endregion  Card Services
+    #endregion  Card Services
 
 
 
@@ -59,26 +59,26 @@ namespace LetsShopping.Service.Services.Users
             throw new NotImplementedException();
         }
 
-        public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
-        {
-            throw new NotImplementedException();
-        }
+    public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
+    {
+        throw new NotImplementedException();
+    }
 
-        public ValueTask<Cart> GetCartByIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        #endregion Cart Services
+    public ValueTask<Cart> GetCartByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
 
 
+    #endregion Cart Services
 
-        #region User Services
-        public ValueTask<int> CreateUserAsync(UsersDto model)
-        {
-            throw new NotImplementedException();
-        }
+
+
+    #region User Services
+    public ValueTask<int> CreateUserAsync(UsersDto model)
+    {
+        throw new NotImplementedException();
+    }
 
         public ValueTask<int> DeleteUserAsync(int Id)
         {
@@ -91,10 +91,10 @@ namespace LetsShopping.Service.Services.Users
 
 
 
-        public ValueTask<User> GetUserByIdAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
+    public ValueTask<User> GetUserByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
 
 
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
@@ -140,7 +140,7 @@ namespace LetsShopping.Service.Services.Users
         {
             ProductRepository cat = new ProductRepository();
 
-            List<Product> products = await cat.GetAllAsync();
+            List<Product> products = (List<Product>)await cat.GetAllAsync();
             products = products.Where(x=>x.Status!= Status.Deleted && x.Count>0).ToList();
 
             return products;
