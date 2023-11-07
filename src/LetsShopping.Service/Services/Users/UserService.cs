@@ -1,65 +1,150 @@
-﻿using LetsShopping.DataAccess.Repositories.UserRepository;
-using LetsShopping.Domain.Dtos.UsersDtos;
-using LetsShopping.Domain.Exceptions.Users;
-using LetsShopping.Domain.Models.Users;
+
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
+using LetsShopping.DataAccess.Repositories.OrderRepositories;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.Domain.Enums;
 
 namespace LetsShopping.Service.Services.Users
 {
-    public class UserService : IUserService
+    public class UserService 
     {
-        private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+
+        private readonly UserRepository _userRepository;
+        private readonly CardRepository _cardRepository;
+        private readonly CartRepository _cartRepository;
+
+
+
+        #region Card Services
+
+    public ValueTask<int> CreateCardAsync(CardDto model)
+    {
+        throw new NotImplementedException();
+    }
+
+        public ValueTask<int> DeleteCardAsync(int Id)
         {
-            _userRepository = userRepository;
+            throw new NotImplementedException();
         }
-        public async ValueTask<int> CreateAsync(UsersDto model)
+        public ValueTask<List<Card>> GetAllCardAsync()
         {
-            int res = await _userRepository.CreateAsync(model);
-            if (res == 0)
-            {
-                throw new UserNotFoundException();
-            }
-            return res;
+            throw new NotImplementedException();
         }
 
-        public async ValueTask<int> DeleteAsync(int Id)
+    public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
+    {
+        throw new NotImplementedException();
+    }
+    public ValueTask<Card> GetCardByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion  Card Services
+
+
+
+        #region Cart Services
+        public ValueTask<int> DeleteCartAsync(int Id)
         {
-            int res = await _userRepository.DeleteAsync(Id);
-            if (res == 0)
-            {
-                throw new UserNotFoundException();
-            }
-            return res;
+            throw new NotImplementedException();
+        }
+        public ValueTask<int> CreateCartAsync(CartDto model)
+        {
+            throw new NotImplementedException();
+        }
+        public ValueTask<List<Cart>> GetAllCartAsync()
+        {
+            throw new NotImplementedException();
         }
 
-        public async ValueTask<IList<User>> GetAllAsync()
+    public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask<Cart> GetCartByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
+
+
+    #endregion Cart Services
+
+
+
+    #region User Services
+    public ValueTask<int> CreateUserAsync(UsersDto model)
+    {
+        throw new NotImplementedException();
+    }
+
+        public ValueTask<int> DeleteUserAsync(int Id)
         {
-            IList<User> users = (await _userRepository.GetAllAsync());
-            if (users == null)
-            {
-                throw new UserNotFoundException();
-            }
-            return users;
+            throw new NotImplementedException();
+        }
+        public ValueTask<List<User>> GetAllUserAsync()
+        {
+            throw new NotImplementedException();
         }
 
-        public async ValueTask<User> GetByIdAsync(int Id)
+
+
+    public ValueTask<User> GetUserByIdAsync(int Id)
+    {
+        throw new NotImplementedException();
+    }
+
+
+        public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
         {
-            User user = await _userRepository.GetByIdAsync(Id);
-            if (user == null)
-            {
-                throw new UserNotFoundException();
-            }
-            return user;
+            throw new NotImplementedException();
+        }
+        #endregion User Services
+
+
+
+
+        public async ValueTask<List<Category>> GetAllCategory()
+        {
+            CategoryRepository cat = new CategoryRepository();
+
+            List<Category> categories = await cat.GetAllAsync();
+            
+            return  categories.Where(c => c.Status == Status.Deleted).ToList();
+
         }
 
-        public async ValueTask<int> UpdateAsync(int Id, UsersDto model)
+        public async ValueTask<List<Domain.Models.Companies.Company>> GetAllCompany()
         {
-            int update = await _userRepository.UpdateAsync(Id, model);
-            if (update == 0)
-            {
-                throw new UserNotFoundException();
-            }
-            return update;
+            CompanyRepository cat = new CompanyRepository();
+
+            List<Domain.Models.Companies.Company> companies = await cat.GetAllAsync();
+
+            return companies.Where(c => c.Status != Status.Deleted).ToList();
+
         }
+
+        public async ValueTask<List<Domain.Models.Orders.Order>> GetAllOrderByUserId(int userId)
+        {
+            OrderRepository cat = new OrderRepository();
+
+            List<Domain.Models.Orders.Order> orders = await cat.GetAllAsync();
+            orders = orders.Where(x => x.UserId == userId).Where(x=>x.Status != Status.Deleted).ToList();
+
+            return orders;
+        }
+
+        public async ValueTask<List<Product>> GetAllProduct()
+        {
+            ProductRepository cat = new ProductRepository();
+
+            List<Product> products = (List<Product>)await cat.GetAllAsync();
+            products = products.Where(x=>x.Status!= Status.Deleted && x.Count>0).ToList();
+
+            return products;
+        }
+
     }
 }

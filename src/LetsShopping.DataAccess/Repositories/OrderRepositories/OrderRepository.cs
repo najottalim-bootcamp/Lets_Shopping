@@ -9,7 +9,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
+                string query = $"Insert into Order(UserId,Total,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
                 int created = await _connection.ExecuteAsync(query);
                 return created;
             }
@@ -43,7 +43,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             }
         }
 
-        public async ValueTask<IList<Order>> GetAllAsync()
+        public async ValueTask<List<Order>> GetAllAsync()
         {
             try
             {
