@@ -1,26 +1,9 @@
-using LetsShopping.DataAccess.Repositories.CompanyRepository;
-using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Carts;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.Discount;
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Exceptions.Carts;
-using LetsShopping.Service.Interfaces;
-using LetsShopping.Service.Interfaces.Company;
-using LetsShopping.Service.Services.Users;
-
 namespace LetsShopping.Service.Services.Company
 {
-    public class CompnayServices : ICompanyServices
+    public class CompanyServices : ICompanyServices
     {
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
-
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
         #region Address Services 
@@ -99,7 +82,7 @@ namespace LetsShopping.Service.Services.Company
         {
             throw new NotImplementedException();
         }
-        
+
         public ValueTask<IList<Card>> GetAllCardAsync()
         {
             throw new NotImplementedException();
@@ -132,8 +115,8 @@ namespace LetsShopping.Service.Services.Company
             List<Category> res = await _catogoryRepository.GetAllAsync();
             return res.Where(c => c.Status != Status.Deleted).ToList();
         }
-         
-        
+
+
         public async ValueTask<Category> GetCategoryByIdAsync(int Id)
         {
             Category category = await _catogoryRepository.GetByIdAsync(Id);
@@ -153,7 +136,7 @@ namespace LetsShopping.Service.Services.Company
         #region Discount Services
         public async ValueTask<int> CreateDiscpuntAsync(DiscountDto model)
         {
-            int res  = await _discountRepository.CreateAsync(model);
+            int res = await _discountRepository.CreateAsync(model);
             return res;
         }
         public async ValueTask<int> DeleteDiscpuntAsync(int Id)
@@ -168,13 +151,13 @@ namespace LetsShopping.Service.Services.Company
         }
         public async ValueTask<Discount> GetDiscpuntByIdAsync(int Id)
         {
-           Discount discount = await _discountRepository.GetByIdAsync(Id);
+            Discount discount = await _discountRepository.GetByIdAsync(Id);
 
             return discount;
         }
         public async ValueTask<int> UpdateDiscpuntAsync(int Id, DiscountDto model)
         {
-            int update = await _discountRepository.UpdateAsync(Id,model);
+            int update = await _discountRepository.UpdateAsync(Id, model);
             return update;
         }
 
