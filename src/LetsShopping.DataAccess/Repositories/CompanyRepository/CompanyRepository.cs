@@ -46,7 +46,7 @@
             }
         }
 
-        public async ValueTask<IList<Company>> GetAllAsync()
+        public async ValueTask<List<Company>> GetAllAsync()
         {
             try
             {
