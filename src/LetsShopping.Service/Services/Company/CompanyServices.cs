@@ -1,8 +1,3 @@
-using LetsShopping.DataAccess.Repositories.AddressRepositories;
-using LetsShopping.Domain.Exceptions.Discounts;
-using LetsShopping.Domain.Exceptions.Users;
-using System.Reflection;
-
 namespace LetsShopping.Service.Services.Company
 {
     public class CompanyServices : ICompanyServices
@@ -18,6 +13,7 @@ namespace LetsShopping.Service.Services.Company
         private readonly ICardRepisotry _card;
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
+        
         #region Address Services 
         public async ValueTask<IList<Address>> GetAllAddressAsync()
         {
