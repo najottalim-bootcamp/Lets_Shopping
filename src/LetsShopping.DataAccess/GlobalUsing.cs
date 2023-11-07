@@ -20,3 +20,4 @@ global using LetsShopping.Domain.Models.Orders;
 global using LetsShopping.Domain.Models.Price;
 global using LetsShopping.Domain.Models.Products;
 global using System.Data.SqlClient;
+global using LetsShopping.Domain.Models.Users;
