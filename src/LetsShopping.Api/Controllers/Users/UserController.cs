@@ -1,4 +1,13 @@
-﻿namespace LetsShopping.Api.Controllers.Users
+
+using LetsShopping.Domain.Dtos.CardDtos;
+using LetsShopping.Domain.Dtos.CartsDtos;
+using LetsShopping.Domain.Dtos.UsersDtos;
+using LetsShopping.Service.Interfaces.Users;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LetsShopping.Api.Controllers.Users
+
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -84,6 +93,73 @@
 
         #endregion User Controller
 
+
+
+
+
+
+        #region Cart Controller
+        [HttpPost]
+        public IActionResult CreateCart(CartDto model)
+        {
+            var res = _userService.CreateCartAsync(model);
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetAllCart(int UserId)
+        {
+            var res = _userService.GetAllCartByUserIdAsync(UserId);
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetAllCartById(int Id)
+        {
+            var res = _userService.GetCartByIdAsync(Id);
+            return Ok(res);
+        }
+        [HttpDelete]
+        public IActionResult DeleteCart(int Id)
+        {
+            var res = _userService.DeleteCartAsync(Id);
+            return Ok(res);
+        }
+        [HttpPut]
+        public IActionResult UpdateCart(int Id, CartDto cart)
+        {
+            var res = _userService.UpdateCartAsync(Id, cart);
+            return Ok(res);
+        }
+
+
+        #endregion Cart Controller
+
+
+        [HttpGet]
+        public IActionResult GetAllCategory()
+        {
+            var res = _userService.GetAllCategory();
+            return Ok(res);
+        }
+        [HttpGet]
+
+        public IActionResult GetAllCompnay()
+        {
+            var res = _userService.GetAllCompany();
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetOrders(int userId)
+        {
+            var res = _userService.GetAllOrderByUserId(userId);
+            return Ok(res);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            var res = _userService.GetAllProduct();
+            return Ok(res);
+        }
 
 
     }

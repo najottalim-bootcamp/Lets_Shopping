@@ -15,15 +15,28 @@ namespace LetsShopping.Service.Services.Users
         private readonly IUserRepository _userRepository;
         private readonly ICardRepisotry _cardRepository;
         private readonly ICartRepository _cartRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly ICatogoryRepository _catogoryRepository;
+        private readonly ICompanyRepository _companyRepository;
+        private readonly IOrderRepository _orderRepository;
 
 
         public UserService(IUserRepository userRepository,
             ICardRepisotry cardRepisotry,
-            ICartRepository cartRepository)
+            ICartRepository cartRepository,
+            IProductRepository productRepository,
+            ICatogoryRepository catogoryRepository,
+            ICompanyRepository companyRepository,
+            IOrderRepository orderRepository)
         {
             _userRepository = userRepository;
             _cardRepository = cardRepisotry;
             _cartRepository = cartRepository;
+            _productRepository = productRepository;
+            _catogoryRepository = catogoryRepository;
+            _companyRepository = companyRepository;
+            _orderRepository = orderRepository;
+
         }
 
         #region Card Services
@@ -147,9 +160,9 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Category>> GetAllCategory()
         {
-            ICatogoryRepository cat = new CategoryRepository();
+           
 
-            List<Category> categories = await cat.GetAllAsync();
+            List<Category> categories = await _catogoryRepository.GetAllAsync();
 
 
 
@@ -158,9 +171,7 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Domain.Models.Companies.Company>> GetAllCompany()
         {
-            CompanyRepository cat = new CompanyRepository();
-
-            List<Domain.Models.Companies.Company> companies = await cat.GetAllAsync();
+            List<Domain.Models.Companies.Company> companies = await _companyRepository.GetAllAsync();
 
             return companies.Where(c => c.Status != Status.Deleted).ToList();
 
@@ -168,9 +179,7 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Domain.Models.Orders.Order>> GetAllOrderByUserId(int userId)
         {
-            OrderRepository cat = new OrderRepository();
-
-            List<Domain.Models.Orders.Order> orders = await cat.GetAllAsync();
+            List<Domain.Models.Orders.Order> orders = await _orderRepository.GetAllAsync();
             orders = orders.Where(x => x.UserId == userId).Where(x => x.Status != Status.Deleted).ToList();
 
             return orders;
@@ -178,9 +187,7 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Product>> GetAllProduct()
         {
-            ProductRepository cat = new ProductRepository();
-
-            List<Product> products = (List<Product>)await cat.GetAllAsync();
+            List<Product> products = (List<Product>)await _productRepository.GetAllAsync();
             products = products.Where(x => x.Status != Status.Deleted && x.Count > 0).ToList();
 
             return products;
