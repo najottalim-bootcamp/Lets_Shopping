@@ -1,3 +1,10 @@
+
+using LetsShopping.DataAccess.Repositories.CategoryRepository;
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
+using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.Domain.Enums;
+
+
 namespace LetsShopping.Service.Services.Users
 {
     public class UserService : IUserService
@@ -15,8 +22,9 @@ namespace LetsShopping.Service.Services.Users
         {
             var res = await _cardRepository.CreateAsync(model);
             return res;
-
         }
+
+
 
         public async ValueTask<int> DeleteCardAsync(int Id)
         {
@@ -31,6 +39,7 @@ namespace LetsShopping.Service.Services.Users
 
         public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
         {
+
             var res = _cardRepository.UpdateAsync(Id, model);
             return res;
         }
@@ -38,7 +47,9 @@ namespace LetsShopping.Service.Services.Users
         {
             var res = _cardRepository.GetByIdAsync(Id);
             return res;
+            throw new NotImplementedException();
         }
+
 
         #endregion  Card Services
 
@@ -64,14 +75,22 @@ namespace LetsShopping.Service.Services.Users
 
         public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
         {
+
             var res = _cartRepository.UpdateAsync(Id, model);
             return res;
+
+            throw new NotImplementedException();
+
         }
 
         public ValueTask<Cart> GetCartByIdAsync(int Id)
         {
+
             var res = _cartRepository.GetByIdAsync(Id);
             return res;
+
+            throw new NotImplementedException();
+
         }
 
 
@@ -80,11 +99,13 @@ namespace LetsShopping.Service.Services.Users
 
 
         #region User Services
+
         public async ValueTask<int> CreateUserAsync(UsersDto model)
         {
             var res = await _userRepository.CreateAsync(model);
             return res;
         }
+
 
         public async ValueTask<int> DeleteUserAsync(int Id)
         {
@@ -99,13 +120,12 @@ namespace LetsShopping.Service.Services.Users
 
 
 
+
         public async ValueTask<User> GetUserByIdAsync(int Id)
         {
             var res = await _userRepository.GetByIdAsync(Id);
             return res;
         }
-
-
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
         {
             var res = _userRepository.UpdateAsync(Id, model);
@@ -122,8 +142,9 @@ namespace LetsShopping.Service.Services.Users
 
             List<Category> categories = await cat.GetAllAsync();
 
-            return categories.Where(c => c.Status != Status.Deleted).ToList();
 
+
+            return categories.Where(c => c.Status != Status.Deleted).ToList();
         }
 
         public async ValueTask<List<Domain.Models.Companies.Company>> GetAllCompany()
