@@ -1,15 +1,7 @@
 
-using LetsShopping.DataAccess.Repositories.AddressRepositories;
-using LetsShopping.DataAccess.Repositories.CardsRepositories;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.CompanyRepository;
-
-using LetsShopping.Service.Interfaces.Users;
-using LetsShopping.DataAccess.Repositories.AddressRepositories;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.Service.Interfaces.Company;
+using LetsShopping.Service.Interfaces.Users;
 using LetsShopping.Service.Services.Company;
-
 using LetsShopping.Service.Services.Order;
 using LetsShopping.Service.Services.Users;
 
@@ -41,7 +33,8 @@ builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<ICardRepisotry, CardRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyServices, CompanyServices>();
-
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
 
 
 
