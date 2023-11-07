@@ -34,3 +34,22 @@ SET @Sql = N'SELECT  *
 END
 
 GO
+
+CREATE PROCEDURE DeleteById 
+@TableName NVARCHAR(128) ,
+@Id INT
+AS 
+BEGIN 
+  SET NOCOUNT ON;
+  DECLARE @Sql NVARCHAR(MAX);
+
+SET @Sql = N'UPDATE ' + QUOTENAME(@TableName)
+          +'SET  Status = 2 , DeletedAt = GETDATE()'
+          
+          + N' WHERE Id = '+Cast(@Id AS varchar)+'; ';
+
+ EXECUTE sp_executesql @Sql
+
+END
+
+GO

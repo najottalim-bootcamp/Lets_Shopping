@@ -1,5 +1,4 @@
 ﻿namespace LetsShopping.DataAccess.Repositories.CartsRepositories;
-
 public class CartRepository : BaseRepository, ICartRepository
 {
     public async ValueTask<int> CreateAsync(CartDto model)
