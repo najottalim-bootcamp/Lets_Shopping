@@ -5,7 +5,7 @@ namespace LetsShopping.Api.Controllers.Users
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserCantroller : ControllerBase
+    public class UserController : ControllerBase
     {
     }
 }

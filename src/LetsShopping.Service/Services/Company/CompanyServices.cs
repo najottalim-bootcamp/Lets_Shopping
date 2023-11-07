@@ -1,6 +1,6 @@
 namespace LetsShopping.Service.Services.Company
 {
-    public class CompnayServices : ICompanyServices
+    public class CompanyServices : ICompanyServices
     {
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
