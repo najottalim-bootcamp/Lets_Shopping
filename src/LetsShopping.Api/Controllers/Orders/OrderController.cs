@@ -26,8 +26,8 @@ namespace LetsShopping.Api.Controllers.Orders
         [HttpPost]
         public IActionResult CreateOrder(OrderDto order)
         {
-            _order.CreateOrder(order);
-            return Ok("Created");
+            var res = _order.CreateOrder(order);
+            return Ok(res.Result);
         }
         [HttpPut]
         public IActionResult UpdateOrder(int id,OrderDto order)
