@@ -2,33 +2,46 @@ namespace LetsShopping.Service.Services.Company
 {
     public class CompanyServices : ICompanyServices
     {
+        private readonly IAddressRepository _address;
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
+        public CompanyServices(ICompanyRepository company,IProductRepository product)
+        {
+            _company = company;
+            _product = product;
+        }
+        private readonly ICardRepisotry _card;
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
+        
         #region Address Services 
-        public ValueTask<IList<Address>> GetAllAddressAsync()
+        public async ValueTask<IList<Address>> GetAllAddressAsync()
         {
-            throw new NotImplementedException();
+            IList<Address> address = await _address.GetAllAsync();
+            return address;
         }
 
-        public ValueTask<int> CreateAddressAsync(AddressDto model)
+        public async ValueTask<int> CreateAddressAsync(AddressDto model)
         {
-            throw new NotImplementedException();
+            int res = await _address.CreateAsync(model);
+            return res;
         }
 
-        public ValueTask<Address> GetAddressByIdAsync(int Id)
+        public async ValueTask<Address> GetAddressByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            Address address = await _address.GetByIdAsync(Id);
+            return address;
         }
-        public ValueTask<int> DeleteAddressAsync(int Id)
+        public async ValueTask<int> DeleteAddressAsync(int Id)
         {
-            throw new NotImplementedException();
+            int res = await _address.DeleteAsync(Id);
+            return res;
         }
 
-        public ValueTask<int> UpdateAddressAsync(int Id, AddressDto model)
+        public async ValueTask<int> UpdateAddressAsync(int Id, AddressDto model)
         {
-            throw new NotImplementedException();
+            int update = await _address.UpdateAsync(Id, model);
+            return update;
         }
 
         #endregion Address Services 
@@ -70,27 +83,30 @@ namespace LetsShopping.Service.Services.Company
 
         #region Card Services 
 
-        public ValueTask<int> CreateCardAsync(CardDto model)
+        public async ValueTask<int> CreateCardAsync(CardDto model)
         {
-            throw new NotImplementedException();
+            int res = await _card.CreateAsync(model);
+            return res;
         }
-        public ValueTask<int> DeleteCardAsync(int Id)
+        public async ValueTask<int> DeleteCardAsync(int Id)
         {
-            throw new NotImplementedException();
+            int res = await _card.DeleteAsync(Id);
+            return res;
         }
-        public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
+        public async ValueTask<int> UpdateCardAsync(int Id, CardDto model)
         {
-            throw new NotImplementedException();
+            int update = await _card.UpdateAsync(Id, model);
+            return update;
         }
-
-        public ValueTask<IList<Card>> GetAllCardAsync()
+        public async ValueTask<IList<Card>> GetAllCardAsync()
         {
-            throw new NotImplementedException();
+            IList<Card> card = await _card.GetAllAsync();
+            return card;
         }
-
-        public ValueTask<Card> GetCardByIdAsync(int Id)
+        public async ValueTask<Card> GetCardByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            Card card = await _card.GetByIdAsync(Id);
+            return card;
         }
         #endregion Card Services 
 
