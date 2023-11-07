@@ -1,13 +1,12 @@
 
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
-using LetsShopping.DataAccess.Repositories.OrderRepositories;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
 using LetsShopping.Domain.Enums;
 
 namespace LetsShopping.Service.Services.Users
 {
-    public class UserService 
+    public class UserService
     {
 
         private readonly UserRepository _userRepository;
@@ -18,10 +17,10 @@ namespace LetsShopping.Service.Services.Users
 
         #region Card Services
 
-    public ValueTask<int> CreateCardAsync(CardDto model)
-    {
-        throw new NotImplementedException();
-    }
+        public ValueTask<int> CreateCardAsync(CardDto model)
+        {
+            throw new NotImplementedException();
+        }
 
         public ValueTask<int> DeleteCardAsync(int Id)
         {
@@ -32,16 +31,16 @@ namespace LetsShopping.Service.Services.Users
             throw new NotImplementedException();
         }
 
-    public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
-    {
-        throw new NotImplementedException();
-    }
-    public ValueTask<Card> GetCardByIdAsync(int Id)
-    {
-        throw new NotImplementedException();
-    }
+        public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
+        {
+            throw new NotImplementedException();
+        }
+        public ValueTask<Card> GetCardByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
 
-    #endregion  Card Services
+        #endregion  Card Services
 
 
 
@@ -59,26 +58,26 @@ namespace LetsShopping.Service.Services.Users
             throw new NotImplementedException();
         }
 
-    public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
-    {
-        throw new NotImplementedException();
-    }
+        public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
+        {
+            throw new NotImplementedException();
+        }
 
-    public ValueTask<Cart> GetCartByIdAsync(int Id)
-    {
-        throw new NotImplementedException();
-    }
-
-
-    #endregion Cart Services
+        public ValueTask<Cart> GetCartByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
 
 
+        #endregion Cart Services
 
-    #region User Services
-    public ValueTask<int> CreateUserAsync(UsersDto model)
-    {
-        throw new NotImplementedException();
-    }
+
+
+        #region User Services
+        public ValueTask<int> CreateUserAsync(UsersDto model)
+        {
+            throw new NotImplementedException();
+        }
 
         public ValueTask<int> DeleteUserAsync(int Id)
         {
@@ -91,10 +90,10 @@ namespace LetsShopping.Service.Services.Users
 
 
 
-    public ValueTask<User> GetUserByIdAsync(int Id)
-    {
-        throw new NotImplementedException();
-    }
+        public ValueTask<User> GetUserByIdAsync(int Id)
+        {
+            throw new NotImplementedException();
+        }
 
 
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
@@ -111,8 +110,8 @@ namespace LetsShopping.Service.Services.Users
             CategoryRepository cat = new CategoryRepository();
 
             List<Category> categories = await cat.GetAllAsync();
-            
-            return  categories.Where(c => c.Status == Status.Deleted).ToList();
+
+            return categories.Where(c => c.Status == Status.Deleted).ToList();
 
         }
 
@@ -131,7 +130,7 @@ namespace LetsShopping.Service.Services.Users
             OrderRepository cat = new OrderRepository();
 
             List<Domain.Models.Orders.Order> orders = await cat.GetAllAsync();
-            orders = orders.Where(x => x.UserId == userId).Where(x=>x.Status != Status.Deleted).ToList();
+            orders = orders.Where(x => x.UserId == userId).Where(x => x.Status != Status.Deleted).ToList();
 
             return orders;
         }
@@ -141,7 +140,7 @@ namespace LetsShopping.Service.Services.Users
             ProductRepository cat = new ProductRepository();
 
             List<Product> products = (List<Product>)await cat.GetAllAsync();
-            products = products.Where(x=>x.Status!= Status.Deleted && x.Count>0).ToList();
+            products = products.Where(x => x.Status != Status.Deleted && x.Count > 0).ToList();
 
             return products;
         }
