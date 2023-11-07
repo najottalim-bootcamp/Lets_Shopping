@@ -118,7 +118,7 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Category>> GetAllCategory()
         {
-            ICategoryRepository cat = new CategoryRepository();
+            ICatogoryRepository cat = new CategoryRepository();
 
             List<Category> categories = await cat.GetAllAsync();
 
