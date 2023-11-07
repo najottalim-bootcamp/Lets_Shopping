@@ -40,13 +40,13 @@ public class CommentRepository : BaseRepository, ICommentRepository
         }
     }
 
-    public async ValueTask<IList<Comment>> GetAllAsync()
+    public async ValueTask<List<Comment>> GetAllAsync()
     {
         try
         {
             await _connection.OpenAsync();
             string query = "Exec GetAll 'Comment'";
-            IList<Comment> get = (await _connection.QueryAsync<Comment>(query)).ToList();
+            List<Comment> get = (await _connection.QueryAsync<Comment>(query)).ToList();
             return get;
         }
         catch

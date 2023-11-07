@@ -47,7 +47,7 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<IList<Pricesss>> GetAllAsync()
+        public async ValueTask<List<Pricesss>> GetAllAsync()
         {
             try
             {

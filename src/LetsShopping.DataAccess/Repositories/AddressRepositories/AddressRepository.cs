@@ -43,7 +43,7 @@
             }
         }
 
-        public async ValueTask<IList<Address>> GetAllAsync()
+        public async ValueTask<List<Address>> GetAllAsync()
         {
             try
             {
