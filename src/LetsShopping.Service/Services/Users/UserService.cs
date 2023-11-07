@@ -1,18 +1,6 @@
-
-using LetsShopping.DataAccess.Repositories.CardsRepositories;
-using LetsShopping.DataAccess.Repositories.CartsRepositories;
-using LetsShopping.DataAccess.Repositories.CategoryRepository;
-using LetsShopping.DataAccess.Repositories.CompanyRepository;
-using LetsShopping.DataAccess.Repositories.OrderRepositories;
-using LetsShopping.DataAccess.Repositories.ProductRepositories;
-using LetsShopping.DataAccess.Repositories.UserRepository;
-using LetsShopping.Domain.Enums;
-using LetsShopping.Domain.Models.Users;
-using System.Reflection;
-
 namespace LetsShopping.Service.Services.Users
 {
-    public class UserService :IUserService
+    public class UserService : IUserService
     {
 
         private readonly IUserRepository _userRepository;
@@ -25,7 +13,7 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<int> CreateCardAsync(CardDto model)
         {
-           var res = await _cardRepository.CreateAsync(model);
+            var res = await _cardRepository.CreateAsync(model);
             return res;
 
         }
@@ -43,7 +31,7 @@ namespace LetsShopping.Service.Services.Users
 
         public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
         {
-            var res =   _cardRepository.UpdateAsync(Id, model);
+            var res = _cardRepository.UpdateAsync(Id, model);
             return res;
         }
         public ValueTask<Card> GetCardByIdAsync(int Id)
@@ -52,7 +40,7 @@ namespace LetsShopping.Service.Services.Users
             return res;
         }
 
-    #endregion  Card Services
+        #endregion  Card Services
 
 
 
@@ -64,19 +52,19 @@ namespace LetsShopping.Service.Services.Users
         }
         public ValueTask<int> CreateCartAsync(CartDto model)
         {
-            var res =_cartRepository.CreateAsync(model);
+            var res = _cartRepository.CreateAsync(model);
             return res;
         }
         public async ValueTask<List<Cart>> GetAllCartByUserIdAsync(int userId)
         {
-            var ress =  await _cartRepository.GetAllAsync();
+            var ress = await _cartRepository.GetAllAsync();
             ress = ress.Where(x => x.UserId == userId).Where(x => x.Status != Status.Deleted).ToList();
             return ress;
         }
 
         public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
         {
-            var res = _cartRepository.UpdateAsync(Id,model); 
+            var res = _cartRepository.UpdateAsync(Id, model);
             return res;
         }
 
@@ -120,7 +108,7 @@ namespace LetsShopping.Service.Services.Users
 
         public ValueTask<int> UpdateUserAsync(int Id, UsersDto model)
         {
-            var res = _userRepository.UpdateAsync(Id,model);
+            var res = _userRepository.UpdateAsync(Id, model);
             return res;
         }
         #endregion User Services
@@ -130,11 +118,11 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Category>> GetAllCategory()
         {
-            CategoryRepository cat = new CategoryRepository();
+            ICategoryRepository cat = new CategoryRepository();
 
             List<Category> categories = await cat.GetAllAsync();
-            
-            return  categories.Where(c => c.Status != Status.Deleted).ToList();
+
+            return categories.Where(c => c.Status != Status.Deleted).ToList();
 
         }
 
@@ -153,7 +141,7 @@ namespace LetsShopping.Service.Services.Users
             OrderRepository cat = new OrderRepository();
 
             List<Domain.Models.Orders.Order> orders = await cat.GetAllAsync();
-            orders = orders.Where(x => x.UserId == userId).Where(x=>x.Status != Status.Deleted).ToList();
+            orders = orders.Where(x => x.UserId == userId).Where(x => x.Status != Status.Deleted).ToList();
 
             return orders;
         }
@@ -163,7 +151,7 @@ namespace LetsShopping.Service.Services.Users
             ProductRepository cat = new ProductRepository();
 
             List<Product> products = (List<Product>)await cat.GetAllAsync();
-            products = products.Where(x=>x.Status!= Status.Deleted && x.Count>0).ToList();
+            products = products.Where(x => x.Status != Status.Deleted && x.Count > 0).ToList();
 
             return products;
         }
