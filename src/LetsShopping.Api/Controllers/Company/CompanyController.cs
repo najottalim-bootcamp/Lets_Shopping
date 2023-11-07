@@ -1,6 +1,11 @@
-﻿namespace LetsShopping.Api.Controllers.Company
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LetsShopping.Api.Controllers.Company
 {
-    public class CompanyController
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CompanyController : ControllerBase
     {
     }
 }
