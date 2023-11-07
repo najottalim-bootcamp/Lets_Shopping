@@ -132,6 +132,32 @@ namespace LetsShopping.Api.Controllers.Users
         #endregion Cart Controller
 
 
+        [HttpGet]
+        public IActionResult GetAllCategory()
+        {
+            var res = _userService.GetAllCategory();
+            return Ok(res);
+        }
+        [HttpGet]
+
+        public IActionResult GetAllCompnay()
+        {
+            var res = _userService.GetAllCompany();
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetOrders(int userId)
+        {
+            var res = _userService.GetAllOrderByUserId(userId);
+            return Ok(res);
+        }
+
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            var res = _userService.GetAllProduct();
+            return Ok(res);
+        }
 
 
     }

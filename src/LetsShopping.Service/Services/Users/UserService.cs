@@ -23,11 +23,20 @@ namespace LetsShopping.Service.Services.Users
 
         public UserService(IUserRepository userRepository,
             ICardRepisotry cardRepisotry,
-            ICartRepository cartRepository)
+            ICartRepository cartRepository,
+            IProductRepository productRepository,
+            ICatogoryRepository catogoryRepository,
+            ICompanyRepository companyRepository,
+            IOrderRepository orderRepository)
         {
             _userRepository = userRepository;
             _cardRepository = cardRepisotry;
             _cartRepository = cartRepository;
+            _productRepository = productRepository;
+            _catogoryRepository = catogoryRepository;
+            _companyRepository = companyRepository;
+            _orderRepository = orderRepository;
+
         }
 
         #region Card Services
