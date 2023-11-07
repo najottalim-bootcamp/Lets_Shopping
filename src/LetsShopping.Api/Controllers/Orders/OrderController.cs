@@ -19,7 +19,7 @@ namespace LetsShopping.Api.Controllers.Orders
         public IActionResult GetByIdOrder(int id)
         {
             var result = _order.GetByIdOrder(id);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpPost]
         public IActionResult CreateOrder(OrderDto order)
@@ -43,13 +43,13 @@ namespace LetsShopping.Api.Controllers.Orders
         public IActionResult GetAllOrderList()
         {
             var result = _order.GetAllOrderList();
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpGet]
         public IActionResult GetByIdOrderList(int id)
         {
             var result = _order.GetByIdOrderList(id);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpPost]
         public IActionResult CreatedOrderList(OrderListDto order)
