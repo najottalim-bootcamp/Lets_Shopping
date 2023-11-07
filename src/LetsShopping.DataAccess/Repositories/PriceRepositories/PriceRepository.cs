@@ -67,7 +67,7 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById 'Prices' , {Id};";
+                string query = $"EXEC GetAById 'Prices' , {Id};";
                 var price = await _connection.QueryFirstOrDefaultAsync<Pricesss>(query);
                 return price;
             }
