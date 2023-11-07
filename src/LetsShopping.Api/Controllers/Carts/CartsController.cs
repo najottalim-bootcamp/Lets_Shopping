@@ -1,9 +1,6 @@
-﻿using LetsShopping.Domain.Dtos.CartsDtos;
-using LetsShopping.Service.Interfaces.Carts;
-
-namespace LetsShopping.Api.Controllers.Carts
+﻿namespace LetsShopping.Api.Controllers.Carts
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CartsController : ControllerBase
     {
@@ -16,31 +13,31 @@ namespace LetsShopping.Api.Controllers.Carts
         public IActionResult GetAllAsync()
         {
             var result = _cart.GetAllAsync();
-            return Ok(result);
+            return Ok(result.Result);
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetByIdAsync(int id)
         {
             var result = _cart.GetByIdAsync(id);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpPost]
         public IActionResult CreateAsync(CartDto cartsDto)
         {
             var result = _cart.CreateAsync(cartsDto);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpPatch]
         public IActionResult UpdateAsync(int Id, CartDto cartsDto)
         {
             var result = _cart.UpdateAsync(Id, cartsDto);
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpDelete]
         public IActionResult DeleteAsync(int Id)
         {
             var result = _cart.DeleteAsync(Id);
-            return Ok(result);
+            return Ok(result.Result);
         }
     }
 }
