@@ -19,8 +19,8 @@ namespace LetsShopping.Service.Services.Company
         #region Address Services 
         public async ValueTask<IList<Address>> GetAllAddressAsync()
         {
-            IList<Address> address = await _address.GetAllAsync();
-            return address;
+            List<Address> address = await _address.GetAllAsync();
+            return address.Where(c => c.Status != Status.Deleted).ToList();
         }
 
         public async ValueTask<int> CreateAddressAsync(AddressDto model)
