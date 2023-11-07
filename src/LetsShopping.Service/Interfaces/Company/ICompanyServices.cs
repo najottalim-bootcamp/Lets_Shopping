@@ -26,6 +26,7 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<IList<Address>> GetAllAddressAsync();
 
 
+
         public ValueTask<int> CreateCardAsync(CardDto model);
         public ValueTask<int> UpdateCardAsync(int Id, CardDto model);
         public ValueTask<int> DeleteCardAsync(int Id);
