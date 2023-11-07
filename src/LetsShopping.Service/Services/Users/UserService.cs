@@ -55,7 +55,6 @@ namespace LetsShopping.Service.Services.Users
         {
             var res = _cardRepository.GetByIdAsync(Id);
             return res;
-            throw new NotImplementedException();
         }
 
 

@@ -28,7 +28,26 @@ namespace LetsShopping.Api.Controllers.Users
             var res = _userService.GetAllCardAsync();
             return Ok(res);
         }
-        
+        [HttpGet]
+        public IActionResult GetAllCardById(int Id)
+        {
+            var res = _userService.GetCardByIdAsync(Id);
+            return Ok(res);
+        }
+        [HttpDelete]
+        public IActionResult DeleteCard(int Id)
+        {
+            var res = _userService.DeleteCardAsync(Id);
+            return Ok(res);
+        }
+        [HttpPut]
+        public IActionResult UpdateCard(int Id,CardDto card)
+        {
+            var res = _userService.UpdateCardAsync(Id,card);
+            return Ok(res);
+        }
+
+
         #endregion Card Controller
     }
 }

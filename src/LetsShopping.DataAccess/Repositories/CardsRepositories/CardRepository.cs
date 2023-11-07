@@ -87,7 +87,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Card Set Card = {model.CardNumber},{model.ExpireDate},{model.Amount}Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Card Set CardNumber = ' {model.CardNumber}', Amount = {model.Amount} ,Status = {(int)Status.Updated},ModifiedAt = GetDate() Where Id = {Id};";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
