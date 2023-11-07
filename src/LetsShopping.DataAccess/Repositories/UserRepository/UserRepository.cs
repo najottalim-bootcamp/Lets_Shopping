@@ -42,13 +42,13 @@ public class UserRepository : BaseRepository, IUserRepository
         }
     }
 
-    public async ValueTask<IList<User>> GetAllAsync()
+    public async ValueTask<List<User>> GetAllAsync()
     {
         try
         {
             await _connection.OpenAsync();
             string query = "Exec GetAll 'Users'";
-            IList<User> get = (await _connection.QueryAsync<User>(query)).ToList();
+            List<User> get = (await _connection.QueryAsync<User>(query)).ToList();
             return get;
         }
         catch

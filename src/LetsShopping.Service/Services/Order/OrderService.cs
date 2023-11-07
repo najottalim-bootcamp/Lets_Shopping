@@ -53,9 +53,9 @@ namespace LetsShopping.Service.Services.Order
             return update;
         }
 
-        public async ValueTask<IList<Domain.Models.Orders.Order>> GetAllAsync()
+        public async ValueTask<List<Domain.Models.Orders.Order>> GetAllAsync()
         {
-            IList<Domain.Models.Orders.Order> order = (await _orderRepository.GetAllAsync());
+            List<Domain.Models.Orders.Order> order = (await _orderRepository.GetAllAsync());
             if (order == null)
             {
                 throw new OrderNotFoundException();

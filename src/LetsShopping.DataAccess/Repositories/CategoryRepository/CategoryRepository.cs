@@ -43,7 +43,7 @@
             }
         }
 
-        public async ValueTask<IList<Category>> GetAllAsync()
+        public async ValueTask<List<Category>> GetAllAsync()
         {
             try
             {
