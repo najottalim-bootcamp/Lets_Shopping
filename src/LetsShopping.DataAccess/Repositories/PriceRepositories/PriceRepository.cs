@@ -1,7 +1,4 @@
 
-using LetsShopping.Domain.Dtos.Price;
-using LetsShopping.Domain.Models.Price;
-
 namespace LetsShopping.DataAccess.Repositories.PriceRepositories
 {
     public class PriceRepository : BaseRepository, IPriceRepository
@@ -47,7 +44,7 @@ namespace LetsShopping.DataAccess.Repositories.PriceRepositories
             }
         }
 
-        public async ValueTask<IList<Pricesss>> GetAllAsync()
+        public async ValueTask<List<Pricesss>> GetAllAsync()
         {
             try
             {

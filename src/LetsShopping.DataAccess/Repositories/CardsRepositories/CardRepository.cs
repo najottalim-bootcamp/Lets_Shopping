@@ -42,7 +42,7 @@
             }
         }
 
-        public async ValueTask<IList<Card>> GetAllAsync()
+        public async ValueTask<List<Card>> GetAllAsync()
         {
             try
             {

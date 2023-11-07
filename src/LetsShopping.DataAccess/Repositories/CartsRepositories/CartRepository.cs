@@ -40,13 +40,13 @@ public class CartRepository : BaseRepository, ICartRepository
         }
     }
 
-    public async ValueTask<IList<Cart>> GetAllAsync()
+    public async ValueTask<List<Cart>> GetAllAsync()
     {
         try
         {
             await _connection.OpenAsync();
             string query = "Exec GetAll 'Cart'";
-            IList<Cart> get = (await _connection.QueryAsync<Cart>(query)).ToList();
+            List<Cart> get = (await _connection.QueryAsync<Cart>(query)).ToList();
             return get;
         }
         catch
