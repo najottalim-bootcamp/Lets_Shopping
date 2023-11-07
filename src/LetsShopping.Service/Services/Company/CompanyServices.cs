@@ -10,13 +10,14 @@ namespace LetsShopping.Service.Services.Company
         private readonly ICardRepisotry _card;
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
-        public CompanyServices(ICompanyRepository company,IProductRepository product,ICardRepisotry card,ICatogoryRepository category,IDiscountRepository discount)
+        public CompanyServices(ICompanyRepository company,IProductRepository product,ICardRepisotry card,ICatogoryRepository category,IDiscountRepository discount,IAddressRepository address)
         {
             _company = company;
             _product = product;
             _card = card;
             _catogoryRepository = category;
             _discountRepository = discount;
+            _address = address;
         }
    
 
