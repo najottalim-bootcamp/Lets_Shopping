@@ -43,7 +43,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             }
         }
 
-        public async ValueTask<IList<Order>> GetAllAsync()
+        public async ValueTask<List<Order>> GetAllAsync()
         {
             try
             {

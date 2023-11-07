@@ -13,8 +13,10 @@
         [HttpGet]
         public IActionResult GetAllAsync()
         {
-            var result = _user.GetAllAsync();
+
+        var result = _user.GetAllAsync();
             return Ok(result.Result);
+
         }
         [HttpGet("{Id}")]
         public IActionResult GetByIdAsync(int id)
