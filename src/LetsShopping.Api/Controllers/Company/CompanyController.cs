@@ -1,4 +1,6 @@
 
+using LetsShopping.Domain.Dtos.AddressDtos;
+using LetsShopping.Domain.Dtos.Category;
 using LetsShopping.Domain.Dtos.CompnayDtos;
 using LetsShopping.Domain.Dtos.CompnayDtos;
 using LetsShopping.Domain.Dtos.DiscountDtos;
