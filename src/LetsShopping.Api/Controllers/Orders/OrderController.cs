@@ -13,7 +13,7 @@ namespace LetsShopping.Api.Controllers.Orders
         public IActionResult GetAllOrder() 
         {
             var result =_order.GetAllOrder();
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpGet]
         public IActionResult GetByIdOrder(int id)
