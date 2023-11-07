@@ -208,6 +208,7 @@ namespace LetsShopping.Service.Services.Company
         public async ValueTask<int> UpdateProductAsync(int Id, ProductDto model)
         {
             int result = await _product.UpdateAsync(Id, model);
+            return result;
         }
         #endregion Product Services
 
