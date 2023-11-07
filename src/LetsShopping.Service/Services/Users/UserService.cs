@@ -1,45 +1,55 @@
 
+using LetsShopping.DataAccess.Repositories.CardsRepositories;
+using LetsShopping.DataAccess.Repositories.CartsRepositories;
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.OrderRepositories;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
 using LetsShopping.Domain.Enums;
+using LetsShopping.Domain.Models.Users;
+using System.Reflection;
 
 namespace LetsShopping.Service.Services.Users
 {
-    public class UserService 
+    public class UserService :IUserService
     {
 
-        private readonly UserRepository _userRepository;
-        private readonly CardRepository _cardRepository;
-        private readonly CartRepository _cartRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly ICardRepisotry _cardRepository;
+        private readonly ICartRepository _cartRepository;
 
 
 
         #region Card Services
 
-    public ValueTask<int> CreateCardAsync(CardDto model)
-    {
-        throw new NotImplementedException();
-    }
+        public async ValueTask<int> CreateCardAsync(CardDto model)
+        {
+           var res = await _cardRepository.CreateAsync(model);
+            return res;
 
-        public ValueTask<int> DeleteCardAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
-        public ValueTask<List<Card>> GetAllCardAsync()
-        {
-            throw new NotImplementedException();
         }
 
-    public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
-    {
-        throw new NotImplementedException();
-    }
-    public ValueTask<Card> GetCardByIdAsync(int Id)
-    {
-        throw new NotImplementedException();
-    }
+        public async ValueTask<int> DeleteCardAsync(int Id)
+        {
+            var res = await _cardRepository.DeleteAsync(Id);
+            return res;
+        }
+        public async ValueTask<List<Card>> GetAllCardAsync()
+        {
+            var cards = await _cardRepository.GetAllAsync();
+            return cards.Where(c => c.Status != Status.Deleted).ToList();
+        }
+
+        public ValueTask<int> UpdateCardAsync(int Id, CardDto model)
+        {
+            var res =   _cardRepository.UpdateAsync(Id, model);
+            return res;
+        }
+        public ValueTask<Card> GetCardByIdAsync(int Id)
+        {
+            var res = _cardRepository.GetByIdAsync(Id);
+            return res;
+        }
 
     #endregion  Card Services
 
@@ -48,34 +58,40 @@ namespace LetsShopping.Service.Services.Users
         #region Cart Services
         public ValueTask<int> DeleteCartAsync(int Id)
         {
-            throw new NotImplementedException();
+            var res = _cartRepository.DeleteAsync(Id);
+            return res;
         }
         public ValueTask<int> CreateCartAsync(CartDto model)
         {
-            throw new NotImplementedException();
+            var res =_cartRepository.CreateAsync(model);
+            return res;
         }
-        public ValueTask<List<Cart>> GetAllCartAsync()
+        public async ValueTask<List<Cart>> GetAllCartByUserIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            var ress =  await _cartRepository.GetAllAsync();
+            ress = ress.Where(x => x.UserId == userId).Where(x => x.Status != Status.Deleted).ToList();
+            return ress;
         }
 
-    public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
-    {
-        throw new NotImplementedException();
-    }
+        public ValueTask<int> UpdateCartAsync(int Id, CartDto model)
+        {
+            var res = _cartRepository.UpdateAsync(Id,model); 
+            return res;
+        }
 
-    public ValueTask<Cart> GetCartByIdAsync(int Id)
-    {
-        throw new NotImplementedException();
-    }
-
-
-    #endregion Cart Services
-
+        public ValueTask<Cart> GetCartByIdAsync(int Id)
+        {
+            var res = _cartRepository.GetByIdAsync(Id);
+            return res;
+        }
 
 
-    #region User Services
-    public ValueTask<int> CreateUserAsync(UsersDto model)
+        #endregion Cart Services
+
+
+
+        #region User Services
+        public ValueTask<int> CreateUserAsync(UsersDto model)
     {
         throw new NotImplementedException();
     }
@@ -112,7 +128,7 @@ namespace LetsShopping.Service.Services.Users
 
             List<Category> categories = await cat.GetAllAsync();
             
-            return  categories.Where(c => c.Status == Status.Deleted).ToList();
+            return  categories.Where(c => c.Status != Status.Deleted).ToList();
 
         }
 
