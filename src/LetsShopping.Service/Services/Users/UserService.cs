@@ -1,7 +1,9 @@
+
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
 using LetsShopping.Domain.Enums;
+
 
 namespace LetsShopping.Service.Services.Users
 {
@@ -136,9 +138,10 @@ namespace LetsShopping.Service.Services.Users
 
         public async ValueTask<List<Category>> GetAllCategory()
         {
-            CategoryRepository cat = new CategoryRepository();
+            ICatogoryRepository cat = new CategoryRepository();
 
             List<Category> categories = await cat.GetAllAsync();
+
 
 
             return categories.Where(c => c.Status != Status.Deleted).ToList();
