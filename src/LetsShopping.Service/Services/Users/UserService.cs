@@ -1,8 +1,11 @@
 
+using LetsShopping.DataAccess.Repositories.CardsRepositories;
+using LetsShopping.DataAccess.Repositories.CartsRepositories;
 using LetsShopping.DataAccess.Repositories.CategoryRepository;
 using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.OrderRepositories;
 using LetsShopping.DataAccess.Repositories.ProductRepositories;
+using LetsShopping.DataAccess.Repositories.UserRepository;
 using LetsShopping.Domain.Enums;
 
 namespace LetsShopping.Service.Services.Users
