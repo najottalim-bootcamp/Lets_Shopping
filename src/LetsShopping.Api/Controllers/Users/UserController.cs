@@ -1,4 +1,5 @@
 ﻿using LetsShopping.Domain.Dtos.CardDtos;
+using LetsShopping.Domain.Dtos.CartsDtos;
 using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Service.Interfaces.Users;
 using Microsoft.AspNetCore.Http;
@@ -89,6 +90,47 @@ namespace LetsShopping.Api.Controllers.Users
 
 
         #endregion User Controller
+
+
+
+
+
+
+        #region Cart Controller
+        [HttpPost]
+        public IActionResult CreateCart(CartDto model)
+        {
+            var res = _userService.CreateCartAsync(model);
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetAllCart(int UserId)
+        {
+            var res = _userService.GetAllCartByUserIdAsync(UserId);
+            return Ok(res);
+        }
+        [HttpGet]
+        public IActionResult GetAllCartById(int Id)
+        {
+            var res = _userService.GetCartByIdAsync(Id);
+            return Ok(res);
+        }
+        [HttpDelete]
+        public IActionResult DeleteCart(int Id)
+        {
+            var res = _userService.DeleteCartAsync(Id);
+            return Ok(res);
+        }
+        [HttpPut]
+        public IActionResult UpdateCart(int Id, CartDto cart)
+        {
+            var res = _userService.UpdateCartAsync(Id, cart);
+            return Ok(res);
+        }
+
+
+        #endregion Cart Controller
+
 
 
 
