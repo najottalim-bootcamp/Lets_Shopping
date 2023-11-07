@@ -27,7 +27,7 @@ namespace LetsShopping.Api.Controllers.Orders
             _order.CreateOrder(order);
             return Ok("Created");
         }
-        [HttpPatch]
+        [HttpPut]
         public IActionResult UpdateOrder(int id,OrderDto order)
         {
             _order.UpdateOrder(id, order);
@@ -63,7 +63,12 @@ namespace LetsShopping.Api.Controllers.Orders
             _order.UpdateOrderList(id, order);
             return Ok("Updated");
         }
-        
+        [HttpDelete]
+        public IActionResult DeleteOrderList(int id)
+        {
+            _order.DeleteOrderList(id);
+            return Ok("Deleted");
+        }
         
     }
 }
