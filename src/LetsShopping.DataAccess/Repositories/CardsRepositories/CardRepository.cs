@@ -7,9 +7,9 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Card(CardNumber,ExpireDate,Amount,Status,CreatedAt) Values({model.CardNumber},{model.ExpireDate},{model.Amount},{(int)Status.Created},Getdate());";
+                string query = $"Insert into Card(CardNumber,ExpireDate,Amount,Status,CreatedAt) Values(\'{model.CardNumber}\', GETDATE() , {model.Amount} ,{(int)Status.Created},Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
-                return created;
+                return 1;
             }
             catch
             {
@@ -87,7 +87,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Card Set Card = {model.CardNumber},{model.ExpireDate},{model.Amount}Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Card Set CardNumber = ' {model.CardNumber}', Amount = {model.Amount} ,Status = {(int)Status.Updated},ModifiedAt = GetDate() Where Id = {Id};";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
