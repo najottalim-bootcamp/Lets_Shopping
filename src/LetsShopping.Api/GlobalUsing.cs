@@ -19,3 +19,6 @@ global using LetsShopping.Domain.Models.Products;
 global using LetsShopping.Service.Interfaces.Company;
 global using LetsShopping.Service.Interfaces.Order;
 global using Microsoft.AspNetCore.Mvc;
+global using LetsShopping.Domain.Dtos.CardDtos;
+global using LetsShopping.Domain.Dtos.UsersDtos;
+global using LetsShopping.Service.Interfaces.Users;

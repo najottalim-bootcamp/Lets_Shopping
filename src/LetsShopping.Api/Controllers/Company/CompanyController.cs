@@ -1,6 +1,4 @@
-﻿
-
-namespace LetsShopping.Api.Controllers.Company
+﻿namespace LetsShopping.Api.Controllers.Company
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
