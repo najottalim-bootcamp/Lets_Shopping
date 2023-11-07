@@ -20,7 +20,7 @@ namespace LetsShopping.Api.Controllers.Company
             IEnumerable<LetsShopping.Domain.Models.Companies.Company> result = await _companyServices.GetAllCompanyAsync();
             if (result is not null)
             {
-                return Ok("Created");
+                return Ok(result);
             }
             return BadRequest(new CompanyNotFoundException());
         }

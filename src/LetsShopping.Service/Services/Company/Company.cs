@@ -5,7 +5,14 @@ namespace LetsShopping.Service.Services.Company
     public class Company : ICompanyServices
     {
         private readonly ICompanyRepository _company;
+
         private readonly IProductRepository _product;
+        public Company(ICompanyRepository company,IProductRepository product)
+        {
+            _company = company;
+            _product = product;
+        }
+        
 
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
