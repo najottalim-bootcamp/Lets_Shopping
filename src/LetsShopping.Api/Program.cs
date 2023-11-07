@@ -1,3 +1,5 @@
+
+using LetsShopping.DataAccess.Repositories.CompanyRepository;
 using LetsShopping.DataAccess.Repositories.CardsRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +19,7 @@ builder.Services.AddScoped<IOrderInterface, OrderService>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderInterface, OrderService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 
 var app = builder.Build();
 
