@@ -1,8 +1,19 @@
+
+using LetsShopping.Domain.Dtos.AddressDtos;
 using LetsShopping.Domain.Dtos.Category;
+using LetsShopping.Domain.Dtos.CompnayDtos;
+using LetsShopping.Domain.Dtos.CompnayDtos;
 using LetsShopping.Domain.Dtos.DiscountDtos;
+using LetsShopping.Domain.Dtos.ProductsDtos;
+using LetsShopping.Domain.Exceptions.Addresses;
+using LetsShopping.Domain.Exceptions.Cards;
+using LetsShopping.Domain.Exceptions.Companies;
+using LetsShopping.Domain.Exceptions.Products;
+using LetsShopping.Domain.Models.Companies;
+using LetsShopping.Domain.Models.Products;
+using LetsShopping.Service.Interfaces.Company;
 
 namespace LetsShopping.Api.Controllers.Company
-
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -117,78 +128,78 @@ namespace LetsShopping.Api.Controllers.Company
             return BadRequest(new CompanyNotFoundException());
 
         }
+  
+            [HttpGet]
+            public async ValueTask<IActionResult> GetAllAddressAsync()
+            {
+                IEnumerable<LetsShopping.Domain.Models.Addresses.Address> result = await _companyServices.GetAllAddressAsync();
+                if (result is not null)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(new AddressNotFoundExeption());
+            }
+            [HttpGet("{Id}")]
+            public async ValueTask<IActionResult> GetAddressByIdAsync(int id)
+            {
+                var result = await _companyServices.GetAddressByIdAsync(id);
+                if (result is not null)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(new AddressNotFoundExeption());
+            }
+            [HttpPost]
+            public async ValueTask<IActionResult> CreateAddressAsync(AddressDto company)
+            {
+                int result = await _companyServices.CreateAddressAsync(company);
+                if (result != 0)
+                {
+                    return Ok("Added");
+                }
+                return BadRequest("error");
+            }
+            [HttpDelete]
+            public async ValueTask<IActionResult> DeleteAddressByIdAsync(int id)
+            {
+                int result = await _companyServices.DeleteAddressAsync(id);
+                if (result != 0)
+                {
+                    return Ok("deleted");
+                }
+                return BadRequest(new AddressNotFoundExeption());
+            }
 
-        [HttpGet]
-        public async ValueTask<IActionResult> GetAllAddressAsync()
-        {
-            IEnumerable<LetsShopping.Domain.Models.Addresses.Address> result = await _companyServices.GetAllAddressAsync();
-            if (result is not null)
+            [HttpGet]
+            public async ValueTask<IActionResult> GetAllCardsAsync()
             {
-                return Ok(result);
+                IEnumerable<LetsShopping.Domain.Models.Cards.Card> result = await _companyServices.GetAllCardAsync();
+                if (result is not null)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(new CardsNotFoundExceptions());
             }
-            return BadRequest(new AddressNotFoundExeption());
-        }
-        [HttpGet("{Id}")]
-        public async ValueTask<IActionResult> GetAddressByIdAsync(int id)
-        {
-            var result = await _companyServices.GetAddressByIdAsync(id);
-            if (result is not null)
+            [HttpGet("{Id}")]
+            public async ValueTask<IActionResult> GetCardsByIdAsync(int id)
             {
-                return Ok(result);
+                var result = await _companyServices.GetAddressByIdAsync(id);
+                if (result is not null)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(new CardsNotFoundExceptions());
             }
-            return BadRequest(new AddressNotFoundExeption());
-        }
-        [HttpPost]
-        public async ValueTask<IActionResult> CreateAddressAsync(AddressDto company)
-        {
-            int result = await _companyServices.CreateAddressAsync(company);
-            if (result != 0)
+            [HttpPost]
+            public async ValueTask<IActionResult> CreateCardsAsync(AddressDto company)
             {
-                return Ok("Added");
+                int result = await _companyServices.CreateAddressAsync(company);
+                if (result != 0)
+                {
+                    return Ok("Added");
+                }
+                return BadRequest("error");
             }
-            return BadRequest("error");
-        }
-        [HttpDelete]
-        public async ValueTask<IActionResult> DeleteAddressByIdAsync(int id)
-        {
-            int result = await _companyServices.DeleteAddressAsync(id);
-            if (result != 0)
-            {
-                return Ok("deleted");
-            }
-            return BadRequest(new AddressNotFoundExeption());
-        }
-
-        [HttpGet]
-        public async ValueTask<IActionResult> GetAllCardsAsync()
-        {
-            IEnumerable<LetsShopping.Domain.Models.Cards.Card> result = await _companyServices.GetAllCardAsync();
-            if (result is not null)
-            {
-                return Ok(result);
-            }
-            return BadRequest(new CardsNotFoundExceptions());
-        }
-        [HttpGet("{Id}")]
-        public async ValueTask<IActionResult> GetCardsByIdAsync(int id)
-        {
-            var result = await _companyServices.GetAddressByIdAsync(id);
-            if (result is not null)
-            {
-                return Ok(result);
-            }
-            return BadRequest(new CardsNotFoundExceptions());
-        }
-        [HttpPost]
-        public async ValueTask<IActionResult> CreateCardsAsync(AddressDto company)
-        {
-            int result = await _companyServices.CreateAddressAsync(company);
-            if (result != 0)
-            {
-                return Ok("Added");
-            }
-            return BadRequest("error");
-        }
         [HttpDelete]
         public async ValueTask<IActionResult> DeleteCardsByIdAsync(int id)
         {
@@ -199,6 +210,8 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest(new CardsNotFoundExceptions());
         }
+
+
         [HttpGet]
         public IActionResult GetAllCategory()
         {
