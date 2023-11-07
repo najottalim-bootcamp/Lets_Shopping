@@ -4,8 +4,14 @@ namespace LetsShopping.Service.Services.Order
 {
     public class OrderService : IOrderInterface
     {
-        private readonly OrderRepository _orderRepository;
-        private readonly OrderListRepository _orderListRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderListRepository _orderListRepository;
+        public OrderService(IOrderRepository orderRepository,IOrderListRepository orderListRepository)
+        {
+            _orderRepository = orderRepository;
+            _orderListRepository = orderListRepository;
+            
+        }
 
         public async ValueTask<int> CreatedOrderList(OrderListDto orderListDto)
         {
