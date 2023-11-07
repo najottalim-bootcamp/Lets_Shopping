@@ -1,4 +1,5 @@
-﻿using LetsShopping.Domain.Dtos.CardDtos;
+
+using LetsShopping.Domain.Dtos.CardDtos;
 using LetsShopping.Domain.Dtos.CartsDtos;
 using LetsShopping.Domain.Dtos.UsersDtos;
 using LetsShopping.Service.Interfaces.Users;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LetsShopping.Api.Controllers.Users
+
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -19,13 +21,13 @@ namespace LetsShopping.Api.Controllers.Users
 
         #region Card Controller
         [HttpPost]
-        public  IActionResult CreateCard(CardDto model) 
+        public IActionResult CreateCard(CardDto model)
         {
             var res = _userService.CreateCardAsync(model);
             return Ok(res);
         }
         [HttpGet]
-        public IActionResult GetAllCard() 
+        public IActionResult GetAllCard()
         {
             var res = _userService.GetAllCardAsync();
             return Ok(res);
@@ -43,9 +45,9 @@ namespace LetsShopping.Api.Controllers.Users
             return Ok(res);
         }
         [HttpPut]
-        public IActionResult UpdateCard(int Id,CardDto card)
+        public IActionResult UpdateCard(int Id, CardDto card)
         {
-            var res = _userService.UpdateCardAsync(Id,card);
+            var res = _userService.UpdateCardAsync(Id, card);
             return Ok(res);
         }
 

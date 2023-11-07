@@ -7,20 +7,26 @@ namespace LetsShopping.Service.Services.Company
         private readonly IAddressRepository _address;
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
-        public CompanyServices(ICompanyRepository company,IProductRepository product)
-        {
-            _company = company;
-            _product = product;
-        }
         private readonly ICardRepisotry _card;
         private readonly ICatogoryRepository _catogoryRepository;
         private readonly IDiscountRepository _discountRepository;
-        
+        public CompanyServices(ICompanyRepository company,IProductRepository product,ICardRepisotry card,ICatogoryRepository category,IDiscountRepository discount,IAddressRepository address)
+        {
+            _company = company;
+            _product = product;
+            _card = card;
+            _catogoryRepository = category;
+            _discountRepository = discount;
+            _address = address;
+        }
+   
+
         #region Address Services 
         public async ValueTask<IList<Address>> GetAllAddressAsync()
         {
-            IList<Address> address = await _address.GetAllAsync();
-            return address;
+
+            List<Address> address = await _address.GetAllAsync();
+            return address.Where(c => c.Status != Status.Deleted).ToList();
         }
 
         public async ValueTask<int> CreateAddressAsync(AddressDto model)

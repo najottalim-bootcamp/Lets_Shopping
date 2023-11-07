@@ -1,5 +1,4 @@
 ﻿namespace LetsShopping.DataAccess.Repositories.CommentsRepositories;
-
 public class CommentRepository : BaseRepository, ICommentRepository
 {
     public async ValueTask<int> CreateAsync(CommentDto model)
