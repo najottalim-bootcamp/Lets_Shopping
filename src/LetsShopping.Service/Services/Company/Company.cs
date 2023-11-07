@@ -10,10 +10,12 @@ namespace LetsShopping.Service.Services.Company
         private readonly ICompanyRepository _company;
         private readonly IProductRepository _product;
         private readonly ICardRepisotry _card;
-        public Company(ICompanyRepository company,IProductRepository product)
+        public Company(ICompanyRepository company,IProductRepository product, ICardRepisotry card, IAddressRepository address)
         {
             _company = company;
             _product = product;
+            _card = card;
+            _address = address;
         }
         
        
@@ -23,7 +25,7 @@ namespace LetsShopping.Service.Services.Company
         public async ValueTask<IList<Address>> GetAllAddressAsync()
         {
             IList<Address> address = await _address.GetAllAsync();
-            return address;
+            return address.Where(c => c.Status != Status.Deleted).ToList();
         }
 
         public async ValueTask<int> CreateAddressAsync(AddressDto model)
@@ -107,7 +109,7 @@ namespace LetsShopping.Service.Services.Company
         public async ValueTask<IList<Card>> GetAllCardAsync()
         {
             IList<Card> card = await _card.GetAllAsync();
-            return card;
+            return card.Where(c => c.Status != Status.Deleted).ToList();
         }
 
         public async ValueTask<Card> GetCardByIdAsync(int Id)
