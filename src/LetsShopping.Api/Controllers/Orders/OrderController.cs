@@ -13,7 +13,7 @@ namespace LetsShopping.Api.Controllers.Orders
         public IActionResult GetAllOrder() 
         {
             var result =_order.GetAllOrder();
-            return Ok(result);
+            return Ok(result.Result);
         }
         [HttpGet]
         public IActionResult GetByIdOrder(int id)
@@ -27,7 +27,7 @@ namespace LetsShopping.Api.Controllers.Orders
             _order.CreateOrder(order);
             return Ok("Created");
         }
-        [HttpPatch]
+        [HttpPut]
         public IActionResult UpdateOrder(int id,OrderDto order)
         {
             _order.UpdateOrder(id, order);
@@ -39,8 +39,36 @@ namespace LetsShopping.Api.Controllers.Orders
             _order.DeleteOrder(id);
             return Ok("Deleted");
         }
-
-        
+        [HttpGet]
+        public IActionResult GetAllOrderList()
+        {
+            var result = _order.GetAllOrderList();
+            return Ok(result);
+        }
+        [HttpGet]
+        public IActionResult GetByIdOrderList(int id)
+        {
+            var result = _order.GetByIdOrderList(id);
+            return Ok(result);
+        }
+        [HttpPost]
+        public IActionResult CreatedOrderList(OrderListDto order)
+        {
+            _order.CreatedOrderList(order);
+            return Ok("Created");
+        }
+        [HttpPut]
+        public IActionResult UpdateOrderList(int id,OrderListDto order)
+        {
+            _order.UpdateOrderList(id, order);
+            return Ok("Updated");
+        }
+        [HttpDelete]
+        public IActionResult DeleteOrderList(int id)
+        {
+            _order.DeleteOrderList(id);
+            return Ok("Deleted");
+        }
         
     }
 }
