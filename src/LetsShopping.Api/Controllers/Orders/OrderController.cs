@@ -12,34 +12,65 @@ namespace LetsShopping.Api.Controllers.Orders
             _order = order;
         }
         [HttpGet]
-        public IActionResult GetAllAsync()
+        public IActionResult GetAllOrder() 
         {
-            var result = _order.GetAllAsync();
-            return Ok(result);
+            var result =_order.GetAllOrder();
+            return Ok(result.Result);
         }
         [HttpGet]
-        public IActionResult GetByIdAsync(int id)
+        public IActionResult GetByIdOrder(int id)
         {
-            var result = _order.GetByIdAsync(id);
-            return Ok(result);
+            var result = _order.GetByIdOrder(id);
+            return Ok(result.Result);
         }
         [HttpPost]
-        public IActionResult CreateAsync(OrderDto orderDto)
+        public IActionResult CreateOrder(OrderDto order)
         {
-            var result = _order.CreateAsync(orderDto);
-            return Ok(result);
+            var res = _order.CreateOrder(order);
+            return Ok(res.Result);
         }
-        [HttpPatch]
-        public IActionResult UpdateAsync(int Id, OrderDto orderDto)
+        [HttpPut]
+        public IActionResult UpdateOrder(int id,OrderDto order)
         {
-            var reuslt = _order.UpdateAsync(Id, orderDto);
-            return Ok(reuslt);
+            _order.UpdateOrder(id, order);
+            return Ok("Updated");
         }
         [HttpDelete]
-        public IActionResult DeleteAsync(int Id)
+        public IActionResult DeleteOrder(int id)
         {
-            var result = _order.DeleteAsync(Id);
-            return Ok(result);
+            _order.DeleteOrder(id);
+            return Ok("Deleted");
         }
+        [HttpGet]
+        public IActionResult GetAllOrderList()
+        {
+            var result = _order.GetAllOrderList();
+            return Ok(result.Result);
+        }
+        [HttpGet]
+        public IActionResult GetByIdOrderList(int id)
+        {
+            var result = _order.GetByIdOrderList(id);
+            return Ok(result.Result);
+        }
+        [HttpPost]
+        public IActionResult CreatedOrderList(OrderListDto order)
+        {
+            _order.CreatedOrderList(order);
+            return Ok("Created");
+        }
+        [HttpPut]
+        public IActionResult UpdateOrderList(int id,OrderListDto order)
+        {
+            _order.UpdateOrderList(id, order);
+            return Ok("Updated");
+        }
+        [HttpDelete]
+        public IActionResult DeleteOrderList(int id)
+        {
+            _order.DeleteOrderList(id);
+            return Ok("Deleted");
+        }
+        
     }
 }

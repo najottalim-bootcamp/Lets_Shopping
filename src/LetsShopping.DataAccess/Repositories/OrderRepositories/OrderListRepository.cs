@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.OrdersDtos;
-
-namespace LetsShopping.DataAccess.Repositories.OrderRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
     public class OrderListRepository : BaseRepository, IOrderListRepository
     {
@@ -44,7 +42,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             }
         }
 
-        public async ValueTask<IList<OrderList>> GetAllAsync()
+        public async ValueTask<List<OrderList>> GetAllAsync()
         {
             try
             {
@@ -68,7 +66,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec GetById 'OrderList',{Id}";
+                string query = $"Exec GetAById 'OrderList',{Id}";
                 var getbyId = await _connection.QueryFirstOrDefaultAsync<OrderList>(query);
                 return getbyId;
             }

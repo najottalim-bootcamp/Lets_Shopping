@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Dtos.OrdersDtos;
-
-namespace LetsShopping.DataAccess.Repositories.OrderRepositories
+﻿namespace LetsShopping.DataAccess.Repositories.OrderRepositories
 {
     public class OrderRepository : BaseRepository, IOrderRepository
     {
@@ -9,7 +7,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Order(UserId,Total,Price,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
+                string query = $"Insert into Orders(UserId,Total,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate());";
                 int created = await _connection.ExecuteAsync(query);
                 return created;
             }
@@ -29,7 +27,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec DeletedById \'Order\',{Id}";
+                string query = $"Exec DeletedById \'Orders\',{Id}";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
             }
@@ -43,7 +41,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             }
         }
 
-        public async ValueTask<IList<Order>> GetAllAsync()
+        public async ValueTask<List<Order>> GetAllAsync()
         {
             try
             {
@@ -68,7 +66,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec GetById 'Orders',{Id}";
+                string query = $"Exec GetAById 'Orders',{Id}";
                 var getbyId = await _connection.QueryFirstOrDefaultAsync<Order>(query);
                 return getbyId;
             }
@@ -87,7 +85,7 @@ namespace LetsShopping.DataAccess.Repositories.OrderRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Address Set Country = \'{model.UserId}\',City = \'{model.Total}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Orders Set UserId = \'{model.UserId}\',Total = \'{model.Total}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 

@@ -1,12 +1,4 @@
-using LetsShopping.DataAccess.Repositories.CartsRepositories;
-
-using LetsShopping.DataAccess.Repositories.UserRepository;
-using LetsShopping.Service.Interfaces.Carts;
-
-using LetsShopping.Service.Interfaces.Users;
-using LetsShopping.Service.Services.Carts;
-
-using LetsShopping.Service.Services.Users;
+using LetsShopping.Service.Services.Company;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,15 +10,35 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderInterface, OrderService>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IOrderInterface, OrderService>();
+builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
 
-builder.Services.AddScoped<IOrderRepository,OrderRepository>();
-builder.Services.AddScoped<IOrderInterface,OrderService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+
+
+builder.Services.AddScoped<ICardRepisotry, CardRepository>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
-builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
+
+builder.Services.AddScoped<IOrderListRepository, OrderListRepository>();
+builder.Services.AddScoped<IPriceRepository, PriceRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<ICardRepisotry, CardRepository>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyServices, CompanyServices>();
+builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+builder.Services.AddScoped<ICatogoryRepository, CategoryRepository>();
+
+
+
+
+builder.Services.AddScoped<IOrderInterface, OrderService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+
 
 var app = builder.Build();
 

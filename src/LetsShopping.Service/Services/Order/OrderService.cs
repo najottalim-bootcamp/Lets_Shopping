@@ -1,66 +1,108 @@
-using LetsShopping.Domain.Dtos.OrdersDtos;
-
 namespace LetsShopping.Service.Services.Order
 {
     public class OrderService : IOrderInterface
     {
         private readonly IOrderRepository _orderRepository;
-        public OrderService(IOrderRepository orderRepository)
+        private readonly IOrderListRepository _orderListRepository;
+        public OrderService(IOrderRepository orderRepository, IOrderListRepository orderListRepository)
         {
             _orderRepository = orderRepository;
+            _orderListRepository = orderListRepository;
+
         }
 
-        public async ValueTask<int> CreateAsync(OrderDto model)
+        public async ValueTask<int> CreatedOrderList(OrderListDto orderListDto)
         {
-
-            int res = await _orderRepository.CreateAsync(model);
-            if (res == 0)
+            int orderList = await _orderListRepository.CreateAsync(orderListDto);
+            if (orderList == null)
             {
-                throw new OrderNotFoundException();
+                throw new OrderListNotFoundException();
             }
+            return orderList;
+
+        }
+
+        public async ValueTask<int> CreateOrder(OrderDto orderDto)
+        {
+            var res = await _orderRepository.CreateAsync(orderDto);
+            
             return res;
         }
 
-        public async ValueTask<int> DeleteAsync(int Id)
+        public ValueTask<int> DeleteOrder(int id)
         {
-            int res = await _orderRepository.DeleteAsync(Id);
-            if (res == 0)
+            var orderdelted = _orderListRepository.DeleteAsync(id);
+            if (orderdelted == null)
             {
                 throw new OrderNotFoundException();
             }
-            return res;
-
-        }
-        public async ValueTask<Domain.Models.Orders.Order> GetByIdAsync(int Id)
-        {
-
-            Domain.Models.Orders.Order order = await _orderRepository.GetByIdAsync(Id);
-            if (order == null)
-            {
-                throw new OrderNotFoundException();
-            }
-            return order;
-
+            return orderdelted;
         }
 
-        public async ValueTask<int> UpdateAsync(int Id, OrderDto model)
+        public ValueTask<int> DeleteOrderList(int id)
         {
-            int update = await _orderRepository.UpdateAsync(Id, model);
-            if (update == 0)
+            var orderlistdeleted = _orderListRepository.DeleteAsync(id);
+            if (orderlistdeleted == null)
             {
-                throw new OrderNotFoundException();
+                throw new OrderListNotFoundException();
             }
-            return update;
+            return orderlistdeleted;
         }
 
-        public async ValueTask<IList<Domain.Models.Orders.Order>> GetAllAsync()
+        public async ValueTask<List<Domain.Models.Orders.Order>> GetAllOrder()
         {
-            IList<Domain.Models.Orders.Order> order = (await _orderRepository.GetAllAsync());
-            if (order == null)
+            List<Domain.Models.Orders.Order> orders = await _orderRepository.GetAllAsync();
+            orders.Where(x => x.Status != Domain.Enums.Status.Deleted).ToList();
+            if (orders == null)
             {
                 throw new OrderNotFoundException();
             }
-            return order;
+            return orders;
+        }
+
+        public async ValueTask<List<OrderList>> GetAllOrderList()
+        {
+            List<OrderList> ordersss = await _orderListRepository.GetAllAsync();
+            ordersss.Where(x => x.Status != Domain.Enums.Status.Deleted).ToList();
+            if (ordersss == null)
+            {
+                throw new OrderListNotFoundException();
+            }
+            return ordersss;
+        }
+
+        public async ValueTask<Domain.Models.Orders.Order> GetByIdOrder(int id)
+        {
+            Domain.Models.Orders.Order orders = await _orderRepository.GetByIdAsync(id);
+            if (orders == null)
+            {
+                throw new OrderNotFoundException();
+            }
+            return orders;
+
+        }
+
+        public async ValueTask<OrderList> GetByIdOrderList(int id)
+        {
+            OrderList orderList = await _orderListRepository.GetByIdAsync(id);
+            if (orderList == null)
+            {
+                throw new OrderListNotFoundException();
+            }
+            return orderList;
+
+        }
+
+        public async ValueTask<int> UpdateOrder(int id, OrderDto orderDto)
+        {
+            int updatedOrder = await _orderRepository.UpdateAsync(id, orderDto);
+            return updatedOrder;
+        }
+
+        public async ValueTask<int> UpdateOrderList(int id, OrderListDto orderListDto)
+        {
+            int updateOrderList = await _orderListRepository.UpdateAsync(id, orderListDto);
+            return updateOrderList;
         }
     }
 }

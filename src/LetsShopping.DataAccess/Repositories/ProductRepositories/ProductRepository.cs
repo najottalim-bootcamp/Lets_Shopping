@@ -43,7 +43,7 @@ namespace LetsShopping.DataAccess.Repositories.ProductRepositories
             }
         }
 
-        public async ValueTask<IList<Product>> GetAllAsync()
+        public async ValueTask<List<Product>> GetAllAsync()
         {
             try
             {
@@ -67,7 +67,7 @@ namespace LetsShopping.DataAccess.Repositories.ProductRepositories
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById 'Prices' , {Id};";
+                string query = $"EXEC GetAById 'Prices' , {Id};";
                 var price = await _connection.QueryFirstOrDefaultAsync<Product>(query);
                 return price;
             }

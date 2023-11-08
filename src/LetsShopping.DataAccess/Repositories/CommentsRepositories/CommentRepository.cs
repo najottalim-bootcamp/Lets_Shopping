@@ -1,5 +1,4 @@
 ﻿namespace LetsShopping.DataAccess.Repositories.CommentsRepositories;
-
 public class CommentRepository : BaseRepository, ICommentRepository
 {
     public async ValueTask<int> CreateAsync(CommentDto model)
@@ -40,13 +39,13 @@ public class CommentRepository : BaseRepository, ICommentRepository
         }
     }
 
-    public async ValueTask<IList<Comment>> GetAllAsync()
+    public async ValueTask<List<Comment>> GetAllAsync()
     {
         try
         {
             await _connection.OpenAsync();
             string query = "Exec GetAll 'Comment'";
-            IList<Comment> get = (await _connection.QueryAsync<Comment>(query)).ToList();
+            List<Comment> get = (await _connection.QueryAsync<Comment>(query)).ToList();
             return get;
         }
         catch
@@ -64,7 +63,7 @@ public class CommentRepository : BaseRepository, ICommentRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"EXEC GetAllById 'Comment' , {Id};";
+            string query = $"EXEC GetAById 'Comment' , {Id};";
             Comment comment = await _connection.QueryFirstOrDefaultAsync<Comment>(query);
             return comment;
         }

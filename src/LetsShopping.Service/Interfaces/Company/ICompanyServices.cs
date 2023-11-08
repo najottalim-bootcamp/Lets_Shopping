@@ -1,6 +1,3 @@
-using LetsShopping.Domain.Dtos.DiscountDtos;
-using LetsShopping.Domain.Dtos.ProductsDtos;
-
 namespace LetsShopping.Service.Interfaces.Company
 {
     public interface ICompanyServices
@@ -24,6 +21,7 @@ namespace LetsShopping.Service.Interfaces.Company
         public ValueTask<int> DeleteAddressAsync(int Id);
         public ValueTask<Address> GetAddressByIdAsync(int Id);
         public ValueTask<IList<Address>> GetAllAddressAsync();
+
 
 
         public ValueTask<int> CreateCardAsync(CardDto model);
