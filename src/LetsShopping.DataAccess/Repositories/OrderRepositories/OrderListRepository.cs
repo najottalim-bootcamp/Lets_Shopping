@@ -66,7 +66,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec GetById 'OrderList',{Id}";
+                string query = $"Exec GetAById 'OrderList',{Id}";
                 var getbyId = await _connection.QueryFirstOrDefaultAsync<OrderList>(query);
                 return getbyId;
             }

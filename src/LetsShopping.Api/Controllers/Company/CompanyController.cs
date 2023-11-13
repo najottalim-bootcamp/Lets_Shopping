@@ -21,7 +21,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest("error!");
         }
-        [HttpGet("{Id}")]
+        [HttpGet]
         public async ValueTask<IActionResult> GetCompanyByIdAsync(int id)
         {
             var result = await _companyServices.GetCompanyByIdAsync(id);
@@ -73,7 +73,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest("error!");
         }
-        [HttpGet("{Id}")]
+        [HttpGet]
         public async ValueTask<IActionResult> GetProductByIdAsync(int id)
         {
             var result = await _companyServices.GetProductByIdAsync(id);
@@ -125,7 +125,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest("error!");
         }
-        [HttpGet("{Id}")]
+        [HttpGet]
         public async ValueTask<IActionResult> GetAddressByIdAsync(int id)
         {
             var result = await _companyServices.GetAddressByIdAsync(id);
@@ -166,7 +166,7 @@ namespace LetsShopping.Api.Controllers.Company
             }
             return BadRequest("Error");
         }
-        [HttpGet("{Id}")]
+        [HttpGet]
         public async ValueTask<IActionResult> GetCardsByIdAsync(int id)
         {
             var result = await _companyServices.GetAddressByIdAsync(id);
