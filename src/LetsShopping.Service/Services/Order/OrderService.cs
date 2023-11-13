@@ -1,16 +1,14 @@
-using LetsShopping.Domain.Dtos.OrdersDtos;
-
 namespace LetsShopping.Service.Services.Order
 {
     public class OrderService : IOrderInterface
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IOrderListRepository _orderListRepository;
-        public OrderService(IOrderRepository orderRepository,IOrderListRepository orderListRepository)
+        public OrderService(IOrderRepository orderRepository, IOrderListRepository orderListRepository)
         {
             _orderRepository = orderRepository;
             _orderListRepository = orderListRepository;
-            
+
         }
 
         public async ValueTask<int> CreatedOrderList(OrderListDto orderListDto)
@@ -27,10 +25,7 @@ namespace LetsShopping.Service.Services.Order
         public async ValueTask<int> CreateOrder(OrderDto orderDto)
         {
             var res = await _orderRepository.CreateAsync(orderDto);
-            if (res == null)
-            {
-                throw new OrderNotFoundException();
-            }
+            
             return res;
         }
 

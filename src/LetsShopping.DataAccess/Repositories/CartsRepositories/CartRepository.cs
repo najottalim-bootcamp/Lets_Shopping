@@ -6,7 +6,7 @@ public class CartRepository : BaseRepository, ICartRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Insert into Cart(Active,Status,CreatedAt) Values('{model.Active}',{(int)Status.Created},Getdate());";
+            string query = $"Insert into Cart(UserId,ProductId, Active, Status,CreatedAt ) Values({model.UserId},{model.ProductId},{Convert.ToInt32(model.Active)},{(int)Status.Created},Getdate());";
             int created = await _connection.ExecuteAsync(query, model);
             return created;
         }
@@ -25,7 +25,7 @@ public class CartRepository : BaseRepository, ICartRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Exec Delete 'Cart',{Id}";
+            string query = $"Exec DeleteById 'Cart',{Id}";
             int deleted = await _connection.ExecuteAsync(query);
             return deleted;
         }
@@ -63,7 +63,7 @@ public class CartRepository : BaseRepository, ICartRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"EXEC GetAllById 'Cart' , {Id};";
+            string query = $"EXEC GetAById 'Cart' , {Id};";
             Cart cart = await _connection.QueryFirstOrDefaultAsync<Cart>(query);
             return cart;
         }
@@ -83,7 +83,7 @@ public class CartRepository : BaseRepository, ICartRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Update Cart Set Active = '{model.Active}',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id};";
+            string query = $"Update Cart Set Active = '{model.Active}',Status = {(int)Status.Updated},ModifiedAt = GetDate() Where Id = {Id};";
             int updated = await _connection.ExecuteAsync(query);
             return updated;
 
