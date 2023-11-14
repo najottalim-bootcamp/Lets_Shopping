@@ -6,7 +6,7 @@
         public BaseRepository()
         {
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-            this._connection = new SqlConnection("Server =(localdb)\\MSSQLLocalDB; Database = LetsShopDB; Trusted_Connection = True;");
+            this._connection = new SqlConnection("Server =SEVINCH; Database = LetsShopDB; Trusted_Connection = True;");
             
 
         }
