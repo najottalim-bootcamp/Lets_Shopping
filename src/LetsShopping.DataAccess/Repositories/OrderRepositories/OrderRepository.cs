@@ -7,7 +7,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Orders(UserId,Total,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate());";
+                string query = $"Insert into Orders(UserId,Total,status,CreatedAt) Values({model.UserId},{model.Total},{(int)Status.Created},Getdate())";
                 int created = await _connection.ExecuteAsync(query);
                 return created;
             }
@@ -27,7 +27,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Exec DeletedById \'Orders\',{Id}";
+                string query = $"Exec DeleteById \'Orders\',{Id}";
                 int deleted = await _connection.ExecuteAsync(query);
                 return deleted;
             }
@@ -35,7 +35,7 @@
             {
                 return 0;
             }
-            finally
+            finally 
             {
                 await _connection.CloseAsync();
             }
@@ -85,7 +85,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Update Orders Set UserId = \'{model.UserId}\',Total = \'{model.Total}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
+                string query = $"Update Orders Set Country = \'{model.UserId}\',City = \'{model.Total}\',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;
 
