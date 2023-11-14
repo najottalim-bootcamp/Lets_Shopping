@@ -34,7 +34,7 @@ namespace LetsShopping.Service.Services.Order
 
         public ValueTask<int> DeleteOrder(int id)
         {
-            var orderdelted = _orderListRepository.DeleteAsync(id);
+            var orderdelted = _orderRepository.DeleteAsync(id);
             if (orderdelted == null)
             {
                 throw new OrderNotFoundException();
