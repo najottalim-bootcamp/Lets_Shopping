@@ -10,34 +10,91 @@ namespace LetsShopping.Api.Controllers.Orders
             _order = order;
         }
         [HttpGet]
-        public IActionResult GetAllAsync()
+        public IActionResult GetAllOrder()
         {
-            var result = _order.GetAllAsync();
+            var result = _order.GetAllOrder();
             return Ok(result.Result);
         }
         [HttpGet]
-        public IActionResult GetByIdAsync(int id)
+        public IActionResult GetByIdOrder(int id)
         {
-            var result = _order.GetByIdAsync(id);
+            var result = _order.GetByIdOrder(id);
             return Ok(result.Result);
         }
         [HttpPost]
-        public IActionResult CreateAsync(OrderDto orderDto)
+        public IActionResult CreateOrder(OrderDto order)
         {
-            var result = _order.CreateAsync(orderDto);
-            return Ok(result.Result);
+            var result = _order.CreateOrder(order);
+            if (result.Result > 0)
+            {
+                return Ok("Created");
+            }
+            return BadRequest("Do not Created!");
+
         }
-        [HttpPatch]
-        public IActionResult UpdateAsync(int Id, OrderDto orderDto)
+        [HttpPut]
+        public IActionResult UpdateOrder(int id, OrderDto order)
         {
-            var reuslt = _order.UpdateAsync(Id, orderDto);
-            return Ok(reuslt);
+            var updated = _order.UpdateOrder(id, order);
+            if (updated.Result > 0)
+            {
+                return Ok("Updated");
+            }
+            return BadRequest("Do not Updated");
         }
         [HttpDelete]
-        public IActionResult DeleteAsync(int Id)
+        public IActionResult DeleteOrder(int id)
         {
-            var result = _order.DeleteAsync(Id);
+            var deleted = _order.DeleteOrder(id);
+            if (deleted.Result > 0)
+            {
+
+                return Ok("Deleted");
+            }
+            return BadRequest("Do not deleted");
+        }
+        [HttpGet]
+        public IActionResult GetAllOrderList()
+        {
+            var result = _order.GetAllOrderList();
             return Ok(result.Result);
         }
+        [HttpGet]
+        public IActionResult GetByIdOrderList(int id)
+        {
+            var result = _order.GetByIdOrderList(id);
+            return Ok(result.Result);
+        }
+        [HttpPost]
+        public IActionResult CreatedOrderList(OrderListDto order)
+        {
+            var created = _order.CreatedOrderList(order);
+            if (created.Result > 0)
+            {
+                return Ok("Created");
+            }
+            return BadRequest("Do not created!");
+        }
+        [HttpPut]
+        public IActionResult UpdateOrderList(int id, OrderListDto order)
+        {
+            var updated = _order.UpdateOrderList(id, order);
+            if (updated.Result > 0)
+            {
+                return Ok("Updated");
+            }
+            return BadRequest("Do not Updated!");
+        }
+        [HttpDelete]
+        public IActionResult DeleteOrderList(int id)
+        {
+            var deleted = _order.DeleteOrderList(id);
+            if (deleted.Result > 0)
+            {
+                return Ok("Deleted");
+            }
+            return BadRequest("Do not deleted");
+        }
+
     }
 }

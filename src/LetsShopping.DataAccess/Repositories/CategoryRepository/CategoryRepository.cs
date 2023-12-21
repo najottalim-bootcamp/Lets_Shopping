@@ -7,7 +7,16 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Category(Name, ParentId ,Status,CreatedAt) Values(\'{model.Name}\',{model.ParentId},{(int)Status.Created},Getdate());";
+                string query;
+                if (model.ParentId > 0)
+                {
+                    query = $"Insert into Category(Name, ParentId ,Status,CreatedAt) Values(\'{model.Name}\',{model.ParentId},{(int)Status.Created},Getdate());";
+                }
+                else
+                {
+                     query = $"Insert into Category(Name ,Status,CreatedAt) Values(\'{model.Name}\',{(int)Status.Created},Getdate());";
+                }
+
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -43,7 +52,7 @@
             }
         }
 
-        public async ValueTask<IList<Category>> GetAllAsync()
+        public async ValueTask<List<Category>> GetAllAsync()
         {
             try
             {

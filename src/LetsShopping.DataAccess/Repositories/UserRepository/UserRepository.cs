@@ -1,6 +1,4 @@
-﻿using LetsShopping.Domain.Models.Users;
-
-namespace LetsShopping.DataAccess.Repositories.UserRepository;
+﻿namespace LetsShopping.DataAccess.Repositories.UserRepository;
 
 public class UserRepository : BaseRepository, IUserRepository
 {
@@ -28,7 +26,7 @@ public class UserRepository : BaseRepository, IUserRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Exec Delete 'Users',{Id}";
+            string query = $"Exec DeleteById 'Users',{Id}";
             int deleted = await _connection.ExecuteAsync(query);
             return deleted;
         }
@@ -42,13 +40,13 @@ public class UserRepository : BaseRepository, IUserRepository
         }
     }
 
-    public async ValueTask<IList<User>> GetAllAsync()
+    public async ValueTask<List<User>> GetAllAsync()
     {
         try
         {
             await _connection.OpenAsync();
             string query = "Exec GetAll 'Users'";
-            IList<User> get = (await _connection.QueryAsync<User>(query)).ToList();
+            List<User> get = (await _connection.QueryAsync<User>(query)).ToList();
             return get;
         }
         catch
@@ -66,7 +64,7 @@ public class UserRepository : BaseRepository, IUserRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"EXEC GetAllById 'Users' , {Id};";
+            string query = $"EXEC GetAById 'Users' , {Id};";
             User user = await _connection.QueryFirstOrDefaultAsync<User>(query);
             return user;
         }
@@ -86,7 +84,7 @@ public class UserRepository : BaseRepository, IUserRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"Update Users Set FirstName = '{model.FirstName}',LastName = '{model.LastName}',PhoneNumber = '{model.PhoneNumber}',cardId = '{model.CardId}',Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id};";
+            string query = $"Update Users Set FirstName = '{model.FirstName}',LastName = '{model.LastName}',PhoneNumber = '{model.PhoneNumber}',cardId = {model.CardId},Status = {(int)Status.Updated},ModifiedAt = GetDate() Where Id = {Id};";
             int updated = await _connection.ExecuteAsync(query);
             return updated;
         }

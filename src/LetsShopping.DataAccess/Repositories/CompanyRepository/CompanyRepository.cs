@@ -46,7 +46,7 @@
             }
         }
 
-        public async ValueTask<IList<Company>> GetAllAsync()
+        public async ValueTask<List<Company>> GetAllAsync()
         {
             try
             {
@@ -70,7 +70,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById \'Company\', {Id}";
+                string query = $"EXEC GetAById \'Company\', {Id}";
                 var company = await _connection.QueryFirstOrDefaultAsync<Company>(query);
                 return company;
             }

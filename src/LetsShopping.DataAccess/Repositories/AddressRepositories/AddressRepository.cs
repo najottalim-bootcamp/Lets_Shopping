@@ -43,7 +43,12 @@
             }
         }
 
-        public async ValueTask<IList<Address>> GetAllAsync()
+        public Task<List<Address>> GetAllAddressAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async ValueTask<List<Address>> GetAllAsync()
         {
             try
             {
