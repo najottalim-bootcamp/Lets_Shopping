@@ -25,16 +25,13 @@ namespace LetsShopping.Service.Services.Order
         public async ValueTask<int> CreateOrder(OrderDto orderDto)
         {
             var res = await _orderRepository.CreateAsync(orderDto);
-            if (res == null)
-            {
-                throw new OrderNotFoundException();
-            }
+            
             return res;
         }
 
         public ValueTask<int> DeleteOrder(int id)
         {
-            var orderdelted = _orderListRepository.DeleteAsync(id);
+            var orderdelted = _orderRepository.DeleteAsync(id);
             if (orderdelted == null)
             {
                 throw new OrderNotFoundException();

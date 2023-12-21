@@ -1,4 +1,3 @@
-
 namespace LetsShopping.Api.Controllers.Company
 {
     [Route("api/[controller]/[action]")]
@@ -19,9 +18,9 @@ namespace LetsShopping.Api.Controllers.Company
             {
                 return Ok(result);
             }
-            return BadRequest(new CompanyNotFoundException());
+            return BadRequest("error!");
         }
-        [HttpGet("{Id}")]
+        [HttpGet]
         public async ValueTask<IActionResult> GetCompanyByIdAsync(int id)
         {
             var result = await _companyServices.GetCompanyByIdAsync(id);
@@ -71,9 +70,9 @@ namespace LetsShopping.Api.Controllers.Company
             {
                 return Ok(result);
             }
-            return BadRequest(new ProductNotFoundException());
+            return BadRequest("error!");
         }
-        [HttpGet("{Id}")]
+        [HttpGet]
         public async ValueTask<IActionResult> GetProductByIdAsync(int id)
         {
             var result = await _companyServices.GetProductByIdAsync(id);
@@ -125,8 +124,7 @@ namespace LetsShopping.Api.Controllers.Company
                 }
                 return BadRequest(new AddressNotFoundExeption());
             }
-            [HttpGet("{Id}")]
-            public async ValueTask<IActionResult> GetAddressByIdAsync(int id)
+
             {
                 var result = await _companyServices.GetAddressByIdAsync(id);
                 if (result is not null)
@@ -166,8 +164,18 @@ namespace LetsShopping.Api.Controllers.Company
                 }
                 return BadRequest(new CardsNotFoundExceptions());
             }
+
+            return BadRequest("Error");
+        }
+        [HttpGet]
+        public async ValueTask<IActionResult> GetCardsByIdAsync(int id)
+        {
+            var result = await _companyServices.GetAddressByIdAsync(id);
+            if (result is not null)
+
             [HttpGet("{Id}")]
             public async ValueTask<IActionResult> GetCardsByIdAsync(int id)
+
             {
                 var result = await _companyServices.GetAddressByIdAsync(id);
                 if (result is not null)
@@ -186,6 +194,10 @@ namespace LetsShopping.Api.Controllers.Company
                 }
                 return BadRequest("error");
             }
+
+            return BadRequest("error!!");
+        }
+
         [HttpDelete]
         public async ValueTask<IActionResult> DeleteCardsByIdAsync(int id)
         {
@@ -199,65 +211,105 @@ namespace LetsShopping.Api.Controllers.Company
 
 
         [HttpGet]
-        public IActionResult GetAllCategory()
+        public async ValueTask<IActionResult> GetAllCategory()
         {
-            var result = _companyServices.GetAllCategoryAsync();
-            return Ok(result.Result);
+            var result = await _companyServices.GetAllCategoryAsync();
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest("Error!!");
+        }
+        [HttpGet]
+        public async ValueTask<IActionResult> GetByIdCategory(int id)
+        {
+            var result = await _companyServices.GetCategoryByIdAsync(id);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new CategoryNotFoundException());
+        }
+        [HttpPost]
+        public async ValueTask<IActionResult> CreateCategory(CategoryDto category)
+        {
+            var result = await _companyServices.CreateCategoryAsync(category);
+            if (result != 0)
+            {
+                return Ok("created");
+            }
+            return BadRequest(new CategoryNotFoundException());
+        }
+        [HttpPatch]
+        public async ValueTask<IActionResult> UpdateCategory(int Id, CategoryDto category)
+        {
+            int result = await _companyServices.UpdateCategoryAsync(Id, category);
+            if (result != 0)
+            {
+                return Ok("updated");
+            }
+            return BadRequest(new CategoryNotFoundException());
+        }
+        [HttpDelete]
+        public async ValueTask<IActionResult> DeleteCategory(int Id)
+        {
+            int result = await _companyServices.DeleteCategoryAsync(Id);
+            if (result != 0)
+            {
+                return Ok("deleted");
+            }
+            return BadRequest(new CategoryNotFoundException());
+        }
+        [HttpGet]
+        public async ValueTask<IActionResult> GetAllDiscount()
+        {
+            var result = await _companyServices.GetAllDiscountAsync();
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest("Erorr");
+        }
+        [HttpGet]
+        public async ValueTask<IActionResult> GetByIdDiscount(int id)
+        {
+            var result = await _companyServices.GetDiscpuntByIdAsync(id);
+            if (result is not null)
+            {
+                return Ok(result);
+            }
+            return BadRequest(new DiscountNotFoundException());
+        }
+        [HttpPost]
+        public async ValueTask<IActionResult> CreateDiscount(DiscountDto discount)
+        {
+            int result = await _companyServices.CreateDiscpuntAsync(discount);
+            if (result != 0)
+            {
+                return Ok("created");
+            }
+            return BadRequest("Erorr");
+        }
+        [HttpPatch]
+        public async ValueTask<IActionResult> UpdateDiscount(int Id, DiscountDto discount)
+        {
+            var result = await _companyServices.UpdateDiscpuntAsync(Id, discount);
+            if (result != 0)
+            {
+                return Ok("updated");
+            }
+            return BadRequest(new DiscountNotFoundException());
+        }
+        [HttpDelete]
+        public async ValueTask<IActionResult> DeleteDiscount(int Id)
+        {
+            var result = await _companyServices.DeleteDiscpuntAsync(Id);
 
-        }
-        [HttpGet]
-        public IActionResult GetByIdCategory(int id)
-        {
-            var result = _companyServices.GetCategoryByIdAsync(id);
-            return Ok(result.Result);
-        }
-        [HttpPost]
-        public IActionResult CreateCategory(CategoryDto category)
-        {
-            var result = _companyServices.CreateCategoryAsync(category);
-            return Ok(result.Result);
-        }
-        [HttpPatch]
-        public IActionResult UpdateCategory(int Id, CategoryDto category)
-        {
-            var result = _companyServices.UpdateCategoryAsync(Id, category);
-            return Ok(result.Result);
-        }
-        [HttpDelete]
-        public IActionResult DeleteCategory(int Id)
-        {
-            var result = _companyServices.DeleteCategoryAsync(Id);
-            return Ok(result.Result);
-        }
-        [HttpGet]
-        public IActionResult GetAllDiscount()
-        {
-            var result = _companyServices.GetAllDiscountAsync();
-            return Ok(result.Result);
-        }
-        [HttpGet]
-        public IActionResult GetByIdDiscount(int id)
-        {
-            var result = _companyServices.GetDiscpuntByIdAsync(id);
-            return Ok(result.Result);
-        }
-        [HttpPost]
-        public IActionResult CreateDiscount(DiscountDto discount)
-        {
-            var result = _companyServices.CreateDiscpuntAsync(discount);
-            return Ok(result.Result);
-        }
-        [HttpPatch]
-        public IActionResult UpdateDiscount(int Id, DiscountDto discount)
-        {
-            var result = _companyServices.UpdateDiscpuntAsync(Id, discount);
-            return Ok(result.Result);
-        }
-        [HttpDelete]
-        public IActionResult DeleteDiscount(int Id)
-        {
-            var result = _companyServices.DeleteDiscpuntAsync(Id);
-            return Ok(result.Result);
+            if (result != 0)
+            {
+                return Ok("deleted");
+            }
+            return BadRequest(new DiscountNotFoundException());
         }
     }
 

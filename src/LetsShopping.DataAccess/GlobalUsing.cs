@@ -22,3 +22,4 @@ global using LetsShopping.Domain.Models.Products;
 global using System.Data.SqlClient;
 global using LetsShopping.Domain.Models.Users;
 global using LetsShopping.Domain.Dtos.OrdersDtos;
+global using LetsShopping.DataAccess.Repositories.AddressRepositories;
