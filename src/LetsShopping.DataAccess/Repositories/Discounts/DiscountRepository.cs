@@ -8,9 +8,8 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"Insert into Discount(Name,Description,Percents,StartDate,EndDate,Status,CreatedAt) Values" +
-                    $"(\'{model.Name}\' ,\'{model.Description}\', {model.Percents} , {model.StartDate} " +
-                    $",{model.EndDate} ,{(int)Status.Created}, Getdate());";
+                string query = $"Insert into Discount(Name,Description,Percents,Status,CreatedAt) Values" +
+                    $"(\'{model.Name}\' ,\'{model.Description}\', {model.Percents} ,{(int)Status.Created}, Getdate());";
                 int created = await _connection.ExecuteAsync(query, model);
                 return created;
             }
@@ -70,7 +69,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById \'Discount\', {Id}";
+                string query = $"EXEC GetAById \'Discount\', {Id}";
                 var discount = await _connection.QueryFirstOrDefaultAsync<Domain.Models.Discount.Discount>(query);
                 return discount;
             }
@@ -92,7 +91,7 @@
             {
                 await _connection.OpenAsync();
                 string query = $"Update Discount Set Name = \'{model.Name}\',Description = \'{model.Description}\' , " +
-                    $"Percents = {model.Percents} , StartDate = {model.StartDate} , EndDate = {model.EndDate}," +
+                    $"Percents = {model.Percents} " +
                     $"Status = {(int)Status.Updated},UpdatedAt = GetDate() Where Id = {Id}";
                 int updated = await _connection.ExecuteAsync(query);
                 return updated;

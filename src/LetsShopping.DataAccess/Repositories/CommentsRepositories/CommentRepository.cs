@@ -63,7 +63,7 @@ public class CommentRepository : BaseRepository, ICommentRepository
         try
         {
             await _connection.OpenAsync();
-            string query = $"EXEC GetAllById 'Comment' , {Id};";
+            string query = $"EXEC GetAById 'Comment' , {Id};";
             Comment comment = await _connection.QueryFirstOrDefaultAsync<Comment>(query);
             return comment;
         }

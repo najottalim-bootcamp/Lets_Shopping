@@ -70,7 +70,7 @@
             try
             {
                 await _connection.OpenAsync();
-                string query = $"EXEC GetAllById \'Company\', {Id}";
+                string query = $"EXEC GetAById \'Company\', {Id}";
                 var company = await _connection.QueryFirstOrDefaultAsync<Company>(query);
                 return company;
             }
